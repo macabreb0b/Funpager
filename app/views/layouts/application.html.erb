@@ -6,21 +6,56 @@
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
   </head>
-<body>
-  <% if logged_in? %>
-    <%= current_user.username %>
-    <%= button_to "Sign Out", session_url, method: :delete %>
-  <% else %>
-    <%= link_to "Sign Up", new_user_url %>
-    <%= link_to "Sign In", new_session_url %>
-  <% end %>
 
-  <% if flash[:errors] %>
-  <%= flash[:errors] %>
-  <% end %>
+  <body>
 
+    <div class="row">
+      <div role="navigation" class="navbar-inverse">
+        <div class="container">
+          <div class="navbar-header">
+            <a href="<%= root_url %>" class="navbar-brand">Singlepager</a>
+          </div>
 
-  <%= yield %>
+          <div class="navbar-inner">
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= button_to "Start Building", builder_url,
+                     class:'btn navbar-btn btn-primary', method: :get %>
+              <% if logged_in? %>
 
-</body>
+                <li><%= link_to "Dashboard", dashboard_url %>
+                <li class='dropdown'>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="glyphicon glyphicon-user"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><%= link_to "Your Pages", pages_url %>
+                    <li><%= link_to "Your Profile", user_url(current_user) %>
+                    <li class="divider"></li>
+                    <li><%= link_to "Sign Out", session_url, method: :delete %>
+                  </ul>
+              <% else %>
+                  <li><%= button_to "Sign Up", new_user_url,
+                        class: 'btn navbar-btn btn-clear', method: :get%>
+                  <li><%= button_to "Sign In", new_session_url,
+                        class: 'btn navbar-btn btn-clear', method: :get %>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |error| %>
+            <div class="alert alert-warning">
+              <%= error %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <%= yield %>
+      </div>
+
+    </div>
+  </body>
 </html>

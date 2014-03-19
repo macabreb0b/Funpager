@@ -13,3 +13,38 @@
  */
 
 @import "bootstrap";
+
+
+.navbar-inverse {
+  background-color: #f47946;
+  a, .navbar-nav > li > a {
+    color: white;
+    border-left: 1px solid #e65b37;
+    border-right: 1px solid #e65b37;
+  }
+
+
+  .dropdown-menu > li > a {
+    border: 0;
+  }
+ .navbar-brand {
+    color: white;
+    font-weight: 700;
+  }
+
+  .btn {
+    margin-left: 10px;
+  }
+  .btn-clear {
+    background: none;
+    border: 1px white solid;
+    color: white;
+  }
+
+  .btn-clear:hover {
+    background: white;
+    border: 1px #f47946 solid;
+    color: #f47946;
+  }
+}
+

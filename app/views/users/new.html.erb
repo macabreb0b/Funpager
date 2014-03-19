@@ -1,19 +1,28 @@
-New user page
+<div class="row">
 
-<form action="<%= users_url %>" method="POST">
+<h1>Sign Up</h1>
+
+<form class="form" action="<%= users_url %>" method="POST">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-  <label>Username:
-    <input type="text" name="user[username]" value="<%= @user.username %>">
-  </label>
+  <div class='form-group'>
+    <label>Username:
+      <input class="form-control" type="text"
+        name="user[username]" value="<%= @user.username %>">
+    </label>
+  </div>
 
-  <label>Email:
-    <input type="text" name="user[email]" value="<%= @user.email %>">
-  </label>
+  <div class='form-group'>
+    <label>Email:
+      <input class="form-control" type="text"
+        name="user[email]" value="<%= @user.email %>">
+    </label>
+  </div>
 
-  <label>Password:
-    <input type="password" name="user[password]">
-  </label>
-
-  <button>Sign Up</button>
+  <div class='form-group'>
+    <label>Password:
+      <input class="form-control" type="password" name="user[password]">
+    </label>
+  </div>
+  <button class="btn btn-primary">Sign Up</button>
 </form>
