@@ -28,10 +28,10 @@ group :development, :test do
   gem 'capybara'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'debugger'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby', "~> 3.1.5", require: 'bcrypt'
 
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'annotate'
+gem 'pry-rails'
