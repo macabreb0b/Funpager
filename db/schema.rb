@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319212532) do
+ActiveRecord::Schema.define(version: 20140320081624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "fields", force: true do |t|
+    t.integer  "widget_id",  null: false
+    t.string   "label",      null: false
+    t.text     "content",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "fields", ["widget_id"], name: "index_fields_on_widget_id", using: :btree
 
   create_table "pages", force: true do |t|
     t.integer  "user_id"
@@ -43,5 +53,14 @@ ActiveRecord::Schema.define(version: 20140319212532) do
 
   add_index "users", ["token"], name: "index_users_on_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
+
+  create_table "widgets", force: true do |t|
+    t.integer  "page_id",    null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "widgets", ["page_id"], name: "index_widgets_on_page_id", using: :btree
 
 end

@@ -6,9 +6,28 @@
     <input type="text" name="page[title]" value="<%= @page.title %>">
   </label>
 
-  <label>What would you like it to say?
-    <textarea name="page[body]"><%= @page.body %></textarea>
-  </label>
+  Widgets:
+  <select name="widgets[1][type]">
+    <option value="">select widget 1 type</option>
+    <% Widget::TYPES.each do |type| %>
+    <option value="<%= type %>"><%= type %></option>
+    <% end %>
+  </select>
+
+  <select name="widgets[2][type]">
+    <option value="">select widget 2 type</option>
+    <% Widget::TYPES.each do |type| %>
+    <option value="<%= type %>"><%= type %></option>
+    <% end %>
+  </select>
+
+  <select name="widgets[3][type]">
+    <option value="">select widget type</option>
+    <% Widget::TYPES.each do |type| %>
+    <option value="<%= type %>"><%= type %></option>
+    <% end %>
+  </select>
+
 
   <button>Create Page</button>
 </form>

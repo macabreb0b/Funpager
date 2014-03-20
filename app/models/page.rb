@@ -22,6 +22,7 @@ class Page < ActiveRecord::Base
   before_validation :set_defaults
 
   belongs_to :user
+  has_many :widgets, inverse_of: :page
 
   def generate_handle
     SecureRandom.urlsafe_base64(6)

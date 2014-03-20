@@ -27,14 +27,34 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
   },
 
   show: function(id) {
-    alert('show page ' + id)
+    var page = this._getOrFetch(id)
+    var showView = new Singlepager.Views.ShowPage({
+      model: page
+    })
+    this._swapView(showView)
   },
 
-  _swapView: function(view) {
+  _swapView: function(newView) {
    if(this.current_view) {
      this.current_view.remove()
    }
-   this.current_view = view
-   this.$rootEl.html(view.render().$el)
+   this.$rootEl.html(newView.render().$el)
+   this.current_view = newView
+  },
+
+  _getOrFetch: function(id) {
+    var page = Singlepager.pages.get(id)
+
+    if(page) {
+      page.fetch()
+      return page
+    } else {
+      page = new Singlepager.Models.Page({
+        id: id
+      })
+      Singlepager.pages.add(page)
+      page.fetch()
+      return page
+    }
   }
 });

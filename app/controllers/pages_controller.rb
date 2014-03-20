@@ -1,11 +1,14 @@
 class PagesController < ApplicationController
   def new
     @page = Page.new
+
     render 'new'
   end
 
   def create
+    debugger
     @page = Page.new(page_params)
+    @page.widgets.build(widget_params)
     @page.user_id = current_user.id
 
     if @page.save
@@ -38,6 +41,10 @@ class PagesController < ApplicationController
   private
 
   def page_params
-    params.require(:page).permit(:title, :body)
+    params.require(:page).permit(:title, :body, {widgets: [:type]})
+  end
+
+  def widget_params
+    params.permit(widgets: [:type]).require(:widgets).values
   end
 end

@@ -4,12 +4,13 @@ window.Singlepager = {
   Views: {},
   Routers: {},
   initialize: function() {
-
+    alert('starting backbone')
     Singlepager.pages = new Singlepager.Collections.Pages()
     Singlepager.pages.fetch({
       success: function() {
         new Singlepager.Routers.Pages({
-          $rootEl: $('#dashboard')
+          $rootEl: $('#dashboard'),
+          collection: Singlepager.pages
         })
         Backbone.history.start()
       }

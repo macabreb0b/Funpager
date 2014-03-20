@@ -2,7 +2,7 @@
 
 <% pages.each(function(page) { %>
   <div class="row page-list">
-    <h3><%= page.get('title') %></h3>
+    <h3><a href="#pages/<%= page.id %>"><%= page.get('title') %></a></h3>
     <p>
       <span class="glyphicon glyphicon-link"></span>
       <a href="#/pages/<%= page.id %>" target="_blank">
@@ -12,19 +12,19 @@
     </p>
 
     <div class="page-buttons">
-      <button class="btn btn-primary btn-sm" disabled>
+      <a class="btn btn-primary btn-sm" disabled>
         Page Dashboard
-      </button>
+      </a>
 
-      <button class="btn btn-primary btn-sm">
+      <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
         <span class="glyphicon glyphicon-pencil"></span>
         &nbsp;Edit Page
-      </button>
+      </a>
 
-      <button class="btn btn-primary btn-sm">
+      <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>">
         <span class="glyphicon glyphicon-eye-open"></span>
         &nbsp;View Page
-      </button>
+      </a>
     </div>
   </div>
 <% }) %>
