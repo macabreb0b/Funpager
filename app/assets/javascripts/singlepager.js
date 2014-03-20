@@ -4,7 +4,7 @@ window.Singlepager = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('starting backbone')
+
     Singlepager.pages = new Singlepager.Collections.Pages()
     Singlepager.pages.fetch({
       success: function() {

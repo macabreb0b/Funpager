@@ -1,15 +1,15 @@
 class PagesController < ApplicationController
   def new
     @page = Page.new
+    3.times { @page.widgets.build }
 
     render 'new'
   end
 
   def create
-    debugger
     @page = Page.new(page_params)
-    @page.widgets.build(widget_params)
     @page.user_id = current_user.id
+    @page.widgets.build(widget_params)
 
     if @page.save
       redirect_to page_url(@page)
@@ -40,11 +40,13 @@ class PagesController < ApplicationController
 
   private
 
-  def page_params
-    params.require(:page).permit(:title, :body, {widgets: [:type]})
-  end
+    def page_params
+      params.require(:page).permit(:title, widgets_attributes: [:name])
+    end
 
-  def widget_params
-    params.permit(widgets: [:type]).require(:widgets).values
-  end
+    def widget_params
+      params.permit(widgets: [:name])
+        .require(:widgets)
+        .values
+    end
 end

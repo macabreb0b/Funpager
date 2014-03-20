@@ -1,33 +1,41 @@
-<h2>Create a page</h2>
+<!-- <h2>Create a page</h2>
 
-<form action="<%= pages_url %>" method="POST" accept-charset="utf-8">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<form action="<%# pages_url %>" method="POST" accept-charset="utf-8">
+  <input type="hidden" name="authenticity_token" value="<%# form_authenticity_token %>">
   <label>What is your page called?
-    <input type="text" name="page[title]" value="<%= @page.title %>">
+    <input type="text" name="page[title]" value="<%# @page.title %>">
   </label>
 
   Widgets:
-  <select name="widgets[1][type]">
-    <option value="">select widget 1 type</option>
-    <% Widget::TYPES.each do |type| %>
-    <option value="<%= type %>"><%= type %></option>
-    <% end %>
-  </select>
+  <%# @page.widgets.each do |widget| %>
+  <label>
+    <%# widget.name %>
+  </label>
+  <%# end %>
 
-  <select name="widgets[2][type]">
-    <option value="">select widget 2 type</option>
-    <% Widget::TYPES.each do |type| %>
-    <option value="<%= type %>"><%= type %></option>
-    <% end %>
+  New Widget:
+  <select name="widgets[1][name]">
+    <option value="">select widget 1 name</option>
+    <%# Widget::NAMES.each do |name| %>
+    <option value="<%# name %>"><%# name %></option>
+    <%# end %>
   </select>
-
-  <select name="widgets[3][type]">
-    <option value="">select widget type</option>
-    <% Widget::TYPES.each do |type| %>
-    <option value="<%= type %>"><%= type %></option>
-    <% end %>
-  </select>
-
 
   <button>Create Page</button>
-</form>
+</form> -->
+
+
+<%= form_for @page do |f| %>
+  <%# f.error_messages %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <%= f.fields_for :widgets do |builder| %>
+    <p>
+    <%= builder.label :name, 'Name' %><br>
+    <%= builder.text_field :name %>
+    </p>
+  <% end %>
+  <%= f.submit "Submit" %>
+<% end %>
