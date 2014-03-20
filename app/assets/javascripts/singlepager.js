@@ -5,19 +5,17 @@ window.Singlepager = {
   Routers: {},
   initialize: function() {
 
-    Singlepager.pages = new Singlepager.Collections.Pages()
-    Singlepager.pages.fetch({
-      success: function() {
-        new Singlepager.Routers.Pages({
-          $rootEl: $('#dashboard'),
-          collection: Singlepager.pages
-        })
-        Backbone.history.start()
-      }
+    this.pages = new Singlepager.Collections.Pages()
+
+    new Singlepager.Routers.Pages({
+      $rootEl: $('#content')
     })
+    Backbone.history.start()
   }
 };
 
 $(document).ready(function(){
+
+
   Singlepager.initialize();
 });

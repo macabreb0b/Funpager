@@ -1,5 +1,6 @@
 Singlepager.Routers.Pages = Backbone.Router.extend({
   initialize: function(options) {
+    this.collection = Singlepager.pages
     this.$rootEl = options.$rootEl
   },
 
@@ -15,46 +16,44 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
   },
 
   index: function() {
-    var indexView = new Singlepager.Views.PagesIndex({
-      collection: Singlepager.pages
+    var that = this;
+    this.collection.fetch({
+      success: function(collection, response, options) {
+        var indexView = new Singlepager.Views.PagesIndex()
+        indexView.collection = collection
+        that._swapView(indexView)
+      }
     })
-    this._swapView(indexView)
   },
 
   new: function() {
-
-
+    alert('new page!')
   },
 
   show: function(id) {
-    var page = this._getOrFetch(id)
-    var showView = new Singlepager.Views.ShowPage({
-      model: page
+    var that = this
+    this.collection.fetch({
+      success: function(collection, response, options) {
+        var page = collection.getOrFetch(id)
+        var widgets = page.widgets()
+        widgets.fetch()
+
+        var showView = new Singlepager.Views.ShowPage({
+          model: page,
+          collection: widgets
+        })
+
+        that._swapView(showView)
+      }
     })
-    this._swapView(showView)
   },
 
-  _swapView: function(newView) {
-   if(this.current_view) {
-     this.current_view.remove()
-   }
-   this.$rootEl.html(newView.render().$el)
-   this.current_view = newView
-  },
 
-  _getOrFetch: function(id) {
-    var page = Singlepager.pages.get(id)
-
-    if(page) {
-      page.fetch()
-      return page
-    } else {
-      page = new Singlepager.Models.Page({
-        id: id
-      })
-      Singlepager.pages.add(page)
-      page.fetch()
-      return page
-    }
-  }
+    _swapView: function(newView) {
+     if(this.current_view) {
+       this.current_view.remove()
+     }
+     this.$rootEl.html(newView.render().$el)
+     this.current_view = newView
+    },
 });

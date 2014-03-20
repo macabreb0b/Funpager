@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140320081624) do
+ActiveRecord::Schema.define(version: 20140320181659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "fields", force: true do |t|
-    t.integer  "widget_id",  null: false
-    t.string   "label",      null: false
-    t.text     "content",    null: false
+    t.integer  "widget_id",    null: false
+    t.string   "label",        null: false
+    t.text     "content",      null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "content_type", null: false
   end
 
   add_index "fields", ["widget_id"], name: "index_fields_on_widget_id", using: :btree

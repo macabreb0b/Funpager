@@ -1,11 +1,46 @@
-<%= form_for page do |f| %>
+<%# form_for page do |f| %>
   <%# f.error_messages %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  <%= f.fields_for :widgets do |builder| %>
-    <%= render 'widget', f: builder %>
+    <%# f.label :title %>
+    <%# f.text_field :title %>
+
+  <%# f.fields_for :widgets do |builder| %>
+    <%# render 'widget', f: builder %>
+  <%# end %>
+  <%# f.submit "Submit" %>
+<%# end %>
+
+
+<h2>Create new page</h2>
+
+<form class="form"
+  action="<%= pages_url %>"
+  method="POST"
+  accept-charset="utf-8">
+
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <div class="form-group">
+    <label>What is your page called?
+      <input
+        class="form-control"
+        type="text"
+        name="page[title]"
+        value="<%= @page.title %>">
+    </label>
+  </div>
+  Widgets:
+  <% @page.widgets.each_with_index do |widget, w_index| %>
+    <fieldset>
+      <%= render 'widget', widget: widget, index: w_index %>
+    </fieldset>
   <% end %>
-  <%= f.submit "Submit" %>
-<% end %>
+
+  <button>Create Page</button>
+</form>
+
+
+<script>
+
+</script>

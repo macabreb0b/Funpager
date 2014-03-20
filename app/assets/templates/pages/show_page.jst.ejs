@@ -1,7 +1,12 @@
 <div class="container">
 
-  <h3><%= page.get('title') %></h3>
-
-  <pre><%= page.get('body') %></pre>
-
+  <div class="widgets">
+  <ul>
+  <% widgets.each(function(widget) { %>
+    <li>here's a widget:<%= widget.get('name') %>
+  <% }) %>
+  </div>
+  </ul>
 </div>
+
+<a href="#/">Back to your pages</a>

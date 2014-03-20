@@ -1,9 +1,0 @@
-  <div id="dashboard"></div>
-
-  <%= link_to 'Your profile', user_url(@user) %>
-  <p>Ruby says these are your pages:</p>
-  <ul>
-    <% @user.pages.each do |page| %>
-    <li><%= link_to page.title, page_url(page) %>
-    <% end %>
-  </ul>

@@ -1,8 +1,35 @@
-<p>
-  <%= f.label :label %>
-  <%= f.text_area :label %>
+<!-- <p>
+  <%# f.label :label %>
+  New <%# f.text_area :label %> Field:
 </p>
 <p>
-  <%= f.label :content %>
-  <%= f.text_area :content %>
-</p>
+  <%# f.label :content %>
+  <%# f.text_area :content %>
+</p> -->
+
+
+<div id='form-group'>
+<input
+  type="hidden"
+  name="page[widgets_attributes][<%= widget_index %>][fields_attributes][<%= field_index %>][label]"
+  value="<%= field.label %>">
+
+<input type="hidden"
+  name="page[widgets_attributes][<%= widget_index %>][fields_attributes][<%= field_index %>][content_type]"
+  value="<%= field.content_type %>">
+
+<label>
+  <%= field.label %>
+  <% if field.content_type == 'textarea' %>
+    <textarea
+      class="form-control"
+      name="page[widgets_attributes][<%= widget_index %>][fields_attributes][<%= field_index %>][content]"><%= field.content %></textarea>
+  <% else %>
+    <input
+      class="form-control"
+      type="<%= field.content_type %>"
+      name="page[widgets_attributes][<%= widget_index %>][fields_attributes][<%= field_index %>][content]"
+      value="<%= field.content %>">
+  <% end %>
+</label>
+</div>

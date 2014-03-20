@@ -1,10 +1,9 @@
 class PagesController < ApplicationController
   def new
     @page = Page.new
-    3.times do
-      widget = @page.widgets.build
-      2.times { widget.fields.build }
-    end
+    @page.widgets << Widget.new_headline_widget
+    @page.widgets << Widget.new_text_widget
+    @page.widgets << Widget.new_text_widget
 
     render 'new'
   end
@@ -23,7 +22,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
-    render 'show'
+    render json: @page.to_json(include: :widgets)
   end
 
   def update
@@ -31,7 +30,7 @@ class PagesController < ApplicationController
 
   def index
     @pages = current_user.pages
-    render json: @pages
+    render json: @pages.to_json(include: :widgets)
   end
 
   def destroy
@@ -43,6 +42,6 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:title, widgets_attributes: [:name, fields_attributes: [:label, :content]])
+      params.require(:page).permit(:title, widgets_attributes: [:name, fields_attributes: [:label, :content, :content_type]])
     end
 end

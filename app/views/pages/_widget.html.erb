@@ -1,7 +1,19 @@
-<p>
-  <%= f.label :name, 'Name' %><br>
-  <%= f.text_field :name %>
-</p>
-<%= f.fields_for :fields do |builder| %>
-  <%= render 'field', f: builder %>
+<!-- <p>
+  <%# f.label :name, 'Name' %><br>
+  New <%# f.text_field :name %> Widget:
+</p> -->
+<%# f.fields_for :fields do |builder| %>
+  <%# render 'field', f: builder %>
+<%# end %>
+
+<h3>
+  New <%= widget.name %> Widget:
+</h3>
+<input
+  type="hidden"
+  name="page[widgets_attributes][<%= index %>][name]"
+  value="<%= widget.name %>">
+
+<% widget.fields.each_with_index do |field, f_index| %>
+  <%= render 'field', field: field, widget_index: index, field_index: f_index %>
 <% end %>
