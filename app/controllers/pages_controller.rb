@@ -1,7 +1,10 @@
 class PagesController < ApplicationController
   def new
     @page = Page.new
-    3.times { @page.widgets.build }
+    3.times do
+      widget = @page.widgets.build
+      2.times { widget.fields.build }
+    end
 
     render 'new'
   end
@@ -9,7 +12,6 @@ class PagesController < ApplicationController
   def create
     @page = Page.new(page_params)
     @page.user_id = current_user.id
-    @page.widgets.build(widget_params)
 
     if @page.save
       redirect_to page_url(@page)
@@ -41,12 +43,6 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:title, widgets_attributes: [:name])
-    end
-
-    def widget_params
-      params.permit(widgets: [:name])
-        .require(:widgets)
-        .values
+      params.require(:page).permit(:title, widgets_attributes: [:name, fields_attributes: [:label, :content]])
     end
 end

@@ -14,5 +14,7 @@ class Widget < ActiveRecord::Base
   validates :page, :name, :presence => true
   validates :name, inclusion: { in: NAMES }
   belongs_to :page
-  has_many :fields
+
+  has_many :fields, inverse_of: :widget, dependent: :destroy
+  accepts_nested_attributes_for :fields
 end

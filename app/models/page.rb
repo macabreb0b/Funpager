@@ -22,8 +22,9 @@ class Page < ActiveRecord::Base
   before_validation :set_defaults
 
   belongs_to :user
-  has_many :widgets, inverse_of: :page
-  # accepts_nested_attributes_for :widgets # lets you add widget info in with user_params
+
+  has_many :widgets, inverse_of: :page, dependent: :destroy
+  accepts_nested_attributes_for :widgets # lets you add widget info in with user_params
 
   def generate_handle
     SecureRandom.urlsafe_base64(6)

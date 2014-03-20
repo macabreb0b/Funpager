@@ -25,17 +25,4 @@
 </form> -->
 
 
-<%= form_for @page do |f| %>
-  <%# f.error_messages %>
-  <p>
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </p>
-  <%= f.fields_for :widgets do |builder| %>
-    <p>
-    <%= builder.label :name, 'Name' %><br>
-    <%= builder.text_field :name %>
-    </p>
-  <% end %>
-  <%= f.submit "Submit" %>
-<% end %>
+<%= render 'form', page: @page %>

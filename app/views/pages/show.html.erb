@@ -1,8 +1,13 @@
 your page:
 <h2><%= @page.title %></h2>
 
+<p>page widgets:</p>
 <% @page.widgets.each do |widget| %>
 
-<%= widget.name %>
+  <h4><%= widget.name %></h4>
+  <p>fields:</p>
+  <% widget.fields.each do |field| %>
+    <p><%= field.label %></p>
+  <% end %>
 
 <% end %>
