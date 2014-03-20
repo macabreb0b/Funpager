@@ -11,7 +11,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
   },
 
   edit: function(id) {
-
+    alert('edit page ' + id)
   },
 
   index: function() {
@@ -27,7 +27,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
   },
 
   show: function(id) {
-
+    alert('show page ' + id)
   },
 
   _swapView: function(view) {
