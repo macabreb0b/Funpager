@@ -48,3 +48,15 @@
   }
 }
 
+
+.page-list {
+  border-top: 1px #cecece solid;
+  padding: 10px;
+  position: relative;
+}
+
+.page-list .page-buttons {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}

@@ -1,0 +1,30 @@
+<h2><span class="glyphicon glyphicon-file"></span> Your Pages</h2>
+
+<% pages.each(function(page) { %>
+  <div class="row page-list">
+    <h3><%= page.get('title') %></h3>
+    <p>
+      <span class="glyphicon glyphicon-link"></span>
+      <a href="#/pages/<%= page.id %>" target="_blank">
+        this.com/<%= page.get('handle') %>
+      </a>
+      - Created <%= page.get('created_at') %>
+    </p>
+
+    <div class="page-buttons">
+      <button class="btn btn-primary btn-sm" disabled>
+        Page Dashboard
+      </button>
+
+      <button class="btn btn-primary btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span>
+        &nbsp;Edit Page
+      </button>
+
+      <button class="btn btn-primary btn-sm">
+        <span class="glyphicon glyphicon-eye-open"></span>
+        &nbsp;View Page
+      </button>
+    </div>
+  </div>
+<% }) %>
