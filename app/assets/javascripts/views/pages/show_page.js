@@ -2,11 +2,11 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   template: JST['pages/show'],
 
   initialize: function() {
-    this.listenTo(this.model, 'sync', this.render)
-    this.listenTo(this.model.widgets(), 'add', this.addWidget)
-    this.listenTo(this.model.widgets(), 'remove', this.removeWidget)
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.widgets(), 'add', this.addWidget);
+    this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
 
-    this.model.widgets().each(this.addWidget.bind(this))
+    this.model.widgets().each(this.addWidget.bind(this));
 
     // var widgetNewView = new Singlepager.Views.AddWidget({
 //       page: this.model
@@ -32,19 +32,18 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   render: function() {
-
     var renderedContent = this.template({
       page: this.model
     });
 
-    this.setTheme()
     this.$el.html(renderedContent)
+    this.setTheme()
 
     return this
   },
 
   setTheme: function() {
-    $('body').css("background-color", "black");
+    $('body').addClass('carbon')
     window.document.title = this.model.get('company')
   }
 

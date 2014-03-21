@@ -1,7 +1,4 @@
 Singlepager.Models.Widget = Backbone.Model.extend({
-  initialize: function() {
-
-  },
 
   fields: function() {
     if(!this._fields){
@@ -9,7 +6,7 @@ Singlepager.Models.Widget = Backbone.Model.extend({
         widget: this
       })
     }
-    return this._fields
+    return this._fields;
   },
 
   parse: function(response, options) {
@@ -17,7 +14,7 @@ Singlepager.Models.Widget = Backbone.Model.extend({
       this.fields().set(response.fields)
       delete response.fields
     }
-    return this
+    return response
   }
 
 })

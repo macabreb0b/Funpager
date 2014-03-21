@@ -26,6 +26,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
+    @widgets = @page.widgets
     render json: @page.to_json(include: :widgets)
   end
 
@@ -40,7 +41,7 @@ class PagesController < ApplicationController
   def destroy
     page = Page.find(params[:id])
     page.destroy
-    redirect_to dashboard_url
+    render json: {}
   end
 
   private

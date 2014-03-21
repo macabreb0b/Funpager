@@ -22,7 +22,7 @@ Backbone.CompositeView = Backbone.View.extend({
     selectorSubviews.push(subview);
 
     var $selectorEl = this.$(selector);
-    $selectorEl.append(subview.$el);
+    $selectorEl.append(subview.$el); // add data-id on initialization
   },
 
   remove: function() {

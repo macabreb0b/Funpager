@@ -15,25 +15,27 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
     var that = this
     this.collection.fetch({
       success: function(collection, response, options) {
-        var page = collection.getOrFetch(id)
-        var widgets = page.widgets()
-        widgets.fetch()
+        var page = collection.getOrFetch(id);
+        var widgets = page.widgets();
+        widgets.fetch();
 
         var editView = new Singlepager.Views.EditPage({
           model: page
-        })
+        });
 
-        that._swapView(editView)
+        that._swapView(editView);
       }
-    })
+    });
   },
 
   index: function() {
     var that = this;
     this.collection.fetch({
       success: function(collection, response, options) {
-        var indexView = new Singlepager.Views.PagesIndex()
-        indexView.collection = collection
+        var indexView = new Singlepager.Views.PagesIndex({
+          collection: collection
+        })
+
         that._swapView(indexView)
       }
     })
@@ -65,6 +67,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
         })
 
         that._swapView(showView)
+
       }
     })
   },

@@ -25,7 +25,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   makeSortable: function() {
     var that = this;
-    $('ul.widgets').sortable({
+    $('.widgets').sortable({
       cursor: 'move',
       stop: function(event, ui) {
         var $widget = ui.item;
@@ -54,8 +54,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   setTheme: function() {
-    $('body').css("background-color", "black");
-    window.document.title = this.model.get('company')
+    $('body').addClass("carbon");
+    window.document.title = this.model.get('company');
   },
 
 })

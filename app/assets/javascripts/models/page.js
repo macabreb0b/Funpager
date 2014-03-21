@@ -13,9 +13,9 @@ Singlepager.Models.Page = Backbone.Model.extend({
   parse: function(response, options) {
     if(response.widgets) {
       this.widgets().set(response.lists);
-      delete response.lists;
+      delete response.widgets;
     };
-    return response
+    return response;
   }
 });
 

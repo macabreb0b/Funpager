@@ -5,5 +5,4 @@ class WidgetsController < ApplicationController
 
     render json: @widgets.to_json(include: :fields)
   end
-
 end
