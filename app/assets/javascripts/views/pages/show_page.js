@@ -6,15 +6,11 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
     this.listenTo(this.model.widgets(), 'add', this.addWidget);
     this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
 
-    this.model.widgets().each(this.addWidget.bind(this));
-
-    // var widgetNewView = new Singlepager.Views.AddWidget({
-//       page: this.model
-//     });
-//     this.addSubview("")
+    this.model.widgets().sort().each(this.addWidget.bind(this));
   },
 
   addWidget: function(widget) {
+    alert('adding ' + widget.get('rank'))
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });

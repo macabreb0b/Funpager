@@ -14,7 +14,16 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 //     this.addSubview("")
   },
 
+  events: {
+    "mouseenter .widgets .widget": 'showEditable',
+    "mouseleave .widgets .widget": 'hideEditable',
+    "click .add-widget": 'newWidget',
+    'submit .new-widget-form': 'submit',
+    'click .close': 'cancel'
+  },
+
   addWidget: function(widget) {
+    alert('adding ' + widget.get('rank'))
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -57,5 +66,78 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     $('body').addClass("carbon");
     window.document.title = this.model.get('company');
   },
+
+  showEditable: function(event) {
+    event.preventDefault()
+
+    $(event.currentTarget).find('.add-widget-container').slideToggle('fast')
+  },
+
+  hideEditable: function(event) {
+    event.preventDefault()
+    $(event.currentTarget).find('.add-widget-container').slideToggle('fast')
+  },
+
+  // showWidgetOptions: function(event) {
+  //   event.preventDefault()
+  //   $(event.currentTarget).parent().toggle('fast')
+  //
+  //
+  //   $(event.currentTarget).after(JST['widgets/options']())
+  // },
+
+  newWidget: function(event) { // replace this with new widget form
+    event.preventDefault()
+    var widget = new Singlepager.Models.TextWidget()
+    var $prevWidget = $(event.currentTarget).parent().parent()
+
+    var prevId = $prevWidget.data('id')
+    var prevRank = this.model.widgets().get(prevId).get('rank')
+    var nextId = $prevWidget.next().data('id')
+    var newRank;
+    if(nextId) {
+      var nextRank = this.model.widgets().get(nextId).get('rank')
+      newRank = (prevRank + prevRank) / 2;
+    } else {
+      newRank = prevRank + 1
+    }
+
+    var form = JST['widgets/form']({
+      widget: widget,
+      newOrEdit: 'new-widget-form',
+      page_id: this.model.id,
+      rank: newRank
+    })
+    // $prevWidget.find('.add-widget-container').slideToggle('fast')
+    $prevWidget.after(form)
+
+    // $('.widgets').on('mouseenter mouseleave', '.widget', false)
+    // this.model.widgets().add(widget)
+  },
+
+  submit: function(event) {
+    event.preventDefault()
+
+    var view = this
+    var params = $(event.currentTarget).serializeJSON()
+    var widget = new Singlepager.Models.Widget(params)
+
+    widget.save({}, {
+      wait: true,
+      success: function(model) {
+
+        view.model.widgets().add(widget)
+        view.$('#newForm').remove()
+        view.renderSubviews()
+      }
+    })
+  },
+
+  cancel: function(event) {
+    event.preventDefault()
+    $(event.currentTarget).parents('li').remove()
+
+    // $('.widgets').on('mouseenter mouseleave', true)
+  }
 
 })

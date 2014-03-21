@@ -1,5 +1,10 @@
-<span><%= widget.get('name') %></span>
+<h2><%= widget.get('rank') %></h2>
+<div class='widget-fields'>
+  <% widget.fields().sort().each(function(field) { %>
+    <<%= field.get('tag')%>><%= field.get('content') %></<%= field.get('tag')%>>
+  <% }) %>
+</div>
 
-<% widget.fields().sort().each(function(field) { %>
-  <<%= field.get('tag')%>><%= field.get('content') %></<%= field.get('tag')%>>
-<% }) %>
+<div class='add-widget-container' data-id="<%= widget.id %>">
+  <a href='#' class='add-widget btn btn-default btn-sm'>Add Content</a>
+</div>

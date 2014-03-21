@@ -9,16 +9,37 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   tagName: 'li',
 
   template: function() {
-    return this.open ? JST["widgets/edit"] : JST["widgets/show"];
+    return this.open ? JST["widgets/form"] : JST["widgets/show"];
   },
 
   events: {
-    'move': 'moveWidget'
+    'move': 'moveWidget',
+    'click .widget-fields': 'beginEditing',
+    'click .close': 'stopEditing',
+    'submit .edit-widget-form': 'submit',
+    'click .trash': 'destroy'
   },
 
   initialize: function(){
     this.open = false;
     this.listenTo(this.model, "change", this.render);
+  },
+
+  render: function() {
+    var renderedContent = this.template()({
+      widget: this.model,
+      newOrEdit: 'edit-widget-form',
+      page_id: this.model.get('page_id'),
+      rank: this.model.get('rank')
+    });
+
+    this.$el.html(renderedContent);
+
+    return this;
+  },
+
+  destroy: function() {
+    this.model.destroy();
   },
 
   moveWidget: function(event) { // make this change the order
@@ -27,8 +48,8 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     var prevId = this.$el.prev().data('id');
     var nextId = this.$el.next().data('id');
 
-    var prevModel = page.widgets().get(prevId)
-    var nextModel = page.widgets().get(nextId)
+    var prevModel = page.widgets().get(prevId);
+    var nextModel = page.widgets().get(nextId);
 
     var newRank
     if(prevModel == null) {
@@ -39,21 +60,40 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
       newRank = (prevModel.get('rank') + nextModel.get('rank')) / 2;
     }
 
-    console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank)
-    this.model.save({ rank: newRank })
+    console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
+    this.model.save({ rank: newRank });
   },
 
-  render: function() {
-    var renderedContent = this.template()({
-      widget: this.model
-    });
-
-    this.$el.html(renderedContent)
-
-    return this;
+  beginEditing: function(event) {
+    this.open = true;
+    this.render()
   },
 
-  destroy: function() {
-    this.model.destroy()
+  stopEditing: function(event) {
+    if(event) {
+      event.preventDefault()
+    }
+    this.open = false;
+    this.render();
+  },
+
+
+  submit: function(event){
+    event.preventDefault()
+
+    var view = this
+    var params = $(event.currentTarget).serializeJSON()
+    console.log(params)
+    this.model.save(params, {
+      wait: true,
+      success: function(model) {
+
+        view.stopEditing()
+      }
+    })
+
+
   }
+
+
 })

@@ -13,8 +13,8 @@
  */
 
 @import "bootstrap";
-
-
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script|Gloria+Hallelujah|Candal|Cutive|Merriweather|Oswald|Alegreya|Open+Sans|Karla|Spinnaker);
+// https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script|Gloria+Hallelujah|Candal|Cutive|Merriweather|Oswald|Alegreya|Open+Sans|Karla|Spinnaker)
 .navbar-inverse {
   background-color: #f47946;
   a, .navbar-nav > li > a {
@@ -76,6 +76,7 @@
   background-color: white;
   width: 500px;
   margin: 20px auto;
+  font-family: 'Open Sans', sans-serif;
 //  margin-left: auto;
 //  margin-right: auto;
   padding: 15px 20px;
@@ -86,10 +87,42 @@ ul.widgets {
   padding: 0;
 }
 
-.widget {
+.widget-fields {
   margin-bottom: 10px;
+  padding: 10px;
+  border: 0;
+  border-radius: 5px;
+}
+
+.widget-fields:hover {
+  color: #000;
+  margin-bottom: 10px;
+  padding: 9px;
   border: thin solid lightgrey;
+  background-color: SeaShell;
+  cursor: pointer;
+}
+
+.widget-form {
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+.widget-form > div {
   padding: 10px;
 }
 
+.form-header {
+  background-color: grey;
+  border: thin solid grey;
+}
 
+.container {
+  max-width: 800px;
+}
+
+.add-widget-container {
+  display: none;
+  height: 34px;
+  overflow: hidden;
+  text-align: center;
+}

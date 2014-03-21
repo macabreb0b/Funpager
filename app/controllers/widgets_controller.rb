@@ -12,7 +12,17 @@ class WidgetsController < ApplicationController
     if @widget.update_attributes(widget_params)
       render json: @widget.to_json(include: :fields)
     else
-      flash[:errors] = @widget.errors.full_messages
+      render json: @widget.errors.full_messages, status: 422
+    end
+  end
+
+  def create
+    @widget = Widget.new(widget_params)
+
+    if @widget.save
+      render json: @widget.to_json(include: :fields)
+    else
+      render json: @widget.errors.full_messages, status: 422
     end
   end
 
@@ -20,10 +30,13 @@ class WidgetsController < ApplicationController
   end
 
   def destroy
+    widget = Widget.find(params[:id])
+    widget.destroy
+    render json: {}
   end
 
   private
     def widget_params
-      params.require(:widget).permit(:rank, :name, fields_attributes: [:label, :content, :content_type])
+      params.require(:widget).permit(:rank, :name, :page_id, fields_attributes: [:id, :label, :content, :content_type])
     end
 end

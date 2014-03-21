@@ -1,0 +1,60 @@
+<li id="newForm">
+  <form class="form widget-form <%= newOrEdit %>">
+
+    <div class="form-header">
+      <%= widget.get('name') %>
+    </div>
+
+    <div class="form-fields">
+
+      <input type="hidden" name="widget[page_id]" value="<%= page_id %>">
+      <input type="hidden" name="widget[rank]" value="<%= rank %>">
+      <input type="hidden" name="widget[name]" value="<%= widget.get('name') %>">
+
+      <% widget.fields().each(function(field, field_index) { %>
+        <% if(field.get('content') !== '') { %> <!-- ignore if no content -->
+          <div id='form-group'>
+            <input
+              type="hidden"
+              name="widget[fields_attributes][<%= field_index %>][label]"
+              value="<%= field.get('label') %>">
+
+            <% if(field.id) { %>
+              <input
+                type="hidden"
+                name="widget[fields_attributes][<%= field_index %>][id]"
+                value="<%= field.id %>">
+            <% } %>
+
+            <input type="hidden"
+              name="widget[fields_attributes][<%= field_index %>][content_type]"
+              value="<%= field.get('content_type') %>">
+
+            <label>
+              <%= field.get('label') %>
+              <% if(field.get('content_type') == 'textarea') { %>
+                <textarea
+                  class="form-control"
+                  name="widget[fields_attributes][<%= field_index %>][content]"><%= field.escape('content') %></textarea>
+              <% } else { %>
+                <input
+                  class="form-control"
+                  type="<%= field.escape('content_type') %>"
+                  name="widget[fields_attributes][<%= field_index %>][content]"
+                  value="<%= field.escape('content') %>">
+              <% } %>
+            </label>
+          </div>
+        <% } %>
+      <% }) %>
+    </div>
+
+    <div class="form-footer">
+      <a href="#" class='close'>
+        <span class="glyphicon glyphicon-remove"></span>
+      </a>
+      <button class="btn btn-primary">Done</button>
+    </div>
+
+  </form>
+</li>
