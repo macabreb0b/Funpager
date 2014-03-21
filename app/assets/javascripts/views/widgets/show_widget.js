@@ -22,15 +22,15 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   moveWidget: function(event) { // make this change the order
-    var page = Singlepager.Collections.pages.get(this.model.get('page_id'))
+    var page = Singlepager.pages.get(this.model.get('page_id'))
 
     var prevId = this.$el.prev().data('id');
     var nextId = this.$el.next().data('id');
 
-    var prevModel = page.widgets().get(prevId);
-    var nextModel = page.widgets().get(nextId);
+    var prevModel = page.widgets().get(prevId)
+    var nextModel = page.widgets().get(nextId)
 
-    var newRank;
+    var newRank
     if(prevModel == null) {
       newRank = nextModel.get('rank') - 1;
     } else if (nextModel == null) {
@@ -39,6 +39,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
       newRank = (prevModel.get('rank') + nextModel.get('rank')) / 2;
     }
 
+    console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank)
     this.model.save({ rank: newRank })
   },
 

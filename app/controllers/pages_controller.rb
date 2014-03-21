@@ -14,7 +14,6 @@ class PagesController < ApplicationController
     @page = Page.new_starting_page
 
     @page.user_id = current_user.id
-    3.times {puts "I AM HERE"}
 
     if @page.save
       render :json => @page.to_json(include: :widgets)
@@ -47,6 +46,8 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:title, widgets_attributes: [:name, fields_attributes: [:label, :content, :content_type]])
+      params.require(:page).permit(:title,
+            widgets_attributes: [:name, :rank,
+            fields_attributes: [:label, :content, :content_type]])
     end
 end
