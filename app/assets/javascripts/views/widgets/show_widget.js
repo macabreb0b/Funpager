@@ -11,11 +11,27 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     return this.open ? JST["widgets/edit"] : JST["widgets/show"];
   },
 
-  events: {},
+  events: {
+    'move': 'moveWidget'
+  },
 
   initialize: function(options){
     this.open = false;
     this.listenTo(this.model, "change", this.render);
+  },
+
+  moveWidget: function() { // make this change the order
+    var page
+    debugger
+    var prevId;
+    var nextId;
+
+    var prevModel;
+    var nextModel;
+
+    var newRank;
+
+    this.model.save({ rank: newRank })
   },
 
   render: function() {

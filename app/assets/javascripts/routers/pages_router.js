@@ -20,8 +20,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
         widgets.fetch()
 
         var editView = new Singlepager.Views.EditPage({
-          model: page,
-          collection: widgets
+          model: page
         })
 
         that._swapView(editView)
@@ -41,7 +40,16 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
   },
 
   new: function() {
-    alert('new page!')
+    var newPage = new Singlepager.Models.Page()
+    var that = this;
+    newPage.save({}, {
+      success: function(model, response, options) {
+        that.collection.add(model)
+
+        var id = model.id
+        that.navigate('pages/' + id + '/edit', true)
+      }
+    });
   },
 
   show: function(id) {
@@ -53,8 +61,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
         widgets.fetch()
 
         var showView = new Singlepager.Views.ShowPage({
-          model: page,
-          collection: widgets
+          model: page
         })
 
         that._swapView(showView)

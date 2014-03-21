@@ -26,6 +26,23 @@ class Page < ActiveRecord::Base
   has_many :widgets, inverse_of: :page, dependent: :destroy
   accepts_nested_attributes_for :widgets # lets you add widget info in with user_params
 
+  def self.new_starting_page
+    page = Page.new({title: "My New Page"})
+    page.widgets << Widget.new_headline_widget
+
+    page.widgets << Widget.new_text_widget
+    text_widget = page.widgets.last
+    title = text_widget.fields.first
+    title.content = "About Us"
+
+    body = text_widget.fields.last
+    body.content = "Enter content that tells your visitors about your company and what you do. You can write about your history, your team, the areas you service, or anything else you'd like to share."
+
+    page.title = "My New Page"
+
+    return page
+  end
+
   def generate_handle
     SecureRandom.urlsafe_base64(6)
   end

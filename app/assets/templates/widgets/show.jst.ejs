@@ -1,3 +1,5 @@
+<span><%= widget.get('name') %></span>
+
 <% widget.fields().sort().each(function(field) { %>
   <<%= field.get('tag')%>><%= field.get('content') %></<%= field.get('tag')%>>
 <% }) %>

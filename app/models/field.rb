@@ -19,16 +19,16 @@ class Field < ActiveRecord::Base
     'Text:' => 'p',
     'Description:' => 'p',
     'Url:' => 'a'}
-  validates :label, :widget, :content, :content_type, :tag, :presence => true
+  validates :label, :widget, :content_type, :tag, :presence => true
   before_validation :set_tag
   belongs_to :widget
 
   def self.new_company_name_field
-    field = Field.new({ label: "Company Name:", content_type: "text", tag: 'h1' })
+    field = Field.new({ label: "Company Name:", content_type: "text", content: "Your Company Name", tag: 'h1' })
   end
 
   def self.new_tagline_field
-    field = Field.new({ label: "Tagline:", content_type: "text", tag: 'h2' })
+    field = Field.new({ label: "Tagline:", content_type: "text", content: "Your Tagline Here", tag: 'h2' })
   end
 
   def self.new_title_field

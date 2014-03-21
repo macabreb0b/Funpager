@@ -32,9 +32,11 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   render: function() {
+
     var renderedContent = this.template({
       page: this.model
     });
+
     this.setTheme()
     this.$el.html(renderedContent)
 

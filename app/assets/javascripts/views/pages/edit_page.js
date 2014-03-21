@@ -25,7 +25,13 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   makeSortable: function() {
     var that = this;
-    $('ul.widgets').sortable();
+    $('ul.widgets').sortable({
+      cursor: 'move',
+      stop: function(event, ui) {
+        var $widget = ui.item;
+        $widget.trigger('move');
+      }
+    });
   },
 
   removeWidget: function(widget) {

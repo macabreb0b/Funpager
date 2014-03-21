@@ -9,12 +9,15 @@ class PagesController < ApplicationController
   end
 
   def create
-    @page = Page.new(page_params)
-    @page.user_id = current_user.id
+    # @page = Page.new(page_params)
 
+    @page = Page.new_starting_page
+
+    @page.user_id = current_user.id
+    3.times {puts "I AM HERE"}
 
     if @page.save
-      redirect_to page_url(@page)
+      render :json => @page.to_json(include: :widgets)
     else
       flash[:errors] = @page.errors.full_messages
       render 'new'
