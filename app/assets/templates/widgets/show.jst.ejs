@@ -1,0 +1,5 @@
+<div class="widget" data-id="<%= widget.id %>">
+  <% widget.fields().sort().each(function(field) { %>
+    <<%= field.get('tag')%>><%= field.get('content') %></<%= field.get('tag')%>>
+  <% }) %>
+</div>

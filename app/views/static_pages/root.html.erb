@@ -1,9 +1,1 @@
 <div id="content"></div>
-
-<%= link_to 'Your profile', '#profile' %>
-<p>Ruby says these are your pages:</p>
-<ul>
-  <% @user.pages.each do |page| %>
-  <li><%= link_to page.title, page_url(page) %>
-  <% end %>
-</ul>

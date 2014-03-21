@@ -12,7 +12,21 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
   },
 
   edit: function(id) {
-    alert('edit page ' + id)
+    var that = this
+    this.collection.fetch({
+      success: function(collection, response, options) {
+        var page = collection.getOrFetch(id)
+        var widgets = page.widgets()
+        widgets.fetch()
+
+        var editView = new Singlepager.Views.EditPage({
+          model: page,
+          collection: widgets
+        })
+
+        that._swapView(editView)
+      }
+    })
   },
 
   index: function() {

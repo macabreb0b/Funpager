@@ -1,5 +1,5 @@
 Singlepager.Models.Page = Backbone.Model.extend({
-  urlRoot: '/pages/',
+  urlRoot: '/pages',
 
   widgets: function() {
     if(!this._widgets) {

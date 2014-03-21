@@ -1,0 +1,14 @@
+<div id="page-content">
+  <ul class="widgets">
+  <% widgets.each(function(widget) { %>
+    <li>
+      <div class="widget">
+        <% widget.fields().sort().each(function(field) { %>
+          <<%= field.get('tag')%>><%= field.get('content') %></<%= field.get('tag')%>>
+        <% }) %>
+      </div>
+    </li>
+  <% }) %>
+  </ul>
+  <p class="copyright">&copy; 2014 <%= page.get('company') %></p>
+</div>

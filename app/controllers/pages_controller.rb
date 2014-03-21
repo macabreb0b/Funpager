@@ -12,6 +12,7 @@ class PagesController < ApplicationController
     @page = Page.new(page_params)
     @page.user_id = current_user.id
 
+
     if @page.save
       redirect_to page_url(@page)
     else

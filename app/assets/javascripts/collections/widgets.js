@@ -4,6 +4,10 @@ Singlepager.Collections.Widgets = Backbone.Collection.extend({
     return this.page.url() + "/widgets"
   },
 
+  comparator: function(widget) {
+    return widget.get('rank')
+  },
+
   model: Singlepager.Models.Widget,
 
   initialize: function(models, options) {

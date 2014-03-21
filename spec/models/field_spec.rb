@@ -9,6 +9,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  content_type :string(255)      not null
+#  tag          :string(20)       not null
 #
 
 require 'spec_helper'
