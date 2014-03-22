@@ -4,7 +4,7 @@ Singlepager.Collections.Widgets = Backbone.Collection.extend({
   },
 
   comparator: function(widget) {
-    return widget.get('rank')
+    return parseFloat(widget.get('rank'), 10);
   },
 
   model: Singlepager.Models.Widget,

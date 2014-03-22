@@ -1,4 +1,14 @@
 Singlepager::Application.configure do
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'singlepager-dev',
+      :access_key_id => ENV['AWS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET'],
+      :s3_host_name => 's3-us-west-2.amazonaws.com' # or whatever your region host name is
+    }
+  }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

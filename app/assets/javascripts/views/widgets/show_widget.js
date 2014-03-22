@@ -15,8 +15,8 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   events: {
     'move': 'moveWidget',
     'click .widget-fields': 'beginEditing',
-    'click .close': 'stopEditing',
-    'submit .edit-widget-form': 'submit',
+    'click .cancel': 'stopEditing',
+    'submit .edit': 'submit',
     'click .trash': 'destroy'
   },
 
@@ -28,7 +28,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   render: function() {
     var renderedContent = this.template()({
       widget: this.model,
-      newOrEdit: 'edit-widget-form',
+      newOrEdit: 'edit',
       page_id: this.model.get('page_id'),
       rank: this.model.get('rank')
     });
@@ -38,7 +38,8 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     return this;
   },
 
-  destroy: function() {
+  destroy: function(event) {
+    event.preventDefault()
     this.model.destroy();
   },
 
@@ -62,6 +63,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
     console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
     this.model.save({ rank: newRank });
+    this.model.collection.fetch()
   },
 
   beginEditing: function(event) {
@@ -83,11 +85,10 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
     var view = this
     var params = $(event.currentTarget).serializeJSON()
-    console.log(params)
+    // console.log(params)
     this.model.save(params, {
       wait: true,
       success: function(model) {
-
         view.stopEditing()
       }
     })

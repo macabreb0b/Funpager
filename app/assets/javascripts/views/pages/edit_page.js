@@ -3,33 +3,39 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model.widgets(), 'reset sync', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'add', this.addWidget);
     this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
 
     this.model.widgets().each(this.addWidget.bind(this));
-
-    // var widgetNewView = new Singlepager.Views.AddWidget({
-//       page: this.model
-//     });
-//     this.addSubview("")
   },
 
   events: {
     "mouseenter .widgets .widget": 'showEditable',
     "mouseleave .widgets .widget": 'hideEditable',
     "click .add-widget": 'newWidget',
-    'submit .new-widget-form': 'submit',
+    'submit .new': 'submit',
     'click .close': 'cancel'
   },
 
-  addWidget: function(widget) {
-    alert('adding ' + widget.get('rank'))
+  addWidget: function(widget, index) {
+    // console.log('adding')
+    console.log(this.subviews())
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
 
     this.addSubview('.widgets', widgetsShowView);
     widgetsShowView.render();
+  },
+
+  resetWidgets: function (widgets) {
+    console.log(widgets)
+    var that = this;
+    this.model.widgets().sort().each(function (widget) {
+      that.removeWidget(widget);
+      that.addWidget(widget);
+    })
   },
 
   makeSortable: function() {
@@ -104,11 +110,11 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     var form = JST['widgets/form']({
       widget: widget,
-      newOrEdit: 'new-widget-form',
+      newOrEdit: 'new',
       page_id: this.model.id,
       rank: newRank
     })
-    // $prevWidget.find('.add-widget-container').slideToggle('fast')
+
     $prevWidget.after(form)
 
     // $('.widgets').on('mouseenter mouseleave', '.widget', false)

@@ -38,3 +38,6 @@ gem 'bcrypt-ruby', "~> 3.1.5", require: 'bcrypt'
 
 gem 'annotate'
 gem 'pry-rails'
+gem "paperclip"
+gem "aws-sdk"
+gem 'figaro'

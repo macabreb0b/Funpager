@@ -50,7 +50,13 @@
     </div>
 
     <div class="form-footer">
-      <a href="#" class='close'>
+      <% if(newOrEdit == 'edit') { %>
+        <a class="btn btn-danger btn-sm trash" data-id="<%= widget.id %>" href="#">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+      <% } %>
+
+      <a href="#" class='cancel'>
         <span class="glyphicon glyphicon-remove"></span>
       </a>
       <button class="btn btn-primary">Done</button>

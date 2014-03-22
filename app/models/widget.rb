@@ -32,6 +32,7 @@ class Widget < ActiveRecord::Base
     widget = Widget.new({ name: "text" })
     widget.fields << Field.new_title_field
     widget.fields << Field.new_text_field
+    widget.rank = 2
     return widget
   end
 

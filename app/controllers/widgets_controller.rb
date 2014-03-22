@@ -10,6 +10,8 @@ class WidgetsController < ApplicationController
     @widget = Widget.find(params[:id])
 
     if @widget.update_attributes(widget_params)
+      @widget.save
+
       render json: @widget.to_json(include: :fields)
     else
       render json: @widget.errors.full_messages, status: 422
@@ -27,6 +29,7 @@ class WidgetsController < ApplicationController
   end
 
   def show
+
   end
 
   def destroy
