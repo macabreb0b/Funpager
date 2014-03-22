@@ -1,3 +1,11 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  Singlepager, Backbone */
+
 Singlepager.Collections.Pages = Backbone.Collection.extend({
   url: '/pages',
 
@@ -13,7 +21,9 @@ Singlepager.Collections.Pages = Backbone.Collection.extend({
 		} else {
 			model = new Singlepager.Models.Page({ id: id });
 			model.fetch({
-				success: function() { pages.add(model) }
+				success: function() {
+          pages.add(model);
+        }
 			});
 			return model;
 		}

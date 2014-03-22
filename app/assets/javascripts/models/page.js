@@ -1,3 +1,11 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  Singlepager, Backbone */
+
 Singlepager.Models.Page = Backbone.Model.extend({
   urlRoot: '/pages',
 
@@ -10,11 +18,11 @@ Singlepager.Models.Page = Backbone.Model.extend({
     return this._widgets;
   },
 
-  parse: function(response, options) {
+  parse: function(response) {
     if(response.widgets) {
       this.widgets().set(response.lists);
       delete response.widgets;
-    };
+    }
     return response;
   }
 });

@@ -1,6 +1,14 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  Singlepager, Backbone */
+
 Singlepager.Collections.Widgets = Backbone.Collection.extend({
   url: function() {
-    return this.page.url() + "/widgets"
+    return this.page.url() + "/widgets";
   },
 
   comparator: function(widget) {
@@ -10,7 +18,7 @@ Singlepager.Collections.Widgets = Backbone.Collection.extend({
   model: Singlepager.Models.Widget,
 
   initialize: function(models, options) {
-    this.page = options.page
+    this.page = options.page;
   }
 
-})
+});

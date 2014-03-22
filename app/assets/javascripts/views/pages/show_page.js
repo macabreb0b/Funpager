@@ -1,15 +1,23 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  Singlepager, Backbone */
+
 Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   template: JST['pages/show'],
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.widgets(), 'sync', this.render)
+    this.listenTo(this.model.widgets(), 'sync', this.render);
     this.listenTo(this.model.widgets(), 'sync', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'add', this.addWidget);
   },
 
   addWidget: function(widget) {
-    console.log('adding')
+    console.log('adding');
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -26,38 +34,38 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
     this.removeSubview('.widgets', widgetsShowView);
   },
 
-  resetWidgets: function (widgets) {
-    console.log('resetting')
+  resetWidgets: function () {
+    console.log('resetting');
     var that = this;
     this.model.widgets().sort().each(function (widget) {
       that.removeWidget(widget);
       that.addWidget(widget);
-    })
-    this.unBind() // make sure click-to-edit functionality is turned off
+    });
+    this.unBind(); // make sure click-to-edit functionality is turned off
   },
 
   render: function() {
-    console.log('adding')
+    console.log('adding');
     var renderedContent = this.template({
       page: this.model
     });
 
-    this.$el.html(renderedContent)
-    this.setTheme()
+    this.$el.html(renderedContent);
+    this.setTheme();
 
-    return this
+    return this;
   },
 
   setTheme: function() {
-    $('body').addClass('carbon')
-    window.document.title = this.model.get('company')
+    $('body').addClass('carbon');
+    window.document.title = this.model.get('company');
   },
 
   unBind: function() {
     // $('.widget-fields').on('click', false)
-    var $widgets = $('.widget-fields')
-    $widgets.removeClass('widget-fields')
-    $widgets.addClass('widget-fields-no-hover')
+    var $widgets = $('.widget-fields');
+    $widgets.removeClass('widget-fields');
+    $widgets.addClass('widget-fields-no-hover');
   }
 
-})
+});

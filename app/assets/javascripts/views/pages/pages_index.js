@@ -1,6 +1,14 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  Singlepager, Backbone */
+
 Singlepager.Views.PagesIndex = Backbone.View.extend({
   initialize: function() {
-    this.listenTo(this.collection, 'remove', this.render)
+    this.listenTo(this.collection, 'remove', this.render);
   },
 
   template: JST['pages/index'],

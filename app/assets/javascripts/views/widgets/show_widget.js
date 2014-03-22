@@ -1,3 +1,11 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  Singlepager, Backbone */
+
 Singlepager.Views.WidgetsShow = Backbone.View.extend({
   attributes: function() {
     return {
@@ -39,12 +47,12 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   destroy: function(event) {
-    event.preventDefault()
+    event.preventDefault();
     this.model.destroy();
   },
 
-  moveWidget: function(event) { // make this change the order
-    var page = Singlepager.pages.get(this.model.get('page_id'))
+  moveWidget: function() { // make this change the order
+    var page = Singlepager.pages.get(this.model.get('page_id'));
 
     var prevId = this.$el.prev().data('id');
     var nextId = this.$el.next().data('id');
@@ -52,10 +60,10 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     var prevModel = page.widgets().get(prevId);
     var nextModel = page.widgets().get(nextId);
 
-    var newRank
-    if(prevModel == null) {
+    var newRank;
+    if(prevModel === null) {
       newRank = nextModel.get('rank') - 1;
-    } else if (nextModel == null) {
+    } else if (nextModel === null) {
       newRank = prevModel.get('rank') + 1;
     } else {
       newRank = (prevModel.get('rank') + nextModel.get('rank')) / 2;
@@ -63,17 +71,17 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
     console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
     this.model.save({ rank: newRank });
-    this.model.collection.fetch()
+    this.model.collection.fetch();
   },
 
-  beginEditing: function(event) {
+  beginEditing: function() {
     this.open = true;
-    this.render()
+    this.render();
   },
 
   stopEditing: function(event) {
     if(event) {
-      event.preventDefault()
+      event.preventDefault();
     }
     this.open = false;
     this.render();
@@ -81,20 +89,20 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
 
   submit: function(event){
-    event.preventDefault()
+    event.preventDefault();
 
-    var view = this
-    var params = $(event.currentTarget).serializeJSON()
+    var view = this;
+    var params = $(event.currentTarget).serializeJSON();
     // console.log(params)
     this.model.save(params, {
       wait: true,
-      success: function(model) {
-        view.stopEditing()
+      success: function() {
+        view.stopEditing();
       }
-    })
+    });
 
 
   }
 
 
-})
+});
