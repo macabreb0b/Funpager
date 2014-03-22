@@ -38,7 +38,7 @@ Singlepager.Models.UrlField = Singlepager.Models.Field.extend({
     this.set({
       label: 'Url:',
       content_type: 'text',
-      tag: 'p'
+      tag: 'a'
     })
   }
 })
@@ -78,6 +78,16 @@ Singlepager.Models.AddressAll = Singlepager.Models.Field.extend({
     this.set({
       content_type: 'text',
       tag: 'p'
+    })
+  }
+})
+
+Singlepager.Models.ServiceField = Singlepager.Models.Field.extend({
+  initialize: function() {
+    this.set({
+      label: 'Service:',
+      content_type: 'text',
+      tag: 'li'
     })
   }
 })

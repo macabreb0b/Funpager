@@ -31,5 +31,32 @@ Singlepager.Models.TextWidget = Singlepager.Models.Widget.extend({
     this.fields().add(titleField)
     this.fields().add(textField)
   }
-
 })
+
+Singlepager.Models.ContactWidget = Singlepager.Models.Widget.extend({
+  initialize: function(){
+    this.set({
+      name: 'contact'
+    })
+    var titleField = new Singlepager.Models.TitleField()
+    var textField = new Singlepager.Models.TextField()
+    this.fields().add(titleField)
+    this.fields().add(textField)
+  }
+})
+
+Singlepager.Models.TextWidget = Singlepager.Models.Widget.extend({
+  initialize: function(){
+    this.set({
+      name: 'text'
+    })
+    var titleField = new Singlepager.Models.TitleField()
+    var textField = new Singlepager.Models.TextField()
+    this.fields().add(titleField)
+    this.fields().add(textField)
+  }
+})
+
+Singlepager.Models.DividerWidget = Singlepager.Models.Widget.extend({
+  // allow create() / delete() only
+}
