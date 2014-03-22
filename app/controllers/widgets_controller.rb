@@ -6,6 +6,13 @@ class WidgetsController < ApplicationController
     render json: @widgets.to_json(include: :fields)
   end
 
+  def new # for testing paperclip
+    @widget = Widget.new
+    @widget.fields << Field.new_title_field
+    @widget.fields << Field.new_photo_field
+    render 'new'
+  end
+
   def update
     @widget = Widget.find(params[:id])
 
@@ -28,10 +35,6 @@ class WidgetsController < ApplicationController
     end
   end
 
-  def show
-
-  end
-
   def destroy
     widget = Widget.find(params[:id])
     widget.destroy
@@ -40,6 +43,7 @@ class WidgetsController < ApplicationController
 
   private
     def widget_params
-      params.require(:widget).permit(:rank, :name, :page_id, fields_attributes: [:id, :label, :content, :content_type])
+      params.require(:widget).permit(:rank, :name, :page_id,
+            fields_attributes: [:id, :label, :content, :content_type, :image])
     end
 end

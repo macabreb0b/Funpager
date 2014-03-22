@@ -30,20 +30,24 @@
               name="widget[fields_attributes][<%= field_index %>][content_type]"
               value="<%= field.get('content_type') %>">
 
-            <label>
-              <%= field.get('label') %>
-              <% if(field.get('content_type') == 'textarea') { %>
-                <textarea
-                  class="form-control"
-                  name="widget[fields_attributes][<%= field_index %>][content]"><%= field.escape('content') %></textarea>
-              <% } else { %>
+            <% if(field.get('content_type') == 'textarea') { %>
+              <label>
+                <%= field.get('label') %>
+              </label>
+              <textarea
+                class="form-control"
+                name="widget[fields_attributes][<%= field_index %>][content]"><%= field.escape('content') %></textarea>
+            <% } else { %>
+              <label>
+                <%= field.get('label') %>
                 <input
                   class="form-control"
                   type="<%= field.escape('content_type') %>"
                   name="widget[fields_attributes][<%= field_index %>][content]"
                   value="<%= field.escape('content') %>">
-              <% } %>
-            </label>
+              </label>
+            <% } %>
+
           </div>
         <% } %>
       <% }) %>

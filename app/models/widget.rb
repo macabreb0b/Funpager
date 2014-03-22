@@ -11,7 +11,7 @@
 #
 
 class Widget < ActiveRecord::Base
-  NAMES = ['headline', 'text']
+  NAMES = ['headline', 'text', 'image', 'contact', 'hours']
   validates :page, :name, :rank, :presence => true
   validates :name, inclusion: { in: NAMES }
   before_validation :check_rank
@@ -37,7 +37,9 @@ class Widget < ActiveRecord::Base
   end
 
   def check_rank
-    self.rank ||= (self.page.widgets.pluck('rank').count + 1)
+    page = (self.page_id ? Page.find(self.page_id) : self.page)
+    last_rank = page.widgets.pluck('rank').sort!.last
+    self.rank ||= (last_rank + 1)
   end
 
 end

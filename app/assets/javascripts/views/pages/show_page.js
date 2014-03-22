@@ -3,14 +3,13 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model.widgets(), 'reset', this.render);
+    this.listenTo(this.model.widgets(), 'sync', this.render)
+    this.listenTo(this.model.widgets(), 'sync', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'add', this.addWidget);
-    this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
-
-    this.model.widgets().sort().each(this.addWidget.bind(this));
   },
 
   addWidget: function(widget) {
+    console.log('adding')
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -21,13 +20,24 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
 
   removeWidget: function(widget) {
     var widgetsShowView = _(this.subviews()['.widgets']).find(function(subview) {
-      return subview.model == widget; // how does this compare the two?
+      return subview.model == widget;
     });
 
     this.removeSubview('.widgets', widgetsShowView);
   },
 
+  resetWidgets: function (widgets) {
+    console.log('resetting')
+    var that = this;
+    this.model.widgets().sort().each(function (widget) {
+      that.removeWidget(widget);
+      that.addWidget(widget);
+    })
+    this.unBind() // make sure click-to-edit functionality is turned off
+  },
+
   render: function() {
+    console.log('adding')
     var renderedContent = this.template({
       page: this.model
     });
@@ -41,6 +51,13 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   setTheme: function() {
     $('body').addClass('carbon')
     window.document.title = this.model.get('company')
+  },
+
+  unBind: function() {
+    // $('.widget-fields').on('click', false)
+    var $widgets = $('.widget-fields')
+    $widgets.removeClass('widget-fields')
+    $widgets.addClass('widget-fields-no-hover')
   }
 
 })

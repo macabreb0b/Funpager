@@ -1,0 +1,43 @@
+<form action="pages/50/widgets" method="POST" enctype="multipart/form-data">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>Name:<br>
+    <input type="text" name="widget[name]" value="<%= @widget.name %>">
+  </label>
+  <br>
+
+  Field 1:<br>
+  <label>Content_type: text<br>
+    <input type="hidden" name="widget[fields_attributes][0][content_type]" value="image">
+  </label>
+  <br>
+  <label>Label: Text:<br>
+    <input type="text" name="widget[fields_attributes][0][label]" value="Text:">
+  </label>
+  <br>
+  <label>Content:<br>
+    <input type="text" name="widget[fields_attributes][0][content]">
+  </label>
+  <br>
+
+
+  Field 2:<br>
+  <label>Content_type: image<br>
+    <input type="hidden" name="widget[fields_attributes][0][content_type]" value="image">
+  </label>
+  <br>
+  <label>Label: Image:<br>
+    <input type="text" name="widget[fields_attributes][0][label]" value="Text:">
+  </label>
+  <br>
+  <label>Content:<br>
+    <input type="text" name="widget[fields_attributes][0][content]">
+  </label>
+  <br>
+
+
+
+
+
+  <button>Submit</button>
+</form>

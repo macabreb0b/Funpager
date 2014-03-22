@@ -17,6 +17,10 @@
 // https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script|Gloria+Hallelujah|Candal|Cutive|Merriweather|Oswald|Alegreya|Open+Sans|Karla|Spinnaker)
 .navbar-inverse {
   background-color: #f47946;
+  .container { // make the navbar extend slightly outside of the main width
+    max-width: 900px;
+  }
+
   a, .navbar-nav > li > a {
     color: white;
     border-left: 1px solid #e65b37;
@@ -41,6 +45,10 @@
     border: 1px #f47946 solid;
     color: #f47946;
   }
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: 0;
 }
 
 .row {
@@ -87,11 +95,17 @@ ul.widgets {
   padding: 0;
 }
 
-.widget-fields {
+.widget-fields, .widget-fields-no-hover {
   margin-bottom: 10px;
   padding: 10px;
   border: 0;
   border-radius: 5px;
+}
+
+textarea.form-control {
+  width: 100%;
+  max-width: 100%;
+  min-height: 120px;
 }
 
 .widget-fields:hover {
@@ -112,6 +126,8 @@ ul.widgets {
 }
 
 .form-header {
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
   background-color: grey;
   border: thin solid grey;
 }

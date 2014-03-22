@@ -19,8 +19,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   addWidget: function(widget, index) {
-    // console.log('adding')
-    console.log(this.subviews())
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -30,7 +28,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   resetWidgets: function (widgets) {
-    console.log(widgets)
     var that = this;
     this.model.widgets().sort().each(function (widget) {
       that.removeWidget(widget);
