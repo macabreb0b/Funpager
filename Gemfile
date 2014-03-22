@@ -41,3 +41,7 @@ gem 'pry-rails'
 gem "paperclip"
 gem "aws-sdk"
 gem 'figaro'
+
+group :production, :staging do
+  gem 'rails_12factor'
+end
