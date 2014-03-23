@@ -3,27 +3,12 @@
 
   <% widget.fields().sort().each(function(field) { %>
     <% if(field.escape('tag') === 'a') { %>
-      <% if(field.escape('label') === 'Email:') { %>
-        <<%= field.escape('tag')%> href='mailto:<%= field.escape('content') %>' target="_blank"><%= field.escape('content') %></<%= field.escape('tag')%>>
-      <% } else { %>
-        <<%= field.escape('tag')%> href='<%= field.escape('content') %>' target="_blank"><%= field.escape('content') %></<%= field.escape('tag')%>>
-      <% } %>
+      <!-- format label -->
+      <% var label = field.escape('label') %>
+      <% var socialIcon = label.toLowerCase().substring(0, label.length - 1) %>
+      <a class='social-link <%= socialIcon %>' href='<%= field.escape('content') %>' target="_blank"></a>
     <% } else { %>
-      <<%= field.escape('tag')%>><%= field.escape('content') %></<%= field.escape('tag')%>>
+      <<%= field.escape('tag')%>><%= field.escape('content') %></<%= field.escape('tag') %>>
     <% } %>
   <% }) %>
-</div>
-
-<div class='add-widget-container' data-id="<%= widget.id %>">
-  <a href="#" class='add-text-widget btn btn-default btn-sm btn-add-widget'>
-    Add Text
-  </a>
-
-  <a href='#' class='add-contact-widget btn btn-default btn-sm btn-add-widget'>
-    Add Contact
-  </a>
-
-  <a href='#' class='add-social-widget btn btn-default btn-sm btn-add-widget'>
-    Add Social
-  </a>
 </div>

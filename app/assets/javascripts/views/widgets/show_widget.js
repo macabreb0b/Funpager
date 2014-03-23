@@ -17,8 +17,19 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   tagName: 'li',
 
   template: function() {
-    return this.open ? JST["widgets/form"] : JST["widgets/show"];
+    return this.open ? JST["widgets/form"] : this.widgetTemplate.bind(this)();
   },
+
+  widgetTemplate: function() {
+    switch(this.model.get('name')) {
+      case 'social':
+        return JST['widgets/show_social'];
+      default:
+        return JST['widgets/show'];
+    }
+  },
+
+  addWidgetTemplate: JST["widgets/add_widget"],
 
   events: {
     'move': 'moveWidget',
@@ -42,7 +53,12 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
       rank: this.model.get('rank')
     });
 
+    var addWidget = this.addWidgetTemplate({
+      id: this.model.id
+    });
+
     this.$el.html(renderedContent);
+    this.$el.append(addWidget);
 
     return this;
   },
@@ -76,7 +92,6 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   beginEditing: function() {
-    console.log('editing')
     this.open = true;
     this.render();
   },

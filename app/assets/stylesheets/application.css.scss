@@ -163,3 +163,33 @@ textarea.form-control {
 #toolbar {
 
 }
+
+.social-link {
+  display: inline-block;
+  height: 80px;
+  width: 80px;
+  margin: 10px;
+  border-radius: 50px;
+  background: image-url('link.png');
+  background-size: cover;
+}
+
+.facebook {
+  background: image-url('fb.png');
+  background-size: cover;
+}
+
+.twitter {
+  background: image-url('twitter.png');
+  background-size: cover;
+}
+
+.linkedin {
+  background: image-url('linkedin.png');
+  background-size: cover;
+}
+
+.tumblr {
+  background: image-url('tumblr.png');
+  background-size: cover;
+}

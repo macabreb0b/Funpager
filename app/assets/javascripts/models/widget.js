@@ -52,6 +52,7 @@ Singlepager.Models.ContactWidget = Singlepager.Models.Widget.extend({
     var titleField = new Singlepager.Models.TitleField({
       content: "Contact Us"
     });
+    var descriptionField = new Singlepager.Models.DescriptionField();
     var phoneField = new Singlepager.Models.TelField({
       placeholder: "xxx-xxx-xxxx"
     });
@@ -59,6 +60,7 @@ Singlepager.Models.ContactWidget = Singlepager.Models.Widget.extend({
       placeholder: "you@example.com"
     });
     this.fields().add(titleField);
+    this.fields().add(descriptionField);
     this.fields().add(phoneField);
     this.fields().add(emailField);
   }
@@ -85,9 +87,7 @@ Singlepager.Models.SocialWidget = Singlepager.Models.Widget.extend({
     var titleField = new Singlepager.Models.TitleField({
       content: 'Social Media'
     });
-    var descriptionField = new Singlepager.Models.DescriptionField({
-      content: 'Find me on the web!'
-    });
+    var descriptionField = new Singlepager.Models.DescriptionField();
     var facebookField = new Singlepager.Models.UrlField({
       label: 'Facebook:',
       placeholder: 'http://www.facebook.com/myfacebook'
