@@ -17,7 +17,6 @@ class WidgetsController < ApplicationController
     @widget = Widget.find(params[:id])
 
     if @widget.update_attributes(widget_params)
-      @widget.save
 
       render json: @widget.to_json(include: :fields)
     else

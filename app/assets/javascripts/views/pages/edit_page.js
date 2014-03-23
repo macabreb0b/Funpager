@@ -24,6 +24,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     "click .add-contact-widget": 'newContactWidget',
     "click .add-text-widget": 'newTextWidget',
     "click .add-social-widget": 'newSocialWidget',
+    "click .add-services-widget": 'newServicesWidget',
+    "click .add-service": 'newService',
     'submit .new': 'submit',
     'click .cancel': 'cancel'
   },
@@ -127,6 +129,37 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.newWidget(widget, $prevWidget, rank);
   },
 
+  newServicesWidget: function (event) {
+    event.preventDefault();
+
+    var widget = new Singlepager.Models.ServicesWidget();
+    var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+
+    var form = JST['widgets/form_services']({ // use form_services instead of form
+      widget: widget,
+      newOrEdit: 'new',
+      page_id: this.model.id,
+      rank: rank
+    });
+
+    $prevWidget.after(form);
+  },
+
+  newService: function(event) {
+    event.preventDefault();
+    var $prevField = $(event.currentTarget).prev();
+    var prevIndex = $prevField.data('index');
+    var fieldIndex = prevIndex + 1;
+
+    var newField = new Singlepager.Models.ServiceField();
+    var serviceField = JST['widgets/add_service']({
+      field_index: fieldIndex,
+      field: newField
+    });
+    $prevField.after(serviceField);
+  },
+
   getRank: function (prevWidget) {
     var prevId = prevWidget.data('id');
     var prevRank = this.model.widgets().get(prevId).get('rank');
@@ -172,8 +205,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   cancel: function(event) {
     event.preventDefault();
     $(event.currentTarget).parents('li').remove();
-
-    // $('.widgets').on('mouseenter mouseleave', true)
   }
 
 });

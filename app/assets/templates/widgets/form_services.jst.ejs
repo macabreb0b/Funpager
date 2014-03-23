@@ -13,7 +13,7 @@
 
       <% widget.fields().each(function(field, field_index) { %>
 
-          <div id='form-group'>
+          <div id='form-group' data-index="<%= field_index %>">
             <input
               type="hidden"
               name="widget[fields_attributes][<%= field_index %>][label]"
@@ -50,7 +50,9 @@
             <% } %>
 
           </div>
+
       <% }) %>
+      <a href="#" class="add-service">+ Add Service</a>
     </div>
 
     <div class="form-footer">

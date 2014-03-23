@@ -11,7 +11,7 @@
 #
 
 class Widget < ActiveRecord::Base
-  NAMES = ['headline', 'text', 'image', 'contact', 'hours', 'social']
+  NAMES = ['Headline', 'Text', 'Image', 'Contact', 'Hours', 'Social', 'Services']
   validates :page, :name, :rank, :presence => true
   validates :name, inclusion: { in: NAMES }
   before_validation :check_rank
@@ -21,7 +21,7 @@ class Widget < ActiveRecord::Base
   accepts_nested_attributes_for :fields
 
   def self.new_headline_widget
-    widget = Widget.new({ name: "headline" })
+    widget = Widget.new({ name: "Headline" })
     widget.fields << Field.new_company_name_field
     widget.fields << Field.new_tagline_field
     widget.rank = 1
@@ -29,7 +29,7 @@ class Widget < ActiveRecord::Base
   end
 
   def self.new_text_widget
-    widget = Widget.new({ name: "text" })
+    widget = Widget.new({ name: "Text" })
     widget.fields << Field.new_title_field
     widget.fields << Field.new_text_field
     widget.rank = 2

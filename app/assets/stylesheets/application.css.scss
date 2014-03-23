@@ -101,6 +101,9 @@ ul.widgets {
   border: 0;
   border-radius: 5px;
   position: relative;
+  li {
+    list-style: disc inside;
+  }
 }
 
 textarea.form-control {

@@ -93,6 +93,7 @@ Singlepager.Models.ServiceField = Singlepager.Models.Field.extend({
   initialize: function() {
     this.set({
       label: 'Service:',
+      placeholder: 'e.g. dog walking, dry cleaning',
       content_type: 'text',
       tag: 'li'
     });

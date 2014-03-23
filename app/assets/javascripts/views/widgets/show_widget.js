@@ -17,15 +17,25 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   tagName: 'li',
 
   template: function() {
-    return this.open ? JST["widgets/form"] : this.widgetTemplate.bind(this)();
+    return this.open ? this.widgetFormTemplate.bind(this)() : this.widgetShowTemplate.bind(this)();
   },
 
-  widgetTemplate: function() {
+  widgetShowTemplate: function() {
     switch(this.model.get('name')) {
-      case 'social':
+      case 'Social':
         return JST['widgets/show_social'];
+      case 'Services':
+        return JST['widgets/show_services'];
       default:
         return JST['widgets/show'];
+    }
+  },
+
+  widgetFormTemplate: function() {
+    if(this.model.get('name') === 'Services'){
+      return JST['widgets/form_services'];
+    } else {
+      return JST['widgets/form'];
     }
   },
 

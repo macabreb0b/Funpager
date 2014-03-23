@@ -8,6 +8,31 @@ body.carbon {
   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
   background-color:#282828;
   background-size:16px 16px;
+
+  #page-content {
+    background-color: rgba(0,0,0,0.3);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    h1 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+      color: limegreen;
+    }
+    h2 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+    }
+    h3 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }
 
 body.madras {
@@ -26,6 +51,31 @@ body.madras {
     hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
     hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px
   );
+
+  #page-content {
+    background-color: rgba(0,0,0,0.3);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    h1 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+      color: limegreen;
+    }
+    h2 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+    }
+    h3 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }
 
 body.tablecloth {
@@ -33,6 +83,30 @@ body.tablecloth {
   background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 50%),
   linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
   background-size:50px 50px;
+
+  #page-content {
+    background-color: rgba(255,255,255,0.9);
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+    h1 {
+      font-family: 'Gloria Hallelujah', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+    }
+    h2 {
+      font-family: 'Gloria Hallelujah', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+      color: tomato;
+    }
+    h3 {
+      font-family: 'Gloria Hallelujah', 'Open Sans', sans-serif;
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }
 
 body.houndstooth {
@@ -42,6 +116,31 @@ body.houndstooth {
   linear-gradient(45deg, black 17%, transparent 17%, transparent 25%, black 25%, black 36%, transparent 36%, transparent 64%, black 64%, black 75%, transparent 75%, transparent 83%, black 83%) 5em 5em;
   background-color: white;
   background-size: 10em 10em;
+
+  #page-content {
+    background-color: rgba(0,0,0,0.3);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    h1 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+      color: limegreen;
+    }
+    h2 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+    }
+    h3 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }
 
 body.argyle {
@@ -52,6 +151,31 @@ body.argyle {
   linear-gradient(60deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
   linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
   background-size: 70px 120px;
+
+  #page-content {
+    background-color: rgba(0,0,0,0.3);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    h1 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+      color: limegreen;
+    }
+    h2 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+    }
+    h3 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }
 
 body.blueprint {
@@ -61,12 +185,62 @@ body.blueprint {
   linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
   linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px);
   background-size:100px 100px, 100px 100px, 20px 20px, 20px 20px;
-  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px
+  background-position:-2px -2px, -2px -2px, -1px -1px, -1px -1px;
+
+  #page-content {
+    background-color: rgba(0,0,0,0.3);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    h1 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+      color: limegreen;
+    }
+    h2 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+    }
+    h3 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }
 
-body.blueprint {
+body.paper {
   background-color: hsl(2, 57%, 40%);
   background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
   repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
   repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
+
+  #page-content {
+    background-color: rgba(0,0,0,0.3);
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    h1 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.3em;
+      color: limegreen;
+    }
+    h2 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 2.5em;
+    }
+    h3 {
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+
+    }
+    p, li {
+      font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+  }
 }

@@ -33,7 +33,7 @@ Singlepager.Models.Widget = Backbone.Model.extend({
 Singlepager.Models.TextWidget = Singlepager.Models.Widget.extend({
   initialize: function() {
     this.set({
-      name: 'text'
+      name: 'Text'
     });
     var titleField = new Singlepager.Models.TitleField({
       placeholder: "e.g. About Us"
@@ -47,7 +47,7 @@ Singlepager.Models.TextWidget = Singlepager.Models.Widget.extend({
 Singlepager.Models.ContactWidget = Singlepager.Models.Widget.extend({
   initialize: function() {
     this.set({
-      name: 'contact'
+      name: 'Contact'
     });
     var titleField = new Singlepager.Models.TitleField({
       content: "Contact Us"
@@ -69,20 +69,23 @@ Singlepager.Models.ContactWidget = Singlepager.Models.Widget.extend({
 Singlepager.Models.ServicesWidget = Singlepager.Models.Widget.extend({
   initialize: function() {
     this.set({
-      name: 'services'
+      name: 'Services'
     });
-    var titleField = new Singlepager.Models.TitleField();
+    var titleField = new Singlepager.Models.TitleField({
+      content: 'Our Services'
+    });
     var descriptionField = new Singlepager.Models.DescriptionField();
+    var serviceField = new Singlepager.Models.ServiceField();
     this.fields().add(titleField);
     this.fields().add(descriptionField);
+    this.fields().add(serviceField);
   }
 });
-
 
 Singlepager.Models.SocialWidget = Singlepager.Models.Widget.extend({
   initialize: function() {
     this.set({
-      name: 'social'
+      name: 'Social'
     });
     var titleField = new Singlepager.Models.TitleField({
       content: 'Social Media'
@@ -112,6 +115,8 @@ Singlepager.Models.SocialWidget = Singlepager.Models.Widget.extend({
     this.fields().add(tumblrField);
   }
 });
+
+
 
 Singlepager.Models.DividerWidget = Singlepager.Models.Widget.extend({
   // allow create() / delete() only
