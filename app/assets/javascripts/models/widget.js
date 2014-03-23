@@ -76,6 +76,43 @@ Singlepager.Models.ServicesWidget = Singlepager.Models.Widget.extend({
   }
 });
 
+
+Singlepager.Models.SocialWidget = Singlepager.Models.Widget.extend({
+  initialize: function() {
+    this.set({
+      name: 'social'
+    });
+    var titleField = new Singlepager.Models.TitleField({
+      content: 'Social Media'
+    });
+    var descriptionField = new Singlepager.Models.DescriptionField({
+      content: 'Find me on the web!'
+    });
+    var facebookField = new Singlepager.Models.UrlField({
+      label: 'Facebook:',
+      placeholder: 'http://www.facebook.com/myfacebook'
+    });
+    var twitterField = new Singlepager.Models.UrlField({
+      label: 'Twitter:',
+      placeholder: 'http://www.twitter.com/mytwitter'
+    });
+    var linkedInField = new Singlepager.Models.UrlField({
+      label: 'LinkedIn:',
+      placeholder: 'http://www.linkedin.com/in/myprofile'
+    });
+    var tumblrField = new Singlepager.Models.UrlField({
+      label: 'Tumblr:',
+      placeholder: 'http://myblog.tumblr.com'
+     });
+    this.fields().add(titleField);
+    this.fields().add(descriptionField);
+    this.fields().add(facebookField);
+    this.fields().add(twitterField);
+    this.fields().add(linkedInField);
+    this.fields().add(tumblrField);
+  }
+});
+
 Singlepager.Models.DividerWidget = Singlepager.Models.Widget.extend({
   // allow create() / delete() only
 });

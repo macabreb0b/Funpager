@@ -44,8 +44,7 @@ Singlepager.Models.DescriptionField = Singlepager.Models.Field.extend({
 Singlepager.Models.UrlField = Singlepager.Models.Field.extend({
   initialize: function() {
     this.set({
-      label: 'Url:',
-      content_type: 'text',
+      content_type: 'url',
       tag: 'a'
     });
   }

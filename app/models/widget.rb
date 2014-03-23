@@ -11,7 +11,7 @@
 #
 
 class Widget < ActiveRecord::Base
-  NAMES = ['headline', 'text', 'image', 'contact', 'hours']
+  NAMES = ['headline', 'text', 'image', 'contact', 'hours', 'social']
   validates :page, :name, :rank, :presence => true
   validates :name, inclusion: { in: NAMES }
   before_validation :check_rank

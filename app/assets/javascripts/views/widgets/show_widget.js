@@ -34,6 +34,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   render: function() {
+    console.log('rendering');
     var renderedContent = this.template()({
       widget: this.model,
       newOrEdit: 'edit',
@@ -74,8 +75,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     this.model.collection.fetch();
   },
 
-  beginEditing: function(event) {
-    event.preventDefault();
+  beginEditing: function() {
     console.log('editing')
     this.open = true;
     this.render();

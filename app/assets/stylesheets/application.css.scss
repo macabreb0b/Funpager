@@ -142,9 +142,10 @@ textarea.form-control {
   height: 34px;
   overflow: hidden;
   text-align: center;
+  background: image-url('dash-bg.png') left center repeat-x;
 }
 
-.edit {
+.click-to-edit {
   text-align: center;
   position: absolute;
   display: none;

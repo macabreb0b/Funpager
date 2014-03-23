@@ -23,6 +23,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     "mouseleave .widgets .widget": 'hideAddContent',
     "click .add-contact-widget": 'newContactWidget',
     "click .add-text-widget": 'newTextWidget',
+    "click .add-social-widget": 'newSocialWidget',
     'submit .new': 'submit',
     'click .cancel': 'cancel'
   },
@@ -82,13 +83,13 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     event.preventDefault();
 
     $(event.currentTarget).find('.add-widget-container').slideToggle('fast');
-    $(event.currentTarget).find('.edit').fadeIn('fast')
+    $(event.currentTarget).find('.click-to-edit').fadeIn('fast');
   },
 
   hideAddContent: function(event) {
     event.preventDefault();
     $(event.currentTarget).find('.add-widget-container').slideToggle('fast');
-    $(event.currentTarget).find('.edit').fadeOut('fast')
+    $(event.currentTarget).find('.click-to-edit').fadeOut('fast');
   },
 
   // showWidgetOptions: function(event) {
@@ -112,6 +113,15 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     event.preventDefault();
 
     var widget = new Singlepager.Models.TextWidget();
+    var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+    this.newWidget(widget, $prevWidget, rank);
+  },
+
+  newSocialWidget: function (event) {
+    event.preventDefault();
+
+    var widget = new Singlepager.Models.SocialWidget();
     var $prevWidget = $(event.currentTarget).parent().parent();
     var rank = this.getRank($prevWidget);
     this.newWidget(widget, $prevWidget, rank);
