@@ -7,7 +7,7 @@
 #  name       :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
-#  rank       :integer          not null
+#  rank       :float            not null
 #
 
 require 'spec_helper'

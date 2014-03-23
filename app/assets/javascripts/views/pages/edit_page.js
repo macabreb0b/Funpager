@@ -19,11 +19,12 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   events: {
-    "mouseenter .widgets .widget": 'showEditable',
-    "mouseleave .widgets .widget": 'hideEditable',
-    "click .add-widget": 'newWidget',
+    "mouseenter .widgets .widget": 'showAddContent',
+    "mouseleave .widgets .widget": 'hideAddContent',
+    "click .add-contact-widget": 'newContactWidget',
+    "click .add-text-widget": 'newTextWidget',
     'submit .new': 'submit',
-    'click .close': 'cancel'
+    'click .cancel': 'cancel'
   },
 
   addWidget: function(widget) {
@@ -77,15 +78,17 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     window.document.title = this.model.get('company');
   },
 
-  showEditable: function(event) {
+  showAddContent: function(event) {
     event.preventDefault();
 
     $(event.currentTarget).find('.add-widget-container').slideToggle('fast');
+    $(event.currentTarget).find('.edit').fadeIn('fast')
   },
 
-  hideEditable: function(event) {
+  hideAddContent: function(event) {
     event.preventDefault();
     $(event.currentTarget).find('.add-widget-container').slideToggle('fast');
+    $(event.currentTarget).find('.edit').fadeOut('fast')
   },
 
   // showWidgetOptions: function(event) {
@@ -96,14 +99,28 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   //   $(event.currentTarget).after(JST['widgets/options']())
   // },
 
-  newWidget: function(event) { // replace this with new widget form
+  newContactWidget: function (event) {
     event.preventDefault();
+
+    var widget = new Singlepager.Models.ContactWidget();
+    var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+    this.newWidget(widget, $prevWidget, rank);
+  },
+
+  newTextWidget: function (event) {
+    event.preventDefault();
+
     var widget = new Singlepager.Models.TextWidget();
     var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+    this.newWidget(widget, $prevWidget, rank);
+  },
 
-    var prevId = $prevWidget.data('id');
+  getRank: function (prevWidget) {
+    var prevId = prevWidget.data('id');
     var prevRank = this.model.widgets().get(prevId).get('rank');
-    var nextId = $prevWidget.next().data('id');
+    var nextId = prevWidget.next().data('id');
     var newRank;
     if(nextId) {
       var nextRank = this.model.widgets().get(nextId).get('rank');
@@ -111,18 +128,18 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     } else {
       newRank = prevRank + 1;
     }
+    return newRank;
+  },
 
+  newWidget: function(widget, prevWidget, rank) { // replace this with new widget form
     var form = JST['widgets/form']({
       widget: widget,
       newOrEdit: 'new',
       page_id: this.model.id,
-      rank: newRank
+      rank: rank
     });
 
-    $prevWidget.after(form);
-
-    // $('.widgets').on('mouseenter mouseleave', '.widget', false)
-    // this.model.widgets().add(widget)
+    prevWidget.after(form);
   },
 
   submit: function(event) {
@@ -134,8 +151,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     widget.save({}, {
       wait: true,
-      success: function() {
-        view.model.widgets().add(widget);
+      success: function(model) {
+        view.model.widgets().add(model);
         view.$('#newForm').remove();
         view.renderSubviews();
       }

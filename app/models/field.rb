@@ -2,14 +2,19 @@
 #
 # Table name: fields
 #
-#  id           :integer          not null, primary key
-#  widget_id    :integer          not null
-#  label        :string(255)      not null
-#  content      :text             not null
-#  created_at   :datetime
-#  updated_at   :datetime
-#  content_type :string(255)      not null
-#  tag          :string(20)       not null
+#  id                 :integer          not null, primary key
+#  widget_id          :integer          not null
+#  label              :string(255)      not null
+#  content            :text             not null
+#  created_at         :datetime
+#  updated_at         :datetime
+#  content_type       :string(255)      not null
+#  tag                :string(20)       not null
+#  image_file_name    :string(255)
+#  image_content_type :string(255)
+#  image_file_size    :integer
+#  image_updated_at   :datetime
+#  placeholder        :string(255)
 #
 
 class Field < ActiveRecord::Base
@@ -53,41 +58,43 @@ class Field < ActiveRecord::Base
     Field.new({ label: "Text:", content_type: "textarea", tag: 'p' })
   end
 
-  def self.new_description_field
-    Field.new({ label: "Description:", content_type: "textarea", tag: 'p' })
-  end
 
-  def self.new_url_field
-    Field.new({ label: "Url:", content_type: "text", tag: 'a' })
-  end
-
-  def self.new_image_field
-    Field.new({ label: "Image:", content_type: "file", tag: 'img' })
-  end
-
-  def self.new_tel_field
-    Field.new({ label: "Telephone:", content_type: 'tel', tag: 'p' })
-  end
-
-  def self.new_email_field
-    Field.new({ label: "Email:", content_type: 'email', tag: 'a' })
-  end
-
-  def self.new_street_field
-    Field.new({ label: "Address:", content_type: 'text', tag: 'p' })
-  end
-
-  def self.new_city_field
-    Field.new({ label: "City:", content_type: 'text', tag: 'p' })
-  end
-
-  def self.new_state_field
-    Field.new({ label: "State:", content_type: 'text', tag: 'p' })
-  end
-
-  def self.new_postal_code_field
-    Field.new({ label: "Postal Code:", content_type: 'text', tag: 'p' })
-  end
+### These constructor functions don't get called, just for reference:
+  # def self.new_description_field
+  #   Field.new({ label: "Description:", content_type: "textarea", tag: 'p' })
+  # end
+  #
+  # def self.new_url_field
+  #   Field.new({ label: "Url:", content_type: "text", tag: 'a' })
+  # end
+  #
+  # def self.new_image_field
+  #   Field.new({ label: "Image:", content_type: "file", tag: 'img' })
+  # end
+  #
+  # def self.new_tel_field
+  #   Field.new({ label: "Phone:", content_type: 'tel', tag: 'p' })
+  # end
+  #
+  # def self.new_email_field
+  #   Field.new({ label: "Email:", content_type: 'email', tag: 'a' })
+  # end
+  #
+  # def self.new_street_field
+  #   Field.new({ label: "Address:", content_type: 'text', tag: 'p' })
+  # end
+  #
+  # def self.new_city_field
+  #   Field.new({ label: "City:", content_type: 'text', tag: 'p' })
+  # end
+  #
+  # def self.new_state_field
+  #   Field.new({ label: "State:", content_type: 'text', tag: 'p' })
+  # end
+  #
+  # def self.new_postal_code_field
+  #   Field.new({ label: "Postal Code:", content_type: 'text', tag: 'p' })
+  # end
 
   def set_tag
     self.tag ||= TAGS[self.label]

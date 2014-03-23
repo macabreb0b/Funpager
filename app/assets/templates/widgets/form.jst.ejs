@@ -42,6 +42,7 @@
                 <%= field.get('label') %>
                 <input
                   class="form-control"
+                  placeholder="<%= field.get('placeholder') %>"
                   type="<%= field.escape('content_type') %>"
                   name="widget[fields_attributes][<%= field_index %>][content]"
                   value="<%= field.escape('content') %>">
@@ -60,8 +61,8 @@
         </a>
       <% } %>
 
-      <a href="#" class='cancel'>
-        <span class="glyphicon glyphicon-remove"></span>
+      <a href="" class='cancel'>
+        Cancel
       </a>
       <button class="btn btn-primary">Done</button>
     </div>

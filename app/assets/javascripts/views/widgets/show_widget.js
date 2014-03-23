@@ -23,7 +23,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   events: {
     'move': 'moveWidget',
     'click .widget-fields': 'beginEditing',
-    'click .cancel': 'stopEditing',
+    'click .cancel': 'cancel',
     'submit .edit': 'submit',
     'click .trash': 'destroy'
   },
@@ -61,9 +61,9 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     var nextModel = page.widgets().get(nextId);
 
     var newRank;
-    if(prevModel === null) {
+    if(prevModel == null) {
       newRank = nextModel.get('rank') - 1;
-    } else if (nextModel === null) {
+    } else if (nextModel == null) {
       newRank = prevModel.get('rank') + 1;
     } else {
       newRank = (prevModel.get('rank') + nextModel.get('rank')) / 2;
@@ -74,34 +74,35 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     this.model.collection.fetch();
   },
 
-  beginEditing: function() {
+  beginEditing: function(event) {
+    event.preventDefault();
+    console.log('editing')
     this.open = true;
     this.render();
   },
 
-  stopEditing: function(event) {
-    if(event) {
-      event.preventDefault();
-    }
+  stopEditing: function() {
     this.open = false;
     this.render();
   },
-
 
   submit: function(event){
     event.preventDefault();
 
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
-    // console.log(params)
+
     this.model.save(params, {
       wait: true,
       success: function() {
         view.stopEditing();
       }
     });
+  },
 
-
+  cancel: function(event) {
+    event.preventDefault();
+    this.stopEditing();
   }
 
 

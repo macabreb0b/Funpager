@@ -35,7 +35,9 @@ Singlepager.Models.TextWidget = Singlepager.Models.Widget.extend({
     this.set({
       name: 'text'
     });
-    var titleField = new Singlepager.Models.TitleField();
+    var titleField = new Singlepager.Models.TitleField({
+      placeholder: "e.g. About Us"
+    });
     var textField = new Singlepager.Models.TextField();
     this.fields().add(titleField);
     this.fields().add(textField);
@@ -47,22 +49,30 @@ Singlepager.Models.ContactWidget = Singlepager.Models.Widget.extend({
     this.set({
       name: 'contact'
     });
-    var titleField = new Singlepager.Models.TitleField();
-    var textField = new Singlepager.Models.TextField();
+    var titleField = new Singlepager.Models.TitleField({
+      content: "Contact Us"
+    });
+    var phoneField = new Singlepager.Models.TelField({
+      placeholder: "xxx-xxx-xxxx"
+    });
+    var emailField = new Singlepager.Models.EmailField({
+      placeholder: "you@example.com"
+    });
     this.fields().add(titleField);
-    this.fields().add(textField);
+    this.fields().add(phoneField);
+    this.fields().add(emailField);
   }
 });
 
-Singlepager.Models.TextWidget = Singlepager.Models.Widget.extend({
+Singlepager.Models.ServicesWidget = Singlepager.Models.Widget.extend({
   initialize: function() {
     this.set({
-      name: 'text'
+      name: 'services'
     });
     var titleField = new Singlepager.Models.TitleField();
-    var textField = new Singlepager.Models.TextField();
+    var descriptionField = new Singlepager.Models.DescriptionField();
     this.fields().add(titleField);
-    this.fields().add(textField);
+    this.fields().add(descriptionField);
   }
 });
 

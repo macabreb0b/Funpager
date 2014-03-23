@@ -48,6 +48,6 @@ class PagesController < ApplicationController
     def page_params
       params.require(:page).permit(:title,
             widgets_attributes: [:name, :rank,
-            fields_attributes: [:id, :label, :content, :content_type, :image]])
+            fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder]])
     end
 end

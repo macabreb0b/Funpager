@@ -1,9 +1,17 @@
 <div class='widget-fields'>
+  <span class="edit">Click to edit</span>
+
   <% widget.fields().sort().each(function(field) { %>
     <<%= field.get('tag')%>><%= field.get('content') %></<%= field.get('tag')%>>
   <% }) %>
 </div>
 
 <div class='add-widget-container' data-id="<%= widget.id %>">
-  <a href='#' class='add-widget btn btn-default btn-sm'>Add Content</a>
+  <a href="#" class='add-text-widget btn btn-default btn-sm'>
+    Add Text
+  </a>
+
+  <a href='#' class='add-contact-widget btn btn-default btn-sm'>
+    Add Contact
+  </a>
 </div>

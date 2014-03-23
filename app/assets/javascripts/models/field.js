@@ -64,7 +64,7 @@ Singlepager.Models.ImageField = Singlepager.Models.Field.extend({
 Singlepager.Models.TelField = Singlepager.Models.Field.extend({
   initialize: function() {
     this.set({
-      label: 'Telephone:',
+      label: 'Phone:',
       content_type: 'tel',
       tag: 'p'
     });
