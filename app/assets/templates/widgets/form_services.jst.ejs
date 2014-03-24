@@ -2,7 +2,7 @@
   <form class="form widget-form <%= newOrEdit %>">
 
     <div class="form-header">
-      <%= widget.get('name') %>
+      <h4><span class="glyphicon glyphicon-th-list"></span> <%= widget.get('name') %></h4>
     </div>
 
     <div class="form-fields">
@@ -18,6 +18,10 @@
               type="hidden"
               name="widget[fields_attributes][<%= field_index %>][label]"
               value="<%= field.get('label') %>">
+            <input
+              type="hidden"
+              name="widget[fields_attributes][<%= field_index %>][placeholder]"
+              value="<%= field.get('placeholder') %>">
 
             <% if(field.id) { %>
               <input

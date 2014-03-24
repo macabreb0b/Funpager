@@ -1,4 +1,4 @@
-<div role="navigation" class="navbar-default navbar-splash">
+<div role="navigation" class="navbar-default navbar-splash navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
       <a href="/splash" class="navbar-brand">Singlepager</a>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="row">
-  <div class="container">
+  <div class="container padded-flash-container">
     <% if flash[:errors] %>
       <% flash[:errors].each do |error| %>
         <div class="alert alert-warning">

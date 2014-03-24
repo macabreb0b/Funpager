@@ -21,6 +21,20 @@
   margin:0;
 }
 
+::selection {
+  background: #F2591D;
+  color: white !important;
+};
+
+::-moz-selection {
+  background: #F2591D;
+  color: white;
+};
+
+::-webkit-selection {
+  background: #F2591D;
+  color: white !important;
+};
 
 
 .page-list {
@@ -105,6 +119,8 @@ textarea.form-control {
   font-family: 'Arial', sans-serif;
   font-size: 1em;
   color: black;
+  margin: 10px 0;
+
   label {
     font-family: 'Arial', sans-serif;
     font-size: 0.8em;
@@ -114,17 +130,40 @@ textarea.form-control {
   .cancel {
     font-size: 0.7em !important;
   }
+
+  .form-header {
+    font-family: 'Arial', sans-serif;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    background-color: dimgrey;
+    border-bottom: white thin solid;
+
+    h4 {
+      font-size: 0.8em;
+      line-height: 0.8em;
+      margin-top: 0;
+      margin-bottom: 0;
+      color: white;
+    }
+  }
+
+  .form-fields {
+    border-top: grey 1px solid;
+    border-bottom: white thin solid;
+
+  }
+
+  .form-footer {
+    text-align: right;
+    border-top: 1px solid grey;
+    .trash {
+      float: left;
+    }
+  }
 }
 
 .widget-form > div {
   padding: 10px;
-}
-
-.form-header {
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  background-color: grey;
-  border: thin solid grey;
 }
 
 .container {
@@ -180,17 +219,46 @@ p.copyright {
   border-top-left-radius: 5px;
   padding: 10px;
   color: white;
-}
+  a {
+    display: inline-block;
+    vertical-align: middle;
+    height: 75px;
+    width: 75px;
+    border: thin white solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin-right: 7px;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+  }
 
-#workstation a {
-  display: inline-block;
-  vertical-align: middle;
-  height: 75px;
-  width: 75px;
-  border-radius: 15px;
-  padding: 5px;
-  background: darkslategrey;
-  color: white;
-  text-align: center;
-  padding-top: 20px;
+  a.carbon-theme {
+    background: image-url('thumbs/carbon.png');
+    background-size: cover;
+  }
+  a.paper-cup-theme {
+    background: image-url('thumbs/paper-cup.png');
+    background-size: cover;
+  }
+  a.brushed-steel-theme {
+    background: image-url('thumbs/brushed-steel.png');
+    background-size: cover;
+  }
+  a.feathers-theme {
+    background: image-url('thumbs/feathers.png');
+    background-size: cover;
+  }
+  a.stardust-theme {
+    background: image-url('thumbs/stardust.png');
+    background-size: cover;
+  }
+  a.skulls-theme {
+    background: image-url('thumbs/skulls.png');
+    background-size: cover;
+  }
+  a.tablecloth-theme {
+    background: image-url('thumbs/tablecloth.png');
+    background-size: cover;
+  }
 }

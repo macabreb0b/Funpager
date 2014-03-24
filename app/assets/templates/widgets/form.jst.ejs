@@ -1,8 +1,14 @@
+<% var glyph; %>
+<% if( widget.get('name') === 'Text') { glyph = 'glyphicon-font' }; %>
+<% if( widget.get('name') === 'Headline') {glyph = 'glyphicon-header' }; %>
+<% if( widget.get('name') === 'Contact') {glyph = 'glyphicon-envelope' }; %>
+<% if( widget.get('name') === 'Social') {glyph = 'glyphicon-comment' }; %>
+
 <li id="newForm">
   <form class="form widget-form <%= newOrEdit %>">
 
     <div class="form-header">
-      <%= widget.get('name') %>
+      <h4><span class="glyphicon <%= glyph %>"></span> <%= widget.get('name') %></h4>
     </div>
 
     <div class="form-fields">
@@ -18,6 +24,10 @@
               type="hidden"
               name="widget[fields_attributes][<%= field_index %>][label]"
               value="<%= field.get('label') %>">
+            <input
+              type="hidden"
+              name="widget[fields_attributes][<%= field_index %>][placeholder]"
+              value="<%= field.get('placeholder') %>">
 
             <% if(field.id) { %>
               <input

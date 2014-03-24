@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 // navbar and splash navbar styles
 .navbar-inverse {
   background-color: #f47946;
@@ -48,7 +49,7 @@
 
 .navbar-splash {
   background-color: white;
-  min-height: 100px;
+  height: 100px;
   padding-top: 20px;
   padding-bottom: 20px;
   .navbar-brand {
@@ -64,6 +65,10 @@
     color: #f47946;
     margin-left: 10px;
   }
+}
+
+.padded-flash-container { // this makes sure that the fixed navbar does not hide anything
+  margin-top: 100px;
 }
 
 // splash / home page styles
