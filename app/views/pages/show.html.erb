@@ -1,13 +1,34 @@
-your page:
-<h2><%= @page.title %></h2>
+<div id="page-content">
+  <ul class="widgets">
+    <% @widgets.each do |widget| %>
+      <li class="widget">
+        <div class="widget-fields-no-hover">
+          <% widget.fields.sort.each do |field| %>
+            <% if field.content != '' %>
+              <% if field.tag == 'a' %>
+                <% if field.label == 'Email:' %>
+                  <<%= field.tag %> href="mailto:<%= field.content %>"><%= field.content %></<%= field.tag %>>
+                <% else %>
+                  <<%= field.tag %> href="<%= field.content %>"><%= field.content %></<%= field.tag %>>
+                <% end %>
+              <% else %>
+                <<%= field.tag %>><%= field.content %></<%= field.tag %>>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+  <p class="copyright">&copy; 2014 <%= @page.company %></p>
+</div>
 
-
-<% @page.widgets.sort.each do |widget| %>
-
-  <h4>~<%= widget.name %> widget~</h4>
-  <% widget.fields.sort.each do |field| %>
-    <b><%= field.label %></b><br>
-    <%= field.content %><br>
-  <% end %>
-
-<% end %>
+<script type="text/javascript">
+  $(function() {
+    setTimeout(function() {
+      window.document.title = "<%= @page.company %>";
+      $('.navbar-inverse').remove();
+      $('body').attr("class", "<%= @page.theme %>");
+    }, 200) // need to decrease this
+  });
+</script>

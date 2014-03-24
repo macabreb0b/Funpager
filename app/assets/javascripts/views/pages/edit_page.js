@@ -10,8 +10,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   template: JST['pages/edit'],
 
   initialize: function() {
-    this.listenTo(this.model, 'sync', this.render);
-    this.listenTo(this.model, 'sync', this.resetWidgets);
+    this.listenTo(this.model, 'sync change', this.render);
+    this.listenTo(this.model, 'sync change', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'reset sync', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'add', this.addWidget);
     this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
@@ -95,7 +95,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     var $workspace = $('#workstation')
     $workspace.empty()
-    $workspace.append('Themes: <a href="#" data-theme="carbon">Carbon</a><a href="#" data-theme="tablecloth">Tablecloth</a><a href="#" data-theme="paper-cup">Paper Cup</a>')
+    $workspace.append(JST['pages/workstation']())
 
     window.document.title = this.model.get('company');
   },

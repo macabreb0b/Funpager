@@ -9,8 +9,8 @@ window.Singlepager = {
 
     new Singlepager.Routers.Pages({
       $rootEl: $('#content')
-    })
-    Backbone.history.start()
+    });
+    Backbone.history.start();
   }
 };
 
@@ -66,7 +66,8 @@ Backbone.CompositeView = Backbone.View.extend({
   }
 });
 
-
 $(document).ready(function(){
   Singlepager.initialize();
 });
+
+

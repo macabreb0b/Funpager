@@ -54,7 +54,7 @@
     </div>
 
     <div class="form-footer">
-      <% if(newOrEdit == 'edit') { %>
+      <% if(newOrEdit === 'edit' && widget.get('name') !== 'Headline') { %>
         <a class="btn btn-danger btn-sm trash" data-id="<%= widget.id %>" href="#">
           <span class="glyphicon glyphicon-trash"></span>
         </a>

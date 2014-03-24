@@ -5,9 +5,8 @@
     <h3><a href="#/pages/<%= page.id %>"><%= page.get('title') %></a></h3>
     <p>
       <span class="glyphicon glyphicon-link"></span>
-      <a href="#/pages/<%= page.id %>" target="_blank">
-        this.com/<%= page.get('handle') %>
-      </a>
+      <a href="/pages/<%= page.get('slug') %>" target="_blank">
+        /pages/<%= page.get('slug') %></a>
       - Created <%= page.get('created_at') %>
     </p>
 

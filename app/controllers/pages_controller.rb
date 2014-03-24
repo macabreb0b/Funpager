@@ -24,9 +24,12 @@ class PagesController < ApplicationController
   end
 
   def show
-    @page = Page.find(params[:id])
+    @page = Page.friendly.find(params[:id])
     @widgets = @page.widgets
-    render json: @page.to_json(include: :widgets)
+    respond_to do |format|
+      format.json { render json: @page.to_json(include: :widgets) }
+      format.html { render 'show' }
+    end
   end
 
   def update

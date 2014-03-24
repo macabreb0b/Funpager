@@ -12,13 +12,22 @@
 #  position   :string(255)      not null
 #  created_at :datetime
 #  updated_at :datetime
+#  theme      :string(255)      not null
+#  slug       :string(255)
 #
 
 class Page < ActiveRecord::Base
   THEMES = [
     'carbon',
     'tablecloth',
-    'paper-cup'
+    'paper-cup',
+    'brushed-steel',
+    'skulls',
+    'stardust',
+    'feathers',
+    # 'food-party',
+    # 'giftly',
+    # 'crossword'
   ]
   validates :user_id, :title, :handle, :company, :layout, :position, :theme, :presence => true
   validates :handle, :uniqueness => true, :length => { minimum: 4 }
@@ -26,6 +35,9 @@ class Page < ActiveRecord::Base
   validates :layout, :inclusion => { in: ['one-column', 'sidebar-left', 'sidebar-right'] }
   validates :theme, :inclusion => { in: THEMES }
   before_validation :set_defaults
+
+  extend FriendlyId
+  friendly_id :handle, :use => :slugged
 
   belongs_to :user
 

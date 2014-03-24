@@ -206,3 +206,29 @@ textarea.form-control {
   background: image-url('tumblr.png');
   background-size: cover;
 }
+
+p.copyright {
+  font-size: 0.8em !important;
+}
+
+#workstation {
+  height: 100px;
+  background: rgba(64, 64, 64, 0.6);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  padding: 10px;
+  color: white;
+}
+
+#workstation a {
+  display: inline-block;
+  vertical-align: middle;
+  height: 75px;
+  width: 75px;
+  border-radius: 15px;
+  padding: 5px;
+  background: darkslategrey;
+  color: white;
+  text-align: center;
+  padding-top: 20px;
+}
