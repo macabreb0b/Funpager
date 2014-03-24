@@ -6,10 +6,19 @@
           <% widget.fields.sort.each do |field| %>
             <% if field.content != '' %>
               <% if field.tag == 'a' %>
-                <% if field.label == 'Email:' %>
-                  <<%= field.tag %> href="mailto:<%= field.content %>"><%= field.content %></<%= field.tag %>>
+                <% if widget.name == "Social" %>
+                  <% social_icon = field.label.downcase[0..-2] %>
+                  <a class='social-link <%= social_icon %>'
+                    href='<%= field.content %>'
+                    target="_blank"></a>
                 <% else %>
-                  <<%= field.tag %> href="<%= field.content %>"><%= field.content %></<%= field.tag %>>
+                  <% if field.label == 'Email:' %>
+                    <a href="mailto:<%= field.content %>">
+                      <%= field.content %></a>
+                  <% else %>
+                    <a href="<%= field.content %>">
+                      <%= field.content %></a>
+                  <% end %>
                 <% end %>
               <% else %>
                 <<%= field.tag %>><%= field.content %></<%= field.tag %>>
