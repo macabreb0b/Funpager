@@ -15,10 +15,16 @@
 #
 
 class Page < ActiveRecord::Base
-  validates :user_id, :title, :handle, :company, :layout, :position, :presence => true
+  THEMES = [
+    'carbon',
+    'tablecloth',
+    'paper-cup'
+  ]
+  validates :user_id, :title, :handle, :company, :layout, :position, :theme, :presence => true
   validates :handle, :uniqueness => true, :length => { minimum: 4 }
   validates :position, :inclusion => { in: ['left', 'center', 'right'] }
   validates :layout, :inclusion => { in: ['one-column', 'sidebar-left', 'sidebar-right'] }
+  validates :theme, :inclusion => { in: THEMES }
   before_validation :set_defaults
 
   belongs_to :user
@@ -53,5 +59,6 @@ class Page < ActiveRecord::Base
       self.layout = 'one-column' if self.layout.nil?
       self.company = 'My Company' if self.company.nil?
       self.handle = self.generate_handle if self.handle.nil?
+      self.theme = THEMES.sample() if self.theme.nil?
     end
 end

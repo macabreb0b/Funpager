@@ -7,14 +7,14 @@
 /*global  Singlepager, Backbone */
 
 Singlepager.Views.EditPage = Backbone.CompositeView.extend({
-  template: JST['pages/show'],
+  template: JST['pages/edit'],
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'reset sync', this.resetWidgets);
     this.listenTo(this.model.widgets(), 'add', this.addWidget);
     this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
-
     this.model.widgets().each(this.addWidget.bind(this));
   },
 
@@ -27,7 +27,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     "click .add-services-widget": 'newServicesWidget',
     "click .add-service": 'newService',
     'submit .new': 'submit',
-    'click .cancel': 'cancel'
+    'click .cancel': 'cancel',
+    'click #workstation a': 'setTheme'
   },
 
   addWidget: function(widget) {
@@ -70,14 +71,32 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
       page: this.model
     });
     this.$el.html(renderedContent);
-    this.setTheme();
+    this.getTheme();
     this.makeSortable();
 
     return this;
   },
 
-  setTheme: function() {
-    $('body').addClass("carbon");
+  setTheme: function(event) {
+    event.preventDefault();
+    var $theme = $(event.currentTarget).data('theme')
+
+    this.model.save({ theme: $theme }, {
+      success: function(model, response) {
+        $('body').removeClass()
+        $('body').addClass(model.get('theme'));
+      }
+    })
+  },
+
+  getTheme: function() {
+    $('body').removeClass()
+    $('body').addClass(this.model.get('theme'));
+
+    var $workspace = $('#workstation')
+    $workspace.empty()
+    $workspace.append('Themes: <a href="#" data-theme="carbon">Carbon</a><a href="#" data-theme="tablecloth">Tablecloth</a><a href="#" data-theme="paper-cup">Paper Cup</a>')
+
     window.document.title = this.model.get('company');
   },
 
@@ -191,6 +210,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
+    console.log('submitting .new')
 
     widget.save({}, {
       wait: true,

@@ -17,7 +17,7 @@ class WidgetsController < ApplicationController
     @widget = Widget.find(params[:id])
 
     if @widget.update_attributes(widget_params)
-
+      @widget.save
       render json: @widget.to_json(include: :fields)
     else
       render json: @widget.errors.full_messages, status: 422
@@ -42,7 +42,7 @@ class WidgetsController < ApplicationController
 
   private
     def widget_params
-      params.require(:widget).permit(:rank, :name, :page_id,
-            fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder])
+      params.require(:widget)
+      .permit(:rank, :name, :page_id, fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder])
     end
 end

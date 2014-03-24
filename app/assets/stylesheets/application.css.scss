@@ -13,8 +13,8 @@
  */
 
 @import "bootstrap";
-@import url(http://fonts.googleapis.com/css?family=Oleo+Script|Gloria+Hallelujah|Candal|Cutive|Merriweather|Oswald|Alegreya|Open+Sans|Karla|Spinnaker);
-// https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script|Gloria+Hallelujah|Candal|Cutive|Merriweather|Oswald|Alegreya|Open+Sans|Karla|Spinnaker)
+@import url(http://fonts.googleapis.com/css?family=Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700);
+// https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700
 .navbar-inverse {
   background-color: #f47946;
   .container { // make the navbar extend slightly outside of the main width
@@ -104,6 +104,22 @@ ul.widgets {
   li {
     list-style: disc inside;
   }
+  .click-to-edit {
+    text-align: center;
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    padding: 3px 0;
+    margin-left: -50px;
+    font-family: arial, sans-serif;
+    font-size: 0.9em;
+    background-color: slategrey;
+    color: white;
+    border-radius: 5px;
+    opacity: 0.8;
+  }
 }
 
 textarea.form-control {
@@ -124,7 +140,20 @@ textarea.form-control {
 .widget-form {
   background-color: lightgrey;
   border-radius: 5px;
+  font-family: 'Arial', sans-serif;
+  font-size: 1em;
+  color: black;
+  label {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.8em;
+    color: black;
+    font-style: normal;
+  }
+  .cancel {
+    font-size: 0.7em !important;
+  }
 }
+
 .widget-form > div {
   padding: 10px;
 }
@@ -146,25 +175,6 @@ textarea.form-control {
   overflow: hidden;
   text-align: center;
   background: image-url('dash-bg.png') left center repeat-x;
-}
-
-.click-to-edit {
-  text-align: center;
-  position: absolute;
-  display: none;
-  top: 50%;
-  left: 50%;
-  width: 90px;
-  margin-left: -45px;
-  font-size: 1em;
-  background-color: slategrey;
-  color: white;
-  border-radius: 5px;
-  opacity: 0.8;
-}
-
-#toolbar {
-
 }
 
 .social-link {

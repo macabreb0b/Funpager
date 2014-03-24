@@ -25,17 +25,17 @@ class Field < ActiveRecord::Base
     'Description:' => 'p',
     'Url:' => 'a',
     'Facebook:' => 'a',
-    'Service:' => 'li',
     'Twitter:' => 'a',
     'LinkedIn:' => 'a',
     'Tumblr:' => 'a',
+    'Service:' => 'li',
     'Email:' => 'a',
     'Phone:' => 'p',
     'Address:' => 'p',
     'Image:' => 'img',
     'Street:' => 'p',
     'City:' => 'p',
-    'Postal Code:' => 'p',
+    'Postal Code:' => 'p'
   }
 
   validates :label, :widget, :content_type, :tag, :presence => true

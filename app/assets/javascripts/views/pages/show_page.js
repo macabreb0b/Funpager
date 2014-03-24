@@ -17,7 +17,7 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   addWidget: function(widget) {
-    console.log('adding');
+
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -35,7 +35,7 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   resetWidgets: function () {
-    console.log('resetting');
+
     var that = this;
     this.model.widgets().sort().each(function (widget) {
       that.removeWidget(widget);
@@ -45,19 +45,19 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   render: function() {
-    console.log('adding');
+
     var renderedContent = this.template({
       page: this.model
     });
 
     this.$el.html(renderedContent);
-    this.setTheme();
+    this.getTheme();
 
     return this;
   },
 
-  setTheme: function() {
-    $('body').addClass('carbon');
+  getTheme: function() {
+    $('body').addClass(this.model.get('theme'));
     window.document.title = this.model.get('company');
   },
 

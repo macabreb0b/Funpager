@@ -30,6 +30,12 @@ class PagesController < ApplicationController
   end
 
   def update
+    @page = Page.find(params[:id])
+    if @page.update_attributes(page_params)
+      render :json => @page.to_json()
+    else
+      render :json => @page.errors.full_messages
+    end
   end
 
   def index
@@ -46,7 +52,7 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:title,
+      params.require(:page).permit(:title, :theme,
             widgets_attributes: [:name, :rank,
             fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder]])
     end

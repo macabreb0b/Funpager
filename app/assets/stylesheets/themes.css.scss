@@ -1,4 +1,5 @@
-// all credit to http://lea.verou.me/css3patterns/# for the cool patterns!
+// all credit to http://lea.verou.me/css3patterns/#
+// and http://subtlepatterns.com/ for the cool patterns!
 
 body.carbon {
   background:
@@ -8,49 +9,6 @@ body.carbon {
   radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
   background-color:#282828;
   background-size:16px 16px;
-
-  #page-content {
-    background-color: rgba(0,0,0,0.3);
-    font-family: 'Open Sans', sans-serif;
-    color: white;
-    h1 {
-      font-family: 'Oswald', 'Open Sans', sans-serif;
-      font-size: 3.3em;
-      color: limegreen;
-    }
-    h2 {
-      font-family: 'Oswald', 'Open Sans', sans-serif;
-      font-size: 2.5em;
-    }
-    h3 {
-      font-family: 'Oswald', 'Open Sans', sans-serif;
-
-    }
-    p, li {
-      font-size: 1.2em;
-    }
-    p.copyright {
-      font-size: 0.7em;
-    }
-  }
-}
-
-body.madras {
-  background-color: hsl(34, 53%, 82%);
-  background-image: repeating-linear-gradient(45deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
-    hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
-    hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
-    hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
-    hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
-    hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 120px, hsla(197, 62%, 11%, 0.5) 120px, hsla(197, 62%, 11%, 0.5) 140px
-    ),
-  repeating-linear-gradient(135deg, transparent 5px, hsla(197, 62%, 11%, 0.5) 5px, hsla(197, 62%, 11%, 0.5) 10px,
-    hsla(5, 53%, 63%, 0) 10px, hsla(5, 53%, 63%, 0) 35px, hsla(5, 53%, 63%, 0.5) 35px, hsla(5, 53%, 63%, 0.5) 40px,
-    hsla(197, 62%, 11%, 0.5) 40px, hsla(197, 62%, 11%, 0.5) 50px, hsla(197, 62%, 11%, 0) 50px, hsla(197, 62%, 11%, 0) 60px,
-    hsla(5, 53%, 63%, 0.5) 60px, hsla(5, 53%, 63%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 70px, hsla(35, 91%, 65%, 0.5) 80px,
-    hsla(35, 91%, 65%, 0) 80px, hsla(35, 91%, 65%, 0) 90px, hsla(5, 53%, 63%, 0.5) 90px, hsla(5, 53%, 63%, 0.5) 110px,
-    hsla(5, 53%, 63%, 0) 110px, hsla(5, 53%, 63%, 0) 140px, hsla(197, 62%, 11%, 0.5) 140px, hsla(197, 62%, 11%, 0.5) 160px
-  );
 
   #page-content {
     background-color: rgba(0,0,0,0.3);
@@ -137,9 +95,7 @@ body.houndstooth {
     p, li {
       font-size: 1.2em;
     }
-    p.copyright {
-      font-size: 0.7em;
-    }
+
   }
 }
 
@@ -172,9 +128,7 @@ body.argyle {
     p, li {
       font-size: 1.2em;
     }
-    p.copyright {
-      font-size: 0.7em;
-    }
+
   }
 }
 
@@ -207,40 +161,41 @@ body.blueprint {
     p, li {
       font-size: 1.2em;
     }
-    p.copyright {
-      font-size: 0.7em;
-    }
   }
 }
 
-body.paper {
-  background-color: hsl(2, 57%, 40%);
-  background-image: repeating-linear-gradient(transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
-  repeating-linear-gradient(270deg, transparent, transparent 50px, rgba(0,0,0,.4) 50px, rgba(0,0,0,.4) 53px, transparent 53px, transparent 63px, rgba(0,0,0,.4) 63px, rgba(0,0,0,.4) 66px, transparent 66px, transparent 116px, rgba(0,0,0,.5) 116px, rgba(0,0,0,.5) 166px, rgba(255,255,255,.2) 166px, rgba(255,255,255,.2) 169px, rgba(0,0,0,.5) 169px, rgba(0,0,0,.5) 179px, rgba(255,255,255,.2) 179px, rgba(255,255,255,.2) 182px, rgba(0,0,0,.5) 182px, rgba(0,0,0,.5) 232px, transparent 232px),
-  repeating-linear-gradient(125deg, transparent, transparent 2px, rgba(0,0,0,.2) 2px, rgba(0,0,0,.2) 3px, transparent 3px, transparent 5px, rgba(0,0,0,.2) 5px);
+p.copyright {
+  font-size: 0.8em !important;
+}
+
+body.paper-cup {
+  background-color: white;
+  background: image-url('bg/green_cup.png') top left repeat ;
 
   #page-content {
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(255,255,255,0.6);
     font-family: 'Open Sans', sans-serif;
-    color: white;
+    color: darkslategrey;
     h1 {
-      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-family: 'Merriweather', sans-serif;
+      font-weight: 300;
+      font-style: italic;
       font-size: 3.3em;
-      color: limegreen;
+      color: darkred;
     }
     h2 {
-      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-family: 'Merriweather', sans-serif;
+
       font-size: 2.5em;
     }
     h3 {
-      font-family: 'Oswald', 'Open Sans', sans-serif;
-
+      font-family: 'Merriweather', sans-serif;
+      font-style: italic;
+      font-weight: 300;
+      color: darkred;
     }
     p, li {
       font-size: 1.2em;
-    }
-    p.copyright {
-      font-size: 0.7em;
     }
   }
 }
