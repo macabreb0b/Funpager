@@ -111,6 +111,9 @@ textarea.form-control {
   border: thin solid lightgrey;
   background-color: SeaShell;
   cursor: pointer;
+  a {
+    pointer-events: none;
+  }
 }
 
 .widget-form {
@@ -259,6 +262,10 @@ p.copyright {
   }
   a.tablecloth-theme {
     background: image-url('thumbs/tablecloth.png');
+    background-size: cover;
+  }
+  a.crossword-theme {
+    background: image-url('thumbs/crossword.png');
     background-size: cover;
   }
 }

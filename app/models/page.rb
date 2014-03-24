@@ -25,9 +25,9 @@ class Page < ActiveRecord::Base
     'skulls',
     'stardust',
     'feathers',
-    # 'food-party',
-    # 'giftly',
-    # 'crossword'
+    'food-party',
+    'giftly',
+    'crossword'
   ]
   validates :user_id, :title, :handle, :company, :layout, :position, :theme, :presence => true
   validates :handle, :uniqueness => true, :length => { minimum: 4 }
