@@ -43,6 +43,6 @@ class WidgetsController < ApplicationController
   private
     def widget_params
       params.require(:widget)
-      .permit(:rank, :name, :page_id, fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder])
+        .permit(:rank, :name, :page_id, fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder])
     end
 end

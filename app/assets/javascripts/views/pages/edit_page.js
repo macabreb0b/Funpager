@@ -48,15 +48,15 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     });
   },
 
-  makeSortable: function() {
-    $('.widgets').sortable({
-      cursor: 'move',
-      stop: function(event, ui) {
-        var $widget = ui.item;
-        $widget.trigger('move');
-      }
-    });
-  },
+  // makeSortable: function() {
+//     $('.widgets').sortable({
+//       cursor: 'move',
+//       stop: function(event, ui) {
+//         var $widget = ui.item;
+//         $widget.trigger('move');
+//       }
+//     });
+//   },
 
   removeWidget: function(widget) {
     var widgetsShowView = _(this.subviews()['.widgets']).find(function(subview) {
@@ -72,7 +72,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.getTheme();
-    this.makeSortable();
+    // this.makeSortable();
 
     return this;
   },
