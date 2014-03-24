@@ -1,28 +1,37 @@
+<%= render 'static_pages/splash_nav' %>
 <div class="row">
+  <section class="splash_auth">
+    <div class="container">
+      <h1>Sign Up</h1>
+    </div>
+  </section>
 
-<h1>Sign Up</h1>
+  <section class="splash_auth_form">
+    <div class="container">
+      <form class="form" action="<%= users_url %>" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
 
-<form class="form" action="<%= users_url %>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class='form-group'>
+          <label>Username:
+            <input class="form-control" type="text"
+              name="user[username]" value="<%= @user.username %>">
+          </label>
+        </div>
 
-  <div class='form-group'>
-    <label>Username:
-      <input class="form-control" type="text"
-        name="user[username]" value="<%= @user.username %>">
-    </label>
-  </div>
+        <div class='form-group'>
+          <label>Email:
+            <input class="form-control" type="text"
+              name="user[email]" value="<%= @user.email %>">
+          </label>
+        </div>
 
-  <div class='form-group'>
-    <label>Email:
-      <input class="form-control" type="text"
-        name="user[email]" value="<%= @user.email %>">
-    </label>
-  </div>
-
-  <div class='form-group'>
-    <label>Password:
-      <input class="form-control" type="password" name="user[password]">
-    </label>
-  </div>
-  <button class="btn btn-primary">Sign Up</button>
-</form>
+        <div class='form-group'>
+          <label>Password:
+            <input class="form-control" type="password" name="user[password]">
+          </label>
+        </div>
+        <button class="btn btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </section>
+</div>

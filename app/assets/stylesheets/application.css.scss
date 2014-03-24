@@ -15,51 +15,13 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700);
 // https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700
-.navbar-inverse {
-  background-color: #f47946;
-  .container { // make the navbar extend slightly outside of the main width
-    max-width: 900px;
-  }
 
-  a, .navbar-nav > li > a {
-    color: white;
-    border-left: 1px solid #e65b37;
-    border-right: 1px solid #e65b37;
-  }
-
-  .dropdown-menu > li > a {
-    border: 0;
-  }
-
- .navbar-brand {
-    color: white;
-    font-weight: 700;
-  }
-
-  .btn {
-    margin-left: 10px;
-  }
-
-  .btn-clear:hover {
-    background: white;
-    border: 1px #f47946 solid;
-    color: #f47946;
-  }
-}
-
-.navbar-nav.navbar-right:last-child {
-  margin-right: 0;
-}
 
 .row {
   margin:0;
 }
 
-.btn-clear {
-  background: none;
-  border: 1px white solid;
-  color: white;
-}
+
 
 .page-list {
   border-top: 1px #cecece solid;

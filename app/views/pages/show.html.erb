@@ -36,7 +36,7 @@
   $(function() {
     setTimeout(function() {
       window.document.title = "<%= @page.company %>";
-      $('.navbar-inverse').remove();
+      // $('.navbar-inverse').remove();
       $('body').attr("class", "<%= @page.theme %>");
     }, 300) // need to decrease this
   });

@@ -1,3 +1,86 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// navbar and splash navbar styles
+.navbar-inverse {
+  background-color: #f47946;
+  .container { // make the navbar extend slightly outside of the main width
+    max-width: 900px;
+  }
+
+  a, .navbar-nav > li > a {
+    color: white;
+    border-left: 1px solid #e65b37;
+    border-right: 1px solid #e65b37;
+  }
+
+  .dropdown-menu > li > a {
+    border: 0;
+  }
+
+ .navbar-brand {
+    color: white;
+    font-weight: 700;
+  }
+
+  .btn {
+    margin-left: 10px;
+  }
+
+  .btn-clear:hover {
+    background: white;
+    border: 1px #f47946 solid;
+    color: #f47946;
+  }
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: 0;
+}
+
+.btn-clear {
+  background: none;
+  border: 1px white solid;
+  color: white;
+}
+
+
+.navbar-splash {
+  background-color: white;
+  min-height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .navbar-brand {
+    color: #f47946;
+    font-weight: 700;
+    font-size: 2.8em;
+  }
+  .container {
+    max-width: 900px;
+  }
+  .btn-clear {
+    border: 1px #f47946 solid;
+    color: #f47946;
+    margin-left: 10px;
+  }
+}
+
+// splash / home page styles
+
+.splash_intro {
+  background-color: #f47946;
+  color: white;
+  text-align: center;
+}
+
+.splash_auth {
+  background-color: #f47946;
+  color: white;
+  text-align: left;
+  height: 90px;
+}
+
+.splash_auth_form {
+  padding-top: 20px;
+}
