@@ -25,7 +25,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.friendly.find(params[:id])
-    @widgets = @page.widgets
+    @widgets = @page.widgets.sort_by(&:rank)
     respond_to do |format|
       format.json { render json: @page.to_json(include: :widgets) }
       format.html { render 'show' }
