@@ -3,15 +3,18 @@
     <% @widgets.each do |widget| %>
       <li class="widget">
         <div class="widget-fields-no-hover">
-          <% widget.fields.sort.each do |field| %>
+          <% widget.fields.sort.each_with_index do |field, idx| %>
             <% if field.content != '' %>
+
               <% if field.tag == 'a' %>
                 <% if widget.name == "Social" %>
                   <% social_icon = field.label.downcase[0..-2] %>
                   <a class='social-link <%= social_icon %>'
                     href='<%= field.content %>'
                     target="_blank"></a>
+
                 <% else %>
+
                   <% if field.label == 'Email:' %>
                     <a href="mailto:<%= field.content %>">
                       <%= field.content %></a>
@@ -21,7 +24,13 @@
                   <% end %>
                 <% end %>
               <% else %>
+
+                <% if field.tag == 'li' && idx == 2 %><ul><% end %>
+
                 <<%= field.tag %>><%= field.content %></<%= field.tag %>>
+
+                <% if field.tag == 'li' && idx == (widget.fields.size - 1)%></ul><% end %>
+
               <% end %>
             <% end %>
           <% end %>
@@ -34,10 +43,7 @@
 
 <script type="text/javascript">
   $(function() {
-    setTimeout(function() {
-      window.document.title = "<%= @page.company %>";
-      // $('.navbar-inverse').remove();
-      $('body').attr("class", "<%= @page.theme %>");
-    }, 300) // need to decrease this
+    window.document.title = "<%= @page.company %>";
+    $('body').attr("class", "<%= @page.theme %>");
   });
 </script>
