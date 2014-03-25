@@ -12,9 +12,10 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   initialize: function() {
     this.listenTo(this.model, 'sync change', this.render);
     this.listenTo(this.model, 'sync change', this.resetWidgets);
-    this.listenTo(this.model.widgets(), 'reset sync', this.resetWidgets);
-    this.listenTo(this.model.widgets(), 'add', this.addWidget);
-    this.listenTo(this.model.widgets(), 'remove', this.removeWidget);
+    this.listenTo(this.collection, 'reset sync', this.resetWidgets);
+    this.listenTo(this.collection, 'add', this.addWidget);
+    this.listenTo(this.collection, 'remove', this.removeWidget);
+
     this.model.widgets().each(this.addWidget.bind(this));
   },
 
@@ -32,20 +33,21 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   addWidget: function(widget) {
-    console.log('adding')
-    console.log(widget.fields())
-    widget.fields().fetch()
+    console.log('adding widget')
+    // console.log(widget.fields()
+    // debugger
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
 
     this.addSubview('.widgets', widgetsShowView);
     widgetsShowView.render();
+
   },
 
   resetWidgets: function () {
     var that = this;
-    this.model.widgets().sort().each(function (widget) {
+    this.collection.sort().each(function (widget) {
       that.removeWidget(widget);
       that.addWidget(widget);
     });
@@ -55,6 +57,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     $('.widgets').sortable({
       cursor: 'move',
       start: function(event, ui) {
+        console.log($event.currentTarget)
         $(event.currentTarget).find('.add-widget-container').slideToggle(100);
       },
       stop: function(event, ui) {

@@ -2,7 +2,8 @@ class WidgetsController < ApplicationController
   def index # gets called by page/edit widgets/index.json.jbuilder
     @page = Page.find(params[:page_id])
     @widgets = @page.widgets
-    3.times {puts "in widgets#index"}
+    # 3.times {puts "in widgets#index"}
+    # render :json => @widgets.to_json(include: :fields)
   end
 
   # def new # for testing paperclip

@@ -8,6 +8,7 @@
 
 Singlepager.Collections.Widgets = Backbone.Collection.extend({
   url: function() {
+    console.log(this.page.url())
     return this.page.url() + "/widgets";
   },
 

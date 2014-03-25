@@ -55,10 +55,9 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   render: function() {
-    console.log('rendering');
+    console.log('rendering show template');
     console.log(this.model)
-    this.model.fetch({
-      success: function() {
+
         var renderedContent = this.template()({
           widget: this.model,
           newOrEdit: 'edit',
@@ -74,8 +73,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
         this.$el.append(addWidget);
 
         return this;
-      }
-    })
+
 
   },
 

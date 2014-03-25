@@ -7,7 +7,7 @@
 /*global  Singlepager, Backbone */
 
 Singlepager.Models.Widget = Backbone.Model.extend({
-  urlRoot: '/widgets',
+  // urlRoot: '/widgets', //
 
   fields: function () {
     if (!this._fields) {
@@ -20,6 +20,7 @@ Singlepager.Models.Widget = Backbone.Model.extend({
 
   parse: function (response) {
     console.log('parsing widget')
+    console.log(response) // this is the full json object!
     if (response.fields) {
       console.log('got some fields with ya widget')
       console.log(response.fields)
