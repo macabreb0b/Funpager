@@ -34,10 +34,11 @@ class PagesController < ApplicationController
 
   def update
     @page = Page.find(params[:id])
+
     if @page.update_attributes(page_params)
-      render :json => @page.to_json()
+      render :json => @page.to_json(include: :widgets, :methods => :time_ago)
     else
-      render :json => @page.errors.full_messages
+      render :json => @page.errors.full_messages, status: 422
     end
   end
 
@@ -55,7 +56,7 @@ class PagesController < ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:title, :theme,
+      params.require(:page).permit(:title, :theme, :handle, :company,
             widgets_attributes: [:name, :rank,
             fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder]])
     end

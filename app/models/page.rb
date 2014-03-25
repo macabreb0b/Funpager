@@ -43,6 +43,10 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :handle, :use => :slugged
 
+  def should_generate_new_friendly_id?
+    slug.blank? || handle_changed?
+  end
+
   attr_reader :time_ago
   belongs_to :user
 

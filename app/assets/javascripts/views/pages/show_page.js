@@ -16,8 +16,12 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
     'click #dashboard': 'dashboard',
     'click #domain': 'domain',
     'click #settings': 'settings',
-    'submit #handle': 'newDomain',
+    'submit form': 'editPageInfo',
     'click .remove': 'removePage'
+  },
+
+  initialize: function() {
+    this.listenTo(this.model, 'sync', this.render)
   },
 
   domain: function(event) {
@@ -34,13 +38,20 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
   settings: function(event) {
     event.preventDefault();
     var $content = $('#dashboard-content')
+    var renderedContent = JST['pages/settings']({
+      page: this.model
+    });
 
+    $content.html(renderedContent);
   },
 
-  newDomain: function(event) {
+  editPageInfo: function(event) {
     event.preventDefault();
 
-    var $data
+    var $form = $(event.currentTarget);
+    var data = $form.serializeJSON();
+    console.log(data)
+    this.model.save(data)
   },
 
   dashboard: function(event) {
