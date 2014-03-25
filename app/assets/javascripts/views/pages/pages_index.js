@@ -28,7 +28,7 @@ Singlepager.Views.PagesIndex = Backbone.View.extend({
 
   setTheme: function() {
     $('body').removeClass();
-    window.document.title = 'Singlepager';
+    window.document.title = 'Funpager';
   }
 
 });

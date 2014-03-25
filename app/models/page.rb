@@ -47,7 +47,6 @@ class Page < ActiveRecord::Base
     slug.blank? || handle_changed?
   end
 
-  attr_reader :time_ago
   belongs_to :user
 
   has_many :widgets, inverse_of: :page, dependent: :destroy

@@ -75,7 +75,9 @@ Backbone.CompositeView = Backbone.View.extend({
 });
 
 $(document).ready(function(){
-  Singlepager.initialize();
+  if($('#viewer').is('div')) {
+    Singlepager.initialize();
+  }
 });
 
 

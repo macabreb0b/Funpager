@@ -20,7 +20,7 @@ Singlepager.Models.Page = Backbone.Model.extend({
 
   parse: function(response) {
     if(response.widgets) {
-      this.widgets().set(); // this isn't doing anything - why does it break the show view?
+      this.widgets().set(response.widgets); // this isn't doing anything - why does it break the show view?
       delete response.widgets;
     }
     return response;

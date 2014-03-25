@@ -50,7 +50,7 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
 
     var $form = $(event.currentTarget);
     var data = $form.serializeJSON();
-    console.log(data)
+
     this.model.save(data)
   },
 
@@ -64,10 +64,15 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
     var renderedContent = this.template({
       page: this.model
     });
-
+    this.setTheme();
     this.$el.html(renderedContent);
-    // this.$contentEl = $('#dashboard-content')
     return this;
+  },
+
+
+  setTheme: function() {
+    $('body').removeClass();
+    window.document.title = 'Funpager';
   },
 
   removePage: function(event) {

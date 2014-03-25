@@ -3,7 +3,6 @@
            nomen:    false,
            plusplus: false,
            undef:    false,
-           vars:     false,
            white:    false */
 /*global  Singlepager, Backbone */
 
