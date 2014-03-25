@@ -16,7 +16,7 @@ window.Singlepager = {
     this.pages = new Singlepager.Collections.Pages()
 
     new Singlepager.Routers.Pages({
-      $rootEl: $('#content')
+      $rootEl: $('#viewer')
     });
     Backbone.history.start();
   }

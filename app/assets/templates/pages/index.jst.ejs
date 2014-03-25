@@ -1,34 +1,40 @@
-<h2><span class="glyphicon glyphicon-file"></span> Your Pages</h2>
 
-<% pages.each(function(page) { %>
-  <div class="row page-list">
-    <h3><a href="#/pages/<%= page.id %>"><%= page.get('title') %></a></h3>
-    <p>
-      <span class="glyphicon glyphicon-link"></span>
-      <a href="/pages/<%= page.get('slug') %>" target="_blank">
-        /pages/<%= page.get('slug') %></a>
-      - Created <%= page.get('created_at') %>
-    </p>
+<div class="container dashboard">
+  <header><h2><span class="glyphicon glyphicon-file"></span>&nbsp;Your Pages</h2></header>
+  <ul>
+    <% pages.each(function(page) { %>
+      <li class="row page-list">
+        <h3><a href="#/pages/<%= page.id %>"><%= page.get('title') %></a></h3>
+        <p>
+          <span class="glyphicon glyphicon-globe"></span>
+          <a href="/pages/<%= page.get('slug') %>" target="_blank">
+            /pages/<%= page.get('slug') %></a>
+          - Created <%= page.get('time_ago') %> ago
+        </p>
 
-    <div class="page-buttons">
-      <a class="btn btn-danger btn-sm remove" data-id="<%= page.id %>" href="#">
-        <span class="glyphicon glyphicon-trash"></span>
-      </a>
+        <div class="page-buttons">
+          <a class="btn btn-danger btn-sm remove" data-id="<%= page.id %>" href="#">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
 
-      <a class="btn btn-primary btn-sm"  href="#/pages/<%= page.id %>" disabled>
-        <span class="glyphicon glyphicon-dashboard"></span>
-        &nbsp;Dashboard
-      </a>
+          <a class="btn btn-primary btn-sm"  href="#/pages/<%= page.id %>" disabled>
+            <span class="glyphicon glyphicon-dashboard"></span>
+            &nbsp;Dashboard
+          </a>
 
-      <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
-        <span class="glyphicon glyphicon-pencil"></span>
-        &nbsp;Edit Page
-      </a>
+          <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
+            <span class="glyphicon glyphicon-pencil"></span>
+            &nbsp;Edit Page
+          </a>
 
-      <a class="btn btn-primary btn-sm" href="/pages/<%= page.get('slug') %>">
-        <span class="glyphicon glyphicon-eye-open"></span>
-        &nbsp;View Page
-      </a>
-    </div>
-  </div>
-<% }) %>
+          <a class="btn btn-primary btn-sm"
+            target="_blank"
+            href="/pages/<%= page.get('slug') %>">
+            <span class="glyphicon glyphicon-eye-open"></span>
+            &nbsp;View Page
+          </a>
+        </div>
+      </li>
+    <% }) %>
+  </ul>
+</div>

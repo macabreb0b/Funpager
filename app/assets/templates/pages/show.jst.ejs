@@ -1,5 +1,34 @@
-<div id="page-content">
-  <ul class="widgets">
-  </ul>
-  <p class="copyright">&copy; 2014 <%= page.get('company') %></p>
+<div class="row" id="dashboard-toolbar">
+  <div class="container">
+    <header><h3><%= page.get('title') %></h3>
+
+    <div class="page-buttons">
+
+      <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
+        <span class="glyphicon glyphicon-pencil"></span>
+        &nbsp;Edit Page
+      </a>
+
+      <a class="btn btn-primary btn-sm" href="/pages/<%= page.get('slug') %>">
+        <span class="glyphicon glyphicon-eye-open"></span>
+        &nbsp;View Page
+      </a>
+    </div>
+    </header>
+  </div>
 </div>
+
+<section class="dashboard">
+  <div class="container dashboard-container">
+    <nav>
+      <a href="#/pages/<%= page.id %>">Dashboard</a>
+      <a href="#" id="domain">Domain</a>
+      <a href="#" id="settings">Settings</a>
+    </nav>
+
+    <div id="dashboard-content">
+
+
+    </div>
+  </div>
+</section>

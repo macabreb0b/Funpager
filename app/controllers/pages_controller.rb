@@ -43,7 +43,7 @@ class PagesController < ApplicationController
 
   def index
     @pages = current_user.pages
-    render json: @pages.to_json(include: :widgets)
+    render json: @pages.to_json(include: :widgets, :methods => :time_ago)
   end
 
   def destroy

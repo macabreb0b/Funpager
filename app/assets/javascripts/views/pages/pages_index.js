@@ -18,6 +18,7 @@ Singlepager.Views.PagesIndex = Backbone.View.extend({
   },
 
   render: function() {
+    console.log(this.collection)
     var renderedContent = this.template({
       pages: this.collection
     });

@@ -64,6 +64,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
 
   show: function(id) {
     var that = this;
+
     this.collection.fetch({
       success: function(collection) {
         var page = collection.getOrFetch(id);

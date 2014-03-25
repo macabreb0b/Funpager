@@ -6,8 +6,13 @@
 // navbar and splash navbar styles
 .navbar-inverse {
   background-color: #f47946;
-  .container { // make the navbar extend slightly outside of the main width
-    max-width: 900px;
+  .navbar-nav > .open > a:focus {
+    background-color: #ffffff !important;
+    color: #f47946 !important;
+  }
+  .container {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   a, .navbar-nav > li > a {
@@ -20,6 +25,8 @@
     border: 0;
   }
 
+
+
  .navbar-brand {
     color: white;
     font-weight: 700;
@@ -27,6 +34,7 @@
 
   .btn {
     margin-left: 10px;
+    margin-right: 10px;
   }
 
   .btn-clear:hover {
@@ -56,9 +64,6 @@
     color: #f47946;
     font-weight: 700;
     font-size: 2.8em;
-  }
-  .container {
-    max-width: 900px;
   }
   .btn-clear {
     border: 1px #f47946 solid;

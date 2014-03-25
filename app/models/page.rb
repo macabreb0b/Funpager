@@ -16,7 +16,11 @@
 #  slug       :string(255)
 #
 
+require 'action_view'
+
 class Page < ActiveRecord::Base
+  include ActionView::Helpers::DateHelper
+
   THEMES = [
     'carbon',
     'tablecloth',
@@ -39,6 +43,7 @@ class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :handle, :use => :slugged
 
+  attr_reader :time_ago
   belongs_to :user
 
   has_many :widgets, inverse_of: :page, dependent: :destroy
@@ -63,6 +68,10 @@ class Page < ActiveRecord::Base
 
   def generate_handle
     SecureRandom.urlsafe_base64(6)
+  end
+
+  def time_ago
+    @time_ago = time_ago_in_words(self.created_at)
   end
 
   private
