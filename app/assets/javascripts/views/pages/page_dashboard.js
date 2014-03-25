@@ -6,9 +6,9 @@
            white:    false */
 /*global  Singlepager, Backbone */
 
-Singlepager.Views.ShowPage = Backbone.View.extend({
+Singlepager.Views.PageDashboard = Backbone.View.extend({
 
-  template: JST['pages/show'],
+  template: JST['pages/dashboard'],
 
   className: 'dashboard',
 
@@ -26,6 +26,8 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
 
   domain: function(event) {
     event.preventDefault();
+    $('nav a').removeClass('active')
+    $(event.currentTarget).addClass('active')
 
     var $content = $('#dashboard-content')
     var renderedContent = JST['pages/domain_name']({
@@ -37,6 +39,9 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
 
   settings: function(event) {
     event.preventDefault();
+    $('nav a').removeClass('active')
+    $(event.currentTarget).addClass('active')
+
     var $content = $('#dashboard-content')
     var renderedContent = JST['pages/settings']({
       page: this.model

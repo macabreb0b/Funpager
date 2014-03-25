@@ -3,7 +3,6 @@ class PagesController < ApplicationController
     @page = Page.new
     @page.widgets << Widget.new_headline_widget
     @page.widgets << Widget.new_text_widget
-    @page.widgets << Widget.new_text_widget
 
     render 'new'
   end
@@ -26,10 +25,14 @@ class PagesController < ApplicationController
   def show
     @page = Page.friendly.find(params[:id])
     @widgets = @page.widgets.sort_by(&:rank)
+
     respond_to do |format|
       format.json { render json: @page.to_json(include: :widgets) }
       format.html { render 'show' }
     end
+
+    rescue ActiveRecord::RecordNotFound # check for
+      redirect_to root_url
   end
 
   def update
@@ -43,7 +46,7 @@ class PagesController < ApplicationController
   end
 
   def index
-    @pages = current_user.pages
+    @pages = current_user.pages.sort_by(&:created_at)
     render json: @pages.to_json(include: :widgets, :methods => :time_ago)
   end
 
@@ -54,10 +57,9 @@ class PagesController < ApplicationController
   end
 
   private
-
     def page_params
       params.require(:page).permit(:title, :theme, :handle, :company,
-            widgets_attributes: [:name, :rank,
-            fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder]])
+        widgets_attributes: [:name, :rank,
+        fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder]])
     end
 end

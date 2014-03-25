@@ -34,7 +34,7 @@ class Page < ActiveRecord::Base
     'crossword'
   ]
   validates :user_id, :title, :handle, :company, :layout, :position, :theme, :presence => true
-  validates :handle, :uniqueness => true, :length => { minimum: 4 }
+  validates :handle, :slug, :uniqueness => true, :length => { minimum: 4 }
   validates :position, :inclusion => { in: ['left', 'center', 'right'] }
   validates :layout, :inclusion => { in: ['one-column', 'sidebar-left', 'sidebar-right'] }
   validates :theme, :inclusion => { in: THEMES }
