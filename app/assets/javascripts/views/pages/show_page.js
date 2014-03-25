@@ -40,7 +40,7 @@ Singlepager.Views.ShowPage = Backbone.View.extend({
   newDomain: function(event) {
     event.preventDefault();
 
-
+    var $data
   },
 
   dashboard: function(event) {

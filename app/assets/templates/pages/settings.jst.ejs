@@ -1,19 +1,19 @@
 <h3><span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard</h3>
 
-<form id="edit-page">
+<form class="form" id="edit-page">
 
-<label>
-<input>
-</label>
+<div class="form-group">
+  <label>Your page title:
+    <input class="form-control" name="page[title]" type="text" value="<%= page.escape('title') %>">
+  </label>
+</div>
 
-<label>
-<input>
-</label>
+<div class="form-group"
+  <label>Your page company:
+    <input class="form-control" type="text" name="page[company]" value="<%= page.escape('company') ">
+  </label>
+</div>
 
-<label>
-<input>
-</label>
+<button class="btn btn-primary">Submit</button>
 
-<button>Submit</button>
-
-<form>
+</form>
