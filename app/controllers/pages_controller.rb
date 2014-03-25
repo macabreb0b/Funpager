@@ -1,15 +1,13 @@
 class PagesController < ApplicationController
-  def new
-    @page = Page.new
-    @page.widgets << Widget.new_headline_widget
-    @page.widgets << Widget.new_text_widget
-
-    render 'new'
-  end
+  # def new # for testing accepts_nested_attributes_for
+  #   @page = Page.new
+  #   @page.widgets << Widget.new_headline_widget
+  #   @page.widgets << Widget.new_text_widget
+  #
+  #   render 'new'
+  # end
 
   def create
-    # @page = Page.new(page_params)
-
     @page = Page.new_starting_page
 
     @page.user_id = current_user.id

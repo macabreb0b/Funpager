@@ -6,7 +6,7 @@ Singlepager::Application.routes.draw do
     resources :widgets, only: [:index]
   end
 
-  resources :widgets, only: [:create, :update, :destroy]
+  resources :widgets, only: [:create, :update, :destroy, :new, :show]
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]

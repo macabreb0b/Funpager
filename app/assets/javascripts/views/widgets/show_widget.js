@@ -56,21 +56,27 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
   render: function() {
     console.log('rendering');
-    var renderedContent = this.template()({
-      widget: this.model,
-      newOrEdit: 'edit',
-      page_id: this.model.get('page_id'),
-      rank: this.model.get('rank')
-    });
+    console.log(this.model)
+    this.model.fetch({
+      success: function() {
+        var renderedContent = this.template()({
+          widget: this.model,
+          newOrEdit: 'edit',
+          page_id: this.model.get('page_id'),
+          rank: this.model.get('rank')
+        });
 
-    var addWidget = this.addWidgetTemplate({
-      id: this.model.id
-    });
+        var addWidget = this.addWidgetTemplate({
+          id: this.model.id
+        });
 
-    this.$el.html(renderedContent);
-    this.$el.append(addWidget);
+        this.$el.html(renderedContent);
+        this.$el.append(addWidget);
 
-    return this;
+        return this;
+      }
+    })
+
   },
 
   destroy: function(event) {

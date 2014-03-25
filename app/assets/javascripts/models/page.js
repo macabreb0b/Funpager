@@ -7,7 +7,7 @@
 /*global  Singlepager, Backbone */
 
 Singlepager.Models.Page = Backbone.Model.extend({
-  urlRoot: '/pages',
+  // urlRoot: '/pages',
 
   widgets: function() {
     if(!this._widgets) {
@@ -19,8 +19,11 @@ Singlepager.Models.Page = Backbone.Model.extend({
   },
 
   parse: function(response) {
+    console.log('parsing page')
     if(response.widgets) {
-      this.widgets().set(response.widgets); // this isn't doing anything - why does it break the show view?
+      this.widgets().set(response.widgets);
+      console.log('got some widgets with ya page')
+      console.log(response.widgets)
       delete response.widgets;
     }
     return response;

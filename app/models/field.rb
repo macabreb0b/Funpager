@@ -42,10 +42,13 @@ class Field < ActiveRecord::Base
   before_validation :set_tag
   belongs_to :widget
 
-  has_attached_file :image, :style => {
-    :big => "600x600>",
-    :small => "50x50#" # set more sizes after this line
-  }
+  has_attached_file :image,
+    :styles => {
+      :inline => "440x",
+      :big  => "600x600>"
+    }
+
+  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
   def self.new_company_name_field
     Field.new({ label: "Company Name:", content_type: "text", content: "Your Company Name", tag: 'h1' })
@@ -61,6 +64,10 @@ class Field < ActiveRecord::Base
 
   def self.new_text_field
     Field.new({ label: "Text:", content_type: "textarea", tag: 'p' })
+  end
+
+  def self.new_photo_field
+    Field.new({ label: "Image:", content_type: "file", tag: 'img' })
   end
 
 

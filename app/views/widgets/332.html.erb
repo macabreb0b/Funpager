@@ -1,0 +1,11 @@
+<h2><%= @widget.name %>
+<h3><%= @widget.page_id %>
+<h3><%= @widget.rank %>
+
+<% @fields.each do |field| %>
+  <h4><%= field.tag %>
+  <p><%= field.content_type %>
+  <p><%= field.content %>
+  <%= image_tag field.image.url(:big) %>
+  <%= field.image.url(:big) %>
+<% end %>

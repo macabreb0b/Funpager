@@ -1,43 +1,37 @@
-<form action="pages/50/widgets" method="POST" enctype="multipart/form-data">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-
-  <label>Name:<br>
-    <input type="text" name="widget[name]" value="<%= @widget.name %>">
-  </label>
+<%= form_for @widget do |form| %>
+  <%= form.label 'name' %>
+  <%= form.text_field 'name' %>
   <br>
 
-  Field 1:<br>
-  <label>Content_type: text<br>
-    <input type="hidden" name="widget[fields_attributes][0][content_type]" value="image">
-  </label>
+  <%= form.label :page_id %>
+  <%= form.number_field :page_id %>
   <br>
-  <label>Label: Text:<br>
-    <input type="text" name="widget[fields_attributes][0][label]" value="Text:">
-  </label>
-  <br>
-  <label>Content:<br>
-    <input type="text" name="widget[fields_attributes][0][content]">
-  </label>
+
+  <%= form.label :rank %>
+  <%= form.number_field :rank %>
   <br>
 
 
-  Field 2:<br>
-  <label>Content_type: image<br>
-    <input type="hidden" name="widget[fields_attributes][0][content_type]" value="image">
-  </label>
-  <br>
-  <label>Label: Image:<br>
-    <input type="text" name="widget[fields_attributes][0][label]" value="Text:">
-  </label>
-  <br>
-  <label>Content:<br>
-    <input type="text" name="widget[fields_attributes][0][content]">
-  </label>
-  <br>
+  <%= form.fields_for :fields do |f| %>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+    <br>
 
+    <%= f.label :label %>
+    <%= f.text_field :label %>
 
+    <%= f.label :content_type %>
+    <%= f.text_field :content_type %>
+    <br>
 
+    <%= f.label :tag %>
+    <%= f.text_field :tag %>
+    <br>
 
+    <%= f.label :image %>
+    <%= f.file_field :image %>
 
-  <button>Submit</button>
-</form>
+  <% end %>
+
+  <%= form.submit %>
+<% end %>
