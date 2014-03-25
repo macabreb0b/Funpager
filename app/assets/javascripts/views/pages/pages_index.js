@@ -13,9 +13,7 @@ Singlepager.Views.PagesIndex = Backbone.View.extend({
 
   template: JST['pages/index'],
 
-  events: {
-    'click .remove': 'removePage'
-  },
+  className: 'dashboard',
 
   render: function() {
     console.log(this.collection)
@@ -31,14 +29,6 @@ Singlepager.Views.PagesIndex = Backbone.View.extend({
   setTheme: function() {
     $('body').removeClass();
     window.document.title = 'Singlepager';
-  },
-
-  removePage: function(event) {
-    event.preventDefault();
-    var id = $(event.currentTarget).data('id');
-    var $page = this.collection.get(id);
-
-    $page.destroy();
   }
 
 });

@@ -53,7 +53,7 @@ body {
   position: relative;
 }
 
-.page-buttons {
+.page-list .page-buttons {
   position: absolute;
   right: 25px;
   top: 25px;
@@ -182,7 +182,7 @@ textarea.form-control {
 }
 
 .container {
-  max-width: 850px;
+  max-width: 900px;
 }
 
 .add-widget-container {
@@ -290,22 +290,52 @@ p.copyright {
 .dashboard nav {
   float: left;
   width: 185px;
+  a {
+    background: #f5f5f5;
+    text-decoration: none;
+    display: block;
+    border-bottom: thin solid #cecece;
+    padding: 10px;
+  }
+  a:hover {
+    background: white;
+  }
 }
 
-.dashboard .dashboard-content {
+#dashboard-content {
   margin-left: 185px;
   padding: 25px 25px 85px;
+
+  border: thin solid blue;
 }
 
 #dashboard-toolbar {
+  background-color: white;
+  border-bottom: thin solid #cecece;
+  height: 75px;
+  > .container {
+    padding: 0;
+  }
   header {
     position: relative;
+    .page-buttons {
+      position: absolute;
+      right: 0px;
+
+    }
   }
 }
 
 .dashboard {
+  height: 100%;
+  .your-pages {
+    padding: 15px;
+  }
+}
 
-  background-color: white;
+.dashboard > .container {
+  height: 100%;
+  background: white;
   border-left: thin #cecece solid;
   border-right: thin #cecece solid;
   padding: 0;

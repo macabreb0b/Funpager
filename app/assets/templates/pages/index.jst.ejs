@@ -1,6 +1,9 @@
 
-<div class="container dashboard">
-  <header><h2><span class="glyphicon glyphicon-file"></span>&nbsp;Your Pages</h2></header>
+<div class="container">
+  <header class="your-pages">
+    <h2><span class="glyphicon glyphicon-file"></span>&nbsp;Your Pages</h2>
+  </header>
+
   <ul>
     <% pages.each(function(page) { %>
       <li class="row page-list">
@@ -13,10 +16,6 @@
         </p>
 
         <div class="page-buttons">
-          <a class="btn btn-danger btn-sm remove" data-id="<%= page.id %>" href="#">
-            <span class="glyphicon glyphicon-trash"></span>
-          </a>
-
           <a class="btn btn-primary btn-sm"  href="#/pages/<%= page.id %>" disabled>
             <span class="glyphicon glyphicon-dashboard"></span>
             &nbsp;Dashboard
@@ -37,4 +36,5 @@
       </li>
     <% }) %>
   </ul>
+
 </div>

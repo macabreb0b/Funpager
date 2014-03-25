@@ -1,19 +1,19 @@
 <div class="row" id="dashboard-toolbar">
   <div class="container">
-    <header><h3><%= page.get('title') %></h3>
+    <header>
+      <div class="page-buttons">
+        <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
+          <span class="glyphicon glyphicon-pencil"></span>
+          &nbsp;Edit Page
+        </a>
 
-    <div class="page-buttons">
+        <a class="btn btn-primary btn-sm" href="/pages/<%= page.get('slug') %>">
+          <span class="glyphicon glyphicon-eye-open"></span>
+          &nbsp;View Page
+        </a>
+      </div>
 
-      <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
-        <span class="glyphicon glyphicon-pencil"></span>
-        &nbsp;Edit Page
-      </a>
-
-      <a class="btn btn-primary btn-sm" href="/pages/<%= page.get('slug') %>">
-        <span class="glyphicon glyphicon-eye-open"></span>
-        &nbsp;View Page
-      </a>
-    </div>
+      <h3><%= page.get('title') %></h3>
     </header>
   </div>
 </div>
@@ -21,14 +21,26 @@
 <section class="dashboard">
   <div class="container dashboard-container">
     <nav>
-      <a href="#/pages/<%= page.id %>">Dashboard</a>
-      <a href="#" id="domain">Domain</a>
-      <a href="#" id="settings">Settings</a>
+      <a href="#" id="dashboard">
+        <span class="glyphicon glyphicon-dashboard"></span>
+        &nbsp;DASHBOARD</a>
+      <a href="#" id="domain">
+        <span class="glyphicon glyphicon-globe"></span>
+        &nbsp;DOMAIN</a>
+      <a href="#" id="settings">
+        <span class="glyphicon glyphicon-cog"></span>
+        &nbsp;SETTINGS</a>
     </nav>
 
     <div id="dashboard-content">
+      <h3><span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard</h3>
+
+      <h3 class="page-title"><%= page.escape('title') %></h3>
+      <h4 class="page-company"><%= page.escape('company') %></h3>
 
 
+      <a class="btn btn-danger btn-sm remove" data-id="<%= page.id %>" href="#">
+        <span class="glyphicon glyphicon-trash"></span>&nbsp;Remove Page</a>
     </div>
   </div>
 </section>
