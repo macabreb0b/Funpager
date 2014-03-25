@@ -17,7 +17,7 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   addWidget: function(widget) {
-
+    console.log('adding widget');
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -27,6 +27,7 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   removeWidget: function(widget) {
+    console.log('removing widget');
     var widgetsShowView = _(this.subviews()['.widgets']).find(function(subview) {
       return subview.model == widget;
     });
@@ -35,9 +36,10 @@ Singlepager.Views.ShowPage = Backbone.CompositeView.extend({
   },
 
   resetWidgets: function () {
-
+    console.log('resetting widgets');
     var that = this;
     this.model.widgets().sort().each(function (widget) {
+      console.log(widget);
       that.removeWidget(widget);
       that.addWidget(widget);
     });

@@ -51,6 +51,9 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   makeSortable: function() {
     $('.widgets').sortable({
       cursor: 'move',
+      start: function(event, ui) {
+        $(event.currentTarget).find('.add-widget-container').slideToggle(100);
+      },
       stop: function(event, ui) {
         var $widget = ui.item;
         $widget.trigger('move');
@@ -73,8 +76,19 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.getTheme();
     this.makeSortable();
+    this.makeResizable();
 
     return this;
+  },
+
+  makeResizable: function() {
+    var windowHeight = $(window).height()
+    $('#viewer').height(windowHeight - 50 - 100)
+
+    $(window).resize(function() {
+      var windowHeight = $(window).height()
+      $('#viewer').height(windowHeight - 50 - 100)
+    })
   },
 
   setTheme: function(event) {
@@ -103,13 +117,13 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   showAddContent: function(event) {
     event.preventDefault();
 
-    $(event.currentTarget).find('.add-widget-container').slideToggle('fast');
+    $(event.currentTarget).find('.add-widget-container').slideToggle(100);
     $(event.currentTarget).find('.click-to-edit').fadeIn('fast');
   },
 
   hideAddContent: function(event) {
     event.preventDefault();
-    $(event.currentTarget).find('.add-widget-container').slideToggle('fast');
+    $(event.currentTarget).find('.add-widget-container').slideToggle(100);
     $(event.currentTarget).find('.click-to-edit').fadeOut('fast');
   },
 
@@ -214,8 +228,9 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     widget.save({}, {
       wait: true,
-      success: function(model) {
-        view.model.widgets().add(model);
+      success: function(model, response) {
+        console.log(model)
+        view.model.widgets().add(widget);
         view.$('#newForm').remove();
         view.renderSubviews();
       }

@@ -116,7 +116,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
-    console.log('submitting .edit')
+
     this.model.save(params, {
       wait: true,
       success: function() {

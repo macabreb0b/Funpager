@@ -15,7 +15,14 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700);
 // https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700
+html, body {
+  height: 100%;
+}
 
+#viewer {
+//  min-height: 100%;
+  overflow-y: auto;
+}
 
 .row {
   margin:0;
@@ -113,6 +120,9 @@ textarea.form-control {
   cursor: pointer;
   a {
     pointer-events: none;
+  }
+  h1, h2, h3, p, li {
+    color: #000 !important;
   }
 }
 
@@ -216,10 +226,13 @@ p.copyright {
 }
 
 #workstation {
-  height: 100px;
+  min-height: 100px;
+  height: auto;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
   background: rgba(64, 64, 64, 0.6);
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
   padding: 10px;
   color: white;
   a {

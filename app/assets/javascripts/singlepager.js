@@ -1,3 +1,11 @@
+/*jshint  browser:  true,
+           newcap:   true,
+           nomen:    false,
+           plusplus: false,
+           undef:    false,
+           white:    false */
+/*global  window, $, Singlepager, Backbone */
+
 window.Singlepager = {
   Models: {},
   Collections: {},
@@ -68,6 +76,15 @@ Backbone.CompositeView = Backbone.View.extend({
 
 $(document).ready(function(){
   Singlepager.initialize();
+
+  var windowHeight=$(window).height();
+  console.log(windowHeight);
+  $('#viewer').height(windowHeight - 50);
+
+  $(window).resize(function() {
+    var windowHeight=$(window).height();
+    $('#viewer').height(windowHeight - 50);
+  });
 });
 
 
