@@ -7,7 +7,7 @@
 /*global  Singlepager, Backbone */
 
 Singlepager.Models.Widget = Backbone.Model.extend({
-  // urlRoot: '/widgets', //
+  urlRoot: '/widgets', // this has to get called when creating a new widget w/out collection
 
   fields: function () {
     if (!this._fields) {
@@ -19,11 +19,11 @@ Singlepager.Models.Widget = Backbone.Model.extend({
   },
 
   parse: function (response) {
-    console.log('parsing widget')
-    console.log(response) // this is the full json object!
+    console.log('parsing widget');
+    console.log(response); // this is the full json object!
     if (response.fields) {
-      console.log('got some fields with ya widget')
-      console.log(response.fields)
+      console.log('got some fields with ya widget');
+      console.log(response.fields);
       this.fields().set(response.fields);
       delete response.fields;
     }
@@ -119,7 +119,23 @@ Singlepager.Models.SocialWidget = Singlepager.Models.Widget.extend({
   }
 });
 
-
+Singlepager.Models.ImageWidget = Singlepager.Models.Widget.extend({
+  initialize: function() {
+    this.set({
+      name: 'Image'
+    });
+    var titleField = new Singlepager.Models.TitleField({
+      placeholder: "e.g. My Drawing"
+    });
+    var descriptionField = new Singlepager.Models.DescriptionField();
+    var imageField = new Singlepager.Models.ImageField({
+      placeholder: "Put caption here"
+    });
+    this.fields().add(titleField);
+    this.fields().add(descriptionField);
+    this.fields().add(imageField);
+  }
+});
 
 Singlepager.Models.DividerWidget = Singlepager.Models.Widget.extend({
   // allow create() / delete() only

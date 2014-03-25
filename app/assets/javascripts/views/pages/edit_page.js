@@ -12,11 +12,11 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   initialize: function() {
     this.listenTo(this.model, 'sync change', this.render);
     this.listenTo(this.model, 'sync change', this.resetWidgets);
-    this.listenTo(this.collection, 'reset sync', this.resetWidgets);
+    this.listenTo(this.collection, 'reset sync change:rank', this.resetWidgets);
     this.listenTo(this.collection, 'add', this.addWidget);
     this.listenTo(this.collection, 'remove', this.removeWidget);
 
-    this.model.widgets().each(this.addWidget.bind(this));
+    this.collection.each(this.addWidget.bind(this));
   },
 
   events: {
@@ -26,10 +26,11 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     "click .add-text-widget": 'newTextWidget',
     "click .add-social-widget": 'newSocialWidget',
     "click .add-services-widget": 'newServicesWidget',
+    "click .add-image-widget": 'newImageWidget',
     "click .add-service": 'newService',
     'submit .new': 'submit',
     'click .cancel': 'cancel',
-    'click #workstation a': 'setTheme'
+    'click #workstation a': 'setTheme',
   },
 
   addWidget: function(widget) {
@@ -56,10 +57,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   makeSortable: function() {
     $('.widgets').sortable({
       cursor: 'move',
-      start: function(event, ui) {
-        console.log($event.currentTarget)
-        $(event.currentTarget).find('.add-widget-container').slideToggle(100);
-      },
       stop: function(event, ui) {
         var $widget = ui.item;
         $widget.trigger('move');
@@ -168,6 +165,24 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.newWidget(widget, $prevWidget, rank);
   },
 
+  newImageWidget: function (event) {
+    event.preventDefault();
+
+    var widget = new Singlepager.Models.ImageWidget();
+    var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+
+    var form = JST['widgets/form_image']({
+      widget: widget,
+      newOrEdit: 'new',
+      page_id: this.model.id,
+      rank: rank
+    });
+
+    $prevWidget.after(form);
+    this.listenToImageInput()
+  },
+
   newServicesWidget: function (event) {
     event.preventDefault();
 
@@ -230,12 +245,10 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
-    console.log('submitting .new')
 
     widget.save({}, {
       wait: true,
       success: function(model, response) {
-        console.log(model)
         view.model.widgets().add(widget);
         view.$('#newForm').remove();
         view.renderSubviews();
@@ -246,6 +259,26 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   cancel: function(event) {
     event.preventDefault();
     $(event.currentTarget).parents('li').remove();
+  },
+
+  handleFile: function(event) {
+    var input = event.target
+    var file = input.files[0]
+
+    var reader = new FileReader();
+    reader.onload = function(event) {
+      console.log(this.result)
+      // debugger
+      $(input).parent().parent().find('.put-image-here').val(this.result)
+      // put this into the input
+    }
+
+    return reader.readAsDataURL(file)
+  },
+
+  listenToImageInput: function() {
+    var fileInput = $('.image-input')
+    fileInput.on('change', this.handleFile)
   }
 
 });

@@ -6,12 +6,12 @@ class WidgetsController < ApplicationController
     # render :json => @widgets.to_json(include: :fields)
   end
 
-  # def new # for testing paperclip
-  #   @widget = Widget.new
-  #   @widget.fields << Field.new_title_field
-  #   @widget.fields << Field.new_photo_field
-  #   render 'new'
-  # end
+  def new # for testing paperclip
+    @widget = Widget.new
+    @widget.fields << Field.new_title_field
+    @widget.fields << Field.new_photo_field
+    render 'new'
+  end
 
   def show # for testing paperclip / jbuilder
     @widget = Widget.find(params[:id])
@@ -33,7 +33,7 @@ class WidgetsController < ApplicationController
     @widget = Widget.new(widget_params)
 
     if @widget.save
-      render json: @widget.to_json(include: :fields)
+      render json: @widget.to_json(include: :fields, methods: :inline_url)
     else
       render json: @widget.errors.full_messages, status: 422
     end

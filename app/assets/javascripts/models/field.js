@@ -53,7 +53,7 @@ Singlepager.Models.UrlField = Singlepager.Models.Field.extend({
 Singlepager.Models.ImageField = Singlepager.Models.Field.extend({
   initialize: function() {
     this.set({
-      label: 'Text:',
+      label: 'Image:',
       content_type: 'file',
       tag: 'img'
     });

@@ -26,14 +26,18 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
         return JST['widgets/show_social'];
       case 'Services':
         return JST['widgets/show_services'];
+      case 'Image':
+        return JST['widgets/show_image'];
       default:
         return JST['widgets/show'];
     }
   },
 
   widgetFormTemplate: function() {
-    if(this.model.get('name') === 'Services'){
+    if(this.model.get('name') === 'Services') {
       return JST['widgets/form_services'];
+    } else if(this.model.get('name') === 'Image') {
+      return JST['widgets/form_image'];
     } else {
       return JST['widgets/form'];
     }
@@ -102,7 +106,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
     console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
     this.model.save({ rank: newRank });
-    this.model.collection.fetch();
+    // this.model.collection.fetch();
   },
 
   beginEditing: function() {
