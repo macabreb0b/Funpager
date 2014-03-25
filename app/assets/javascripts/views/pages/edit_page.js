@@ -33,7 +33,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   addWidget: function(widget) {
     console.log('adding')
-    console.log(widget)
+    console.log(widget.fields())
     widget.fields().fetch()
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
