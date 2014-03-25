@@ -15,7 +15,7 @@
         <span class="glyphicon glyphicon-trash"></span>
       </a>
 
-      <a class="btn btn-primary btn-sm" disabled>
+      <a class="btn btn-primary btn-sm"  href="#/pages/<%= page.id %>" disabled>
         <span class="glyphicon glyphicon-dashboard"></span>
         &nbsp;Dashboard
       </a>
@@ -25,7 +25,7 @@
         &nbsp;Edit Page
       </a>
 
-      <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>">
+      <a class="btn btn-primary btn-sm" href="/pages/<%= page.get('slug') %>">
         <span class="glyphicon glyphicon-eye-open"></span>
         &nbsp;View Page
       </a>
