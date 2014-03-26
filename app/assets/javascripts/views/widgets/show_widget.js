@@ -112,22 +112,16 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     $('.page-content').trigger('stopListening')
   },
 
-  // stopListeningToJquery: function() {
-  //   $('.add-widget-container').slideUp(5);
-  //   $('.widgets').off('mouseenter').off('mouseleave')
-  //   $('.widgets').sortable('disable')
-  // },
-
   stopEditing: function() {
     this.open = false;
-    debugger
+
     this.render();
     $('.page-content').trigger('startListening')
   },
 
   submit: function(event){
     event.preventDefault();
-
+    alert('in submit(edit)')
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
 

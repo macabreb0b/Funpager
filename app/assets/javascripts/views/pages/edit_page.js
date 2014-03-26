@@ -192,19 +192,19 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     }
   },
 
-  // newService: function(event) {
-  //   event.preventDefault();
-  //   var $prevField = $(event.currentTarget).prev();
-  //   var prevIndex = $prevField.data('index');
-  //   var fieldIndex = prevIndex + 1;
-  //
-  //   var newField = new Singlepager.Models.ServiceField();
-  //   var serviceField = JST['widgets/add_service']({
-  //     field_index: fieldIndex,
-  //     field: newField
-  //   });
-  //   $prevField.after(serviceField);
-  // },
+  newService: function(event) {
+    event.preventDefault();
+    var $prevField = $(event.currentTarget).prev();
+    var prevIndex = $prevField.data('index');
+    var fieldIndex = prevIndex + 1;
+
+    var newField = new Singlepager.Models.ServiceField();
+    var serviceField = JST['widgets/add_service']({
+      field_index: fieldIndex,
+      field: newField
+    });
+    $prevField.after(serviceField);
+  },
 
   getRank: function (prevWidget) {
     var prevId = prevWidget.data('id');
@@ -224,37 +224,21 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     event.preventDefault();
 
     var view = this;
-    var params = $(event.currentTarget).serializeJSON();
-    var widget = new Singlepager.Models.Widget(params);
-
-    widget.save({}, {
-      wait: true,
-      success: function() {
-        widget.unset("widget") // why does this come back with 'widget' on it?
-        view.collection.add(widget);
-        view.$('#newWidget').remove();
-      }
-    });
-  },
-
-  submit: function(event) {
-    event.preventDefault();
-
-    var view = this;
     // gliphy penguin gif here
     this.$('#newWidget').html("<div class='runner' id='_giphy_s73EQWBuDlcas'></div><script>var _giphy = _giphy || []; _giphy.push({id: 's73EQWBuDlcas',w: 500, h: 281});var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/embed.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);</script>");
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
-
+    alert('in submit(new)')
     widget.save({}, {
       wait: true,
       success: function() {
         widget.unset("widget") // why does this come back with 'widget' on it?
         view.$('#newWidget').remove();
         view.collection.add(widget);
-        view.listenToJquery();
+        // view.listenToJquery();
       }
     });
+    this.listenToJquery();
 
   },
 
@@ -286,15 +270,13 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   listenToJquery: function() {
-    $(function() { // this starts to get called at the opposite time
-      $('.widgets').on('mouseenter', '.widget', function(event) {
-        $(event.currentTarget).find('.add-widget-container').slideDown(100);
-      });
-      $('.widgets').on('mouseleave', '.widget', function(event) {
-        $(event.currentTarget).find('.add-widget-container').slideUp(100);
-      });
-      $('.widgets').sortable('enable')
-    })
+    $('.widgets').on('mouseenter', '.widget', function(event) {
+      $(event.currentTarget).find('.add-widget-container').slideDown(100);
+    });
+    $('.widgets').on('mouseleave', '.widget', function(event) {
+      $(event.currentTarget).find('.add-widget-container').slideUp(100);
+    });
+    $('.widgets').sortable('enable')
   }
 
 });
