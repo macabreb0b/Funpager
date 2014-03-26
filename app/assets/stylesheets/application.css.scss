@@ -80,6 +80,14 @@ ul.widgets {
   padding: 0;
 }
 
+.ui-sortable-placeholder {
+  margin-top: -15px;
+  margin-bottom: -15px;
+  border: thick dashed lightgrey;
+  border-radius: 10px;
+  visibility: visible !important;
+}
+
 .widget-fields, .widget-fields-no-hover {
   margin-bottom: 10px;
   padding: 10px;
@@ -145,6 +153,15 @@ textarea.form-control {
   }
   .cancel {
     font-size: 0.7em !important;
+  }
+  .cancel.close {
+    color: white;
+    opacity: 0.4;
+    text-shadow: none;
+  }
+  .cancel.close:hover {
+    opacity: 0.8;
+    text-shadow: 0 1px 0 white;
   }
 
   .form-header {

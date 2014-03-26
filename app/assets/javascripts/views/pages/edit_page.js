@@ -31,7 +31,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     'click .cancel': 'cancel',
     'click #workstation a': 'setTheme',
     'change .image-input': 'handleFile',
-    'sortable': 'makeSortable'
+    'startListening': 'listenToJquery',
+    'stopListening': 'stopListeningToJquery'
   },
 
   addWidget: function(widget) {
@@ -79,6 +80,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.$el.html(renderedContent);
     this.getTheme();
     this.makeResizable();
+    this.makeSortable();
     this.listenToJquery();
     return this;
   },
@@ -279,7 +281,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   stopListeningToJquery: function() {
     // don't show the 'add-widget' div on mouseover
     $('.add-widget-container').slideUp(5);
-    $('.widgets').unbind()
+    $('.widgets').off('mouseenter').off('mouseleave')
+    $('.widgets').sortable('disable')
   },
 
   listenToJquery: function() {
@@ -289,7 +292,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     $('.widgets').on('mouseleave', '.widget', function(event) {
       $(event.currentTarget).find('.add-widget-container').slideToggle(100);
     });
-    this.makeSortable();
+    $('.widgets').sortable('enable')
   }
 
 });
