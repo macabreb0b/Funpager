@@ -120,6 +120,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
   stopEditing: function() {
     this.open = false;
+    debugger
     this.render();
     $('.page-content').trigger('startListening')
   },
@@ -139,6 +140,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   cancel: function(event) {
+    alert('clickede cancel (show)')
     event.preventDefault();
     this.stopEditing();
   }

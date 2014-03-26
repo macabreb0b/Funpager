@@ -151,7 +151,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     var type = $(event.currentTarget).data('type')
     var widget = this.getWidgetType(type)
     var typeForm = this.getWidgetForm(type)
-    var rank = $(event.target).parent().data('rank')
+    var $li = $(event.target).parents('#newWidget')
+    var rank = $li.data('rank')
 
     var form = typeForm({
       widget: widget,
@@ -160,7 +161,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
       rank: rank
     });
 
-    $(event.target).parent().html(form)
+    $li.html(form)
   },
 
   getWidgetType: function(type) {
@@ -219,8 +220,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     return newRank;
   },
 
-
-
   submit: function(event) {
     event.preventDefault();
 
@@ -260,6 +259,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   cancel: function(event) {
+    alert('clicked cancel (edit)')
     event.preventDefault();
     $(event.currentTarget).parents('li').remove();
     this.listenToJquery();
@@ -286,13 +286,15 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   listenToJquery: function() {
-    $('.widgets').on('mouseenter', '.widget', function(event) {
-      $(event.currentTarget).find('.add-widget-container').slideToggle(100);
-    });
-    $('.widgets').on('mouseleave', '.widget', function(event) {
-      $(event.currentTarget).find('.add-widget-container').slideToggle(100);
-    });
-    $('.widgets').sortable('enable')
+    $(function() { // this starts to get called at the opposite time
+      $('.widgets').on('mouseenter', '.widget', function(event) {
+        $(event.currentTarget).find('.add-widget-container').slideDown(100);
+      });
+      $('.widgets').on('mouseleave', '.widget', function(event) {
+        $(event.currentTarget).find('.add-widget-container').slideUp(100);
+      });
+      $('.widgets').sortable('enable')
+    })
   }
 
 });
