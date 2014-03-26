@@ -28,6 +28,8 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
         return JST['widgets/show_services'];
       case 'Image':
         return JST['widgets/show_image'];
+      case 'Button':
+        return JST['widgets/show_button'];
       default:
         return JST['widgets/show'];
     }

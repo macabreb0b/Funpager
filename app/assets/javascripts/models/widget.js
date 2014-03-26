@@ -133,6 +133,24 @@ Singlepager.Models.ImageWidget = Singlepager.Models.Widget.extend({
   }
 });
 
+Singlepager.Models.ButtonWidget = Singlepager.Models.Widget.extend({
+  initialize: function() {
+    this.set({
+      name: 'Button'
+    });
+    var titleField = new Singlepager.Models.TitleField({
+      placeholder: "e.g. Make Payment"
+    });
+    var urlField = new Singlepager.Models.UrlField({
+      placeholder: 'http://'
+    });
+
+    this.fields().add(titleField);
+    this.fields().add(urlField);
+  }
+});
+
+
 Singlepager.Models.DividerWidget = Singlepager.Models.Widget.extend({
   // allow create() / delete() only
 });
