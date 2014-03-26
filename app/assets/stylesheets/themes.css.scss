@@ -10,7 +10,7 @@ body.carbon {
   background-color:#282828;
   background-size:16px 16px;
 
-  #page-content {
+  .page-content {
     background-color: rgba(0,0,0,0.3);
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -45,7 +45,7 @@ body.tablecloth {
   linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
   background-size:50px 50px;
 
-  #page-content {
+  .page-content {
     background-color: rgba(255,255,255,0.9);
     font-family: 'Open Sans', sans-serif;
     color: black;
@@ -77,7 +77,7 @@ body.brushed-steel {
   background-color: darkslategrey;
   background: image-url('bg/grey_wash_wall.png');
 
-  #page-content {
+  .page-content {
     background-color: rgba(255,255,255,1);
     font-family: 'Open Sans', sans-serif;
     color: #222222;
@@ -117,7 +117,7 @@ body.paper-cup {
   background-color: white;
   background: image-url('bg/green_cup.png') top left repeat ;
 
-  #page-content {
+  .page-content {
     background-color: rgba(255,255,255,0.4);
     font-family: 'Open Sans', sans-serif;
     color: darkslategrey;
@@ -156,7 +156,7 @@ body.skulls {
   background-color: seashell;
   background: image-url('bg/skulls.png');
 
-  #page-content {
+  .page-content {
     background-color: rgba(255,255,255,1);
     font-family: 'Open Sans', sans-serif;
     color: #222222;
@@ -196,7 +196,7 @@ body.feathers {
   background-color: white;
   background: image-url('bg/subtle_white_feathers.png');
 
-  #page-content {
+  .page-content {
     background-color: rgba(255,255,255,1);
     font-family: 'Open Sans', sans-serif;
     color: #111111;
@@ -236,7 +236,7 @@ body.stardust {
   background-color: darkslategrey;
   background: image-url('bg/stardust.png');
 
-  #page-content {
+  .page-content {
     background-color: rgba(255,255,255,0);
     font-family: 'Open Sans', sans-serif;
     color: white;
@@ -279,7 +279,7 @@ body.stardust {
 //  background-color: seashell;
 //  background: image-url('bg/crossword.png');
 //
-//  #page-content {
+//  .page-content {
 //    background-color: rgba(255,255,255,1);
 //    font-family: 'Open Sans', sans-serif;
 //    color: #222222;
@@ -311,7 +311,7 @@ body.stardust {
 //  background-color: seashell;
 //  background: image-url('bg/giftly.png');
 //
-//  #page-content {
+//  .page-content {
 //    background-color: rgba(255,255,255,1);
 //    font-family: 'Open Sans', sans-serif;
 //    color: #222222;
@@ -345,7 +345,7 @@ body.stardust {
 //  background-color: seashell;
 //  background: image-url('bg/food.png');
 //
-//  #page-content {
+//  .page-content {
 //    background-color: rgba(255,255,255,0.3);
 //    font-family: 'Open Sans', sans-serif;
 //    color: #222222;

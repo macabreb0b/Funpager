@@ -9,30 +9,29 @@
 Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   template: JST['pages/edit'],
 
+  className: 'page-content',
+
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render);
     this.listenTo(this.model, 'sync ', this.resetWidgets);
     this.listenTo(this.collection, 'reset sync', this.resetWidgets);
     this.listenTo(this.collection, 'add', this.addWidget);
     this.listenTo(this.collection, 'remove', this.removeWidget);
+    this.listenTo(this.collection, 'sortable', this.makeSortable)
 
     this.collection.each(this.addWidget.bind(this));
   },
 
   events: {
-    "mouseenter .widgets .widget": 'showAddContent',
-    "mouseleave .widgets .widget": 'hideAddContent',
-    "click .add-contact-widget": 'newContactWidget',
-    "click .add-text-widget": 'newTextWidget',
-    "click .add-social-widget": 'newSocialWidget',
-    "click .add-services-widget": 'newServicesWidget',
-    "click .add-button-widget": 'newButtonWidget',
-    "click .add-image-widget": 'newImageWidget',
-    "click .add-service": 'newService',
+    "mouseenter .widgets .widget-fields": 'showEditable',
+    "mouseleave .widgets .widget-fields": 'hideEditable',
+    "click .add-widget": 'showWidgetOptions',
+    "click #newWidget .btn-add-widget": 'newWidget',
     'submit .new': 'submit',
     'click .cancel': 'cancel',
     'click #workstation a': 'setTheme',
-    'change .image-input': 'handleFile'
+    'change .image-input': 'handleFile',
+    'sortable': 'makeSortable'
   },
 
   addWidget: function(widget) {
@@ -42,7 +41,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     this.addSubview('.widgets', widgetsShowView);
     widgetsShowView.render();
-
   },
 
   resetWidgets: function () {
@@ -57,11 +55,10 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     $('.widgets').sortable({
       cursor: 'move',
       start: function(event) {
-        // $('.widgets').off()
+        $('.add-widget-container').slideUp(5);
       },
       stop: function(event, ui) {
         var $widget = ui.item;
-        // debugger
         $widget.trigger('move');
       }
     });
@@ -81,9 +78,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.getTheme();
-    this.makeSortable();
     this.makeResizable();
-
+    this.listenToJquery();
     return this;
   },
 
@@ -120,111 +116,92 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     window.document.title = this.model.get('company');
   },
 
-  showAddContent: function(event) {
+  showEditable: function(event) {
     event.preventDefault();
-
-    $(event.currentTarget).find('.add-widget-container').slideToggle(100);
+    // this is mouse-over effect
     $(event.currentTarget).find('.click-to-edit').fadeIn('fast');
+    $(event.currentTarget).addClass('widget-fields-hover')
   },
 
-  hideAddContent: function(event) {
+  hideEditable: function(event) {
     event.preventDefault();
-    $(event.currentTarget).find('.add-widget-container').slideToggle(100);
+    // $(event.currentTarget).find('.add-widget-container').slideToggle(100);
+
+    // this is mouse-over effect
     $(event.currentTarget).find('.click-to-edit').fadeOut('fast');
+    $(event.currentTarget).removeClass('widget-fields-hover')
   },
 
-  // showWidgetOptions: function(event) {
-  //   event.preventDefault()
-  //   $(event.currentTarget).parent().toggle('fast')
+  showWidgetOptions: function(event) {
+    event.preventDefault()
+
+    // hide all '.add-widget' and keep them hidden until 'cancel' or 'submit'
+    this.stopListeningToJquery()
+    var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+    $prevWidget.after(JST['widgets/widget_options']({
+      rank: rank
+    }))
+  },
+
+  newWidget: function(event) {
+    event.preventDefault()
+    var type = $(event.currentTarget).data('type')
+    var widget = this.getWidgetType(type)
+    var typeForm = this.getWidgetForm(type)
+    var rank = $(event.target).parent().data('rank')
+
+    var form = typeForm({
+      widget: widget,
+      newOrEdit: 'new',
+      page_id: this.model.id,
+      rank: rank
+    });
+
+    $(event.target).parent().html(form)
+  },
+
+  getWidgetType: function(type) {
+    switch(type) {
+    case 'button':
+      return new Singlepager.Models.ButtonWidget();
+    case 'social':
+      return new Singlepager.Models.SocialWidget();
+    case 'text':
+      return new Singlepager.Models.TextWidget();
+    case 'image':
+      return new Singlepager.Models.ImageWidget();
+    case 'services':
+      return new Singlepager.Models.ServicesWidget();
+    case 'contact':
+      return new Singlepager.Models.ContactWidget();
+    }
+  },
+
+  getWidgetForm: function(type) {
+    switch(type) {
+    case 'image':
+      return JST['widgets/form_image'];
+    case 'services':
+      return JST['widgets/form_services'];
+    default:
+      return JST['widgets/form'];
+    }
+  },
+
+  // newService: function(event) {
+  //   event.preventDefault();
+  //   var $prevField = $(event.currentTarget).prev();
+  //   var prevIndex = $prevField.data('index');
+  //   var fieldIndex = prevIndex + 1;
   //
-  //
-  //   $(event.currentTarget).after(JST['widgets/options']())
+  //   var newField = new Singlepager.Models.ServiceField();
+  //   var serviceField = JST['widgets/add_service']({
+  //     field_index: fieldIndex,
+  //     field: newField
+  //   });
+  //   $prevField.after(serviceField);
   // },
-
-  newContactWidget: function (event) {
-    event.preventDefault();
-
-    var widget = new Singlepager.Models.ContactWidget();
-    var $prevWidget = $(event.currentTarget).parent().parent();
-    var rank = this.getRank($prevWidget);
-    this.newWidget(widget, $prevWidget, rank);
-  },
-
-  newTextWidget: function (event) {
-    event.preventDefault();
-
-    var widget = new Singlepager.Models.TextWidget();
-    var $prevWidget = $(event.currentTarget).parent().parent();
-    var rank = this.getRank($prevWidget);
-    this.newWidget(widget, $prevWidget, rank);
-  },
-
-  newSocialWidget: function (event) {
-    event.preventDefault();
-
-    var widget = new Singlepager.Models.SocialWidget();
-    var $prevWidget = $(event.currentTarget).parent().parent();
-    var rank = this.getRank($prevWidget);
-    this.newWidget(widget, $prevWidget, rank);
-  },
-
-  newButtonWidget: function (event) {
-    event.preventDefault();
-
-    var widget = new Singlepager.Models.ButtonWidget();
-    var $prevWidget = $(event.currentTarget).parent().parent();
-    var rank = this.getRank($prevWidget);
-    this.newWidget(widget, $prevWidget, rank);
-  },
-
-  newImageWidget: function (event) {
-    event.preventDefault();
-
-    var widget = new Singlepager.Models.ImageWidget();
-    var $prevWidget = $(event.currentTarget).parent().parent();
-    var rank = this.getRank($prevWidget);
-
-    var form = JST['widgets/form_image']({
-      widget: widget,
-      newOrEdit: 'new',
-      page_id: this.model.id,
-      rank: rank
-    });
-
-    $prevWidget.after(form);
-    this.listenToImageInput()
-  },
-
-  newServicesWidget: function (event) {
-    event.preventDefault();
-
-    var widget = new Singlepager.Models.ServicesWidget();
-    var $prevWidget = $(event.currentTarget).parent().parent();
-    var rank = this.getRank($prevWidget);
-
-    var form = JST['widgets/form_services']({ // use form_services instead of form
-      widget: widget,
-      newOrEdit: 'new',
-      page_id: this.model.id,
-      rank: rank
-    });
-
-    $prevWidget.after(form);
-  },
-
-  newService: function(event) {
-    event.preventDefault();
-    var $prevField = $(event.currentTarget).prev();
-    var prevIndex = $prevField.data('index');
-    var fieldIndex = prevIndex + 1;
-
-    var newField = new Singlepager.Models.ServiceField();
-    var serviceField = JST['widgets/add_service']({
-      field_index: fieldIndex,
-      field: newField
-    });
-    $prevField.after(serviceField);
-  },
 
   getRank: function (prevWidget) {
     var prevId = prevWidget.data('id');
@@ -240,16 +217,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     return newRank;
   },
 
-  newWidget: function(widget, prevWidget, rank) { // replace this with new widget form
-    var form = JST['widgets/form']({
-      widget: widget,
-      newOrEdit: 'new',
-      page_id: this.model.id,
-      rank: rank
-    });
 
-    prevWidget.after(form);
-  },
 
   submit: function(event) {
     event.preventDefault();
@@ -263,7 +231,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
       success: function() {
         widget.unset("widget") // why does this come back with 'widget' on it?
         view.collection.add(widget);
-        view.$('#newForm').remove();
+        view.$('#newWidget').remove();
       }
     });
   },
@@ -273,7 +241,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     var view = this;
     // gliphy penguin gif here
-    this.$('#newForm').html("<div class='runner' id='_giphy_s73EQWBuDlcas'></div><script>var _giphy = _giphy || []; _giphy.push({id: 's73EQWBuDlcas',w: 500, h: 281});var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/embed.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);</script>");
+    this.$('#newWidget').html("<div class='runner' id='_giphy_s73EQWBuDlcas'></div><script>var _giphy = _giphy || []; _giphy.push({id: 's73EQWBuDlcas',w: 500, h: 281});var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/embed.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);</script>");
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
 
@@ -281,15 +249,18 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
       wait: true,
       success: function() {
         widget.unset("widget") // why does this come back with 'widget' on it?
+        view.$('#newWidget').remove();
         view.collection.add(widget);
-        view.$('#newForm').remove();
+        view.listenToJquery();
       }
     });
+
   },
 
   cancel: function(event) {
     event.preventDefault();
     $(event.currentTarget).parents('li').remove();
+    this.listenToJquery();
   },
 
   handleFile: function(event) {
@@ -304,10 +275,21 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     return reader.readAsDataURL(file)
   },
-  //
-  // listenToImageInput: function() {
-  //   var fileInput = $('.image-input')
-  //   fileInput.on('change', this.handleFile)
-  // }
+
+  stopListeningToJquery: function() {
+    // don't show the 'add-widget' div on mouseover
+    $('.add-widget-container').slideUp(5);
+    $('.widgets').unbind()
+  },
+
+  listenToJquery: function() {
+    $('.widgets').on('mouseenter', '.widget', function(event) {
+      $(event.currentTarget).find('.add-widget-container').slideToggle(100);
+    });
+    $('.widgets').on('mouseleave', '.widget', function(event) {
+      $(event.currentTarget).find('.add-widget-container').slideToggle(100);
+    });
+    this.makeSortable();
+  }
 
 });

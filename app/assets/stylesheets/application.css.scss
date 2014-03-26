@@ -65,7 +65,7 @@ body {
   padding-bottom: 20px;
 }
 
-#page-content {
+.page-content {
   background-color: white;
   width: 500px;
   margin: 20px auto;
@@ -98,6 +98,7 @@ ul.widgets {
     width: 100px;
     padding: 3px 0;
     margin-left: -50px;
+    margin-top: -13px;
     font-family: arial, sans-serif;
     font-size: 0.9em;
     background-color: slategrey;
@@ -113,7 +114,7 @@ textarea.form-control {
   min-height: 120px;
 }
 
-.widget-fields:hover {
+.widget-fields-hover {
   color: #000;
   margin-bottom: 10px;
   padding: 9px;
