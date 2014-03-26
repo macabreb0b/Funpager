@@ -18,7 +18,6 @@
       <input type="hidden" name="widget[name]" value="<%= widget.get('name') %>">
 
       <% widget.fields().each(function(field, field_index) { %>
-          <div class='id'>ID: <%= field.id %></div> <!-- debugging -->
           <div id='form-group'>
             <input
               type="hidden"

@@ -56,11 +56,6 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   initialize: function(){
     this.open = false;
     this.listenTo(this.model, "change", this.render);
-    this.listenTo(this.model.fields(), 'add', this.debugStart)
-  },
-
-  debugStart: function(e, v) {
-    debugger
   },
 
   render: function() {
@@ -105,7 +100,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
     this.model.set({ rank: newRank });
     console.log(this.model.collection)
-    debugger
+
     this.model.save()
     // this.model.collection.fetch();
   },

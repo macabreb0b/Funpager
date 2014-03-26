@@ -10,9 +10,9 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   template: JST['pages/edit'],
 
   initialize: function() {
-    this.listenTo(this.model, 'sync change', this.render);
-    this.listenTo(this.model, 'sync change', this.resetWidgets);
-    this.listenTo(this.collection, 'reset sync change:rank', this.resetWidgets);
+    this.listenTo(this.model, 'sync', this.render);
+    this.listenTo(this.model, 'sync ', this.resetWidgets);
+    this.listenTo(this.collection, 'reset sync', this.resetWidgets);
     this.listenTo(this.collection, 'add', this.addWidget);
     this.listenTo(this.collection, 'remove', this.removeWidget);
 
@@ -246,14 +246,13 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
-    debugger
+
     widget.save({}, {
       wait: true,
-      success: function() {
+      success: function(model, response) {
+        widget.unset("widget") // why does this come back with 'widget' on it?
         view.collection.add(widget);
-        // debugger
         view.$('#newForm').remove();
-        // view.renderSubviews();
       }
     });
   },

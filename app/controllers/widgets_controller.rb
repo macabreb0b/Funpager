@@ -34,6 +34,7 @@ class WidgetsController < ApplicationController
 
     if @widget.save
       render 'show'
+      # render json: @widget.name
     else
       render json: @widget.errors.full_messages, status: 422
     end
