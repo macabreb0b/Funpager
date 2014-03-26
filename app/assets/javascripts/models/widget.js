@@ -19,11 +19,7 @@ Singlepager.Models.Widget = Backbone.Model.extend({
   },
 
   parse: function (response) {
-    console.log('parsing widget');
-    console.log(response); // this is the full json object!
     if (response.fields) {
-      console.log('got some fields with ya widget');
-      console.log(response.fields);
       this.fields().set(response.fields);
       delete response.fields;
     }
@@ -125,11 +121,11 @@ Singlepager.Models.ImageWidget = Singlepager.Models.Widget.extend({
       name: 'Image'
     });
     var titleField = new Singlepager.Models.TitleField({
-      placeholder: "e.g. My Drawing"
+      placeholder: "e.g. My Newest Painting"
     });
     var descriptionField = new Singlepager.Models.DescriptionField();
     var imageField = new Singlepager.Models.ImageField({
-      placeholder: "Put caption here"
+      placeholder: "oh caption, my caption..."
     });
     this.fields().add(titleField);
     this.fields().add(descriptionField);

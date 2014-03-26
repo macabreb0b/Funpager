@@ -56,29 +56,29 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   initialize: function(){
     this.open = false;
     this.listenTo(this.model, "change", this.render);
+    this.listenTo(this.model.fields(), 'add', this.debugStart)
+  },
+
+  debugStart: function(e, v) {
+    debugger
   },
 
   render: function() {
-    console.log('rendering show template');
-    console.log(this.model)
+    var renderedContent = this.template()({
+      widget: this.model,
+      newOrEdit: 'edit',
+      page_id: this.model.get('page_id'),
+      rank: this.model.get('rank')
+    });
 
-        var renderedContent = this.template()({
-          widget: this.model,
-          newOrEdit: 'edit',
-          page_id: this.model.get('page_id'),
-          rank: this.model.get('rank')
-        });
+    var addWidget = this.addWidgetTemplate({
+      id: this.model.id
+    });
 
-        var addWidget = this.addWidgetTemplate({
-          id: this.model.id
-        });
+    this.$el.html(renderedContent);
+    this.$el.append(addWidget);
 
-        this.$el.html(renderedContent);
-        this.$el.append(addWidget);
-
-        return this;
-
-
+    return this;
   },
 
   destroy: function(event) {
@@ -86,14 +86,12 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     this.model.destroy();
   },
 
-  moveWidget: function() { // make this change the order
-    var page = Singlepager.pages.get(this.model.get('page_id'));
-
+  moveWidget: function() {
     var prevId = this.$el.prev().data('id');
     var nextId = this.$el.next().data('id');
 
-    var prevModel = page.widgets().get(prevId);
-    var nextModel = page.widgets().get(nextId);
+    var prevModel = this.model.collection.get(prevId);
+    var nextModel = this.model.collection.get(nextId);
 
     var newRank;
     if(prevModel == null) {
@@ -105,7 +103,10 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
     }
 
     console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
-    this.model.save({ rank: newRank });
+    this.model.set({ rank: newRank });
+    console.log(this.model.collection)
+    debugger
+    this.model.save()
     // this.model.collection.fetch();
   },
 

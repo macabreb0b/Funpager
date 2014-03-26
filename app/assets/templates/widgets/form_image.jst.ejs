@@ -56,9 +56,9 @@
                 value="<%= field.escape('content') %>"
                 placeholder="<%= field.escape('placeholder')%> ">
               <input class='put-image-here'
-                type='text'
+                type='hidden'
                 name="widget[fields_attributes][<%= field_index %>][image]"
-                value="<%= field.escape('inline_url') %>">
+                value="<%= field.escape('image') %>">
 
             <% } else { %>
               <label>

@@ -33,6 +33,9 @@ body.carbon {
     p.copyright {
       font-size: 0.7em;
     }
+    p.caption {
+      font-size: 0.8em;
+    }
   }
 }
 
@@ -63,6 +66,9 @@ body.tablecloth {
     }
     p.copyright {
       font-size: 0.7em;
+    }
+    p.caption {
+      font-size: 0.8em;
     }
   }
 }
@@ -98,6 +104,12 @@ body.brushed-steel {
     p, li {
       font-size: 1.2em;
     }
+    p.copyright {
+      font-size: 0.7em;
+    }
+    p.caption {
+      font-size: 0.8em;
+    }
   }
 }
 
@@ -130,6 +142,12 @@ body.paper-cup {
     }
     p, li {
       font-size: 1.2em;
+    }
+    p.copyright {
+      font-size: 0.7em;
+    }
+    p.caption {
+      font-size: 0.8em;
     }
   }
 }
@@ -165,6 +183,12 @@ body.skulls {
     p, li {
       font-size: 1.2em;
     }
+    p.copyright {
+      font-size: 0.7em;
+    }
+    p.caption {
+      font-size: 0.8em;
+    }
   }
 }
 
@@ -199,6 +223,12 @@ body.feathers {
     p, li {
       font-size: 1.2em;
     }
+    p.copyright {
+      font-size: 0.7em;
+    }
+    p.caption {
+      font-size: 0.8em;
+    }
   }
 }
 
@@ -230,6 +260,12 @@ body.stardust {
     p, li {
       font-size: 1.2em;
     }
+    p.copyright {
+      font-size: 0.7em;
+    }
+    p.caption {
+      font-size: 0.8em;
+    }
     .widget-fields {
       a {
         color: blanchedalmond;
@@ -239,102 +275,102 @@ body.stardust {
   }
 }
 
-body.crossword {
-  background-color: seashell;
-  background: image-url('bg/crossword.png');
+//body.crossword {
+//  background-color: seashell;
+//  background: image-url('bg/crossword.png');
+//
+//  #page-content {
+//    background-color: rgba(255,255,255,1);
+//    font-family: 'Open Sans', sans-serif;
+//    color: #222222;
+//    h1 {
+//      font-family: 'Karla', sans-serif;
+//      font-size: 3.3em;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: #222222;
+//    }
+//    h2 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-size: 2.5em;
+//      font-weight: 400;
+//      color: midnightblue;
+//    }
+//    h3 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-weight: 400;
+//      color: midnightblue;
+//    }
+//    p, li {
+//      font-size: 1.2em;
+//    }
+//  }
+//}
 
-  #page-content {
-    background-color: rgba(255,255,255,1);
-    font-family: 'Open Sans', sans-serif;
-    color: #222222;
-    h1 {
-      font-family: 'Karla', sans-serif;
-      font-size: 3.3em;
-      font-weight: 700;
-      font-style: bold;
-      color: #222222;
-    }
-    h2 {
-      font-family: 'Oleo Script', sans-serif;
-      font-size: 2.5em;
-      font-weight: 400;
-      color: midnightblue;
-    }
-    h3 {
-      font-family: 'Oleo Script', sans-serif;
-      font-weight: 400;
-      color: midnightblue;
-    }
-    p, li {
-      font-size: 1.2em;
-    }
-  }
-}
+//body.giftly {
+//  background-color: seashell;
+//  background: image-url('bg/giftly.png');
+//
+//  #page-content {
+//    background-color: rgba(255,255,255,1);
+//    font-family: 'Open Sans', sans-serif;
+//    color: #222222;
+//    h1 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-size: 3.3em;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: #222222;
+//    }
+//    h2 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-size: 2.5em;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: darkred;
+//    }
+//    h3 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: darkred;
+//    }
+//    p, li {
+//      font-size: 1.2em;
+//    }
+//  }
+//}
 
-body.giftly {
-  background-color: seashell;
-  background: image-url('bg/giftly.png');
-
-  #page-content {
-    background-color: rgba(255,255,255,1);
-    font-family: 'Open Sans', sans-serif;
-    color: #222222;
-    h1 {
-      font-family: 'Oleo Script', sans-serif;
-      font-size: 3.3em;
-      font-weight: 700;
-      font-style: bold;
-      color: #222222;
-    }
-    h2 {
-      font-family: 'Oleo Script', sans-serif;
-      font-size: 2.5em;
-      font-weight: 700;
-      font-style: bold;
-      color: darkred;
-    }
-    h3 {
-      font-family: 'Oleo Script', sans-serif;
-      font-weight: 700;
-      font-style: bold;
-      color: darkred;
-    }
-    p, li {
-      font-size: 1.2em;
-    }
-  }
-}
-
-body.food-party {
-  background-color: seashell;
-  background: image-url('bg/food.png');
-
-  #page-content {
-    background-color: rgba(255,255,255,0.3);
-    font-family: 'Open Sans', sans-serif;
-    color: #222222;
-    h1 {
-      font-family: 'Oleo Script', sans-serif;
-      font-size: 3.3em;
-      font-weight: 700;
-      font-style: bold;
-      color: #222222;
-    }
-    h2 {
-      font-family: 'Oleo Script', sans-serif;
-      font-size: 2.5em;
-      font-weight: 700;
-      font-style: bold;
-      color: darkred;
-    }
-    h3 {
-      font-family: 'Oleo Script', sans-serif;
-      font-weight: 700;
-      font-style: bold;
-      color: darkred;
-    }
-    p, li {
-      font-size: 1.2em;
-    }
-  }
-}
+//body.food-party {
+//  background-color: seashell;
+//  background: image-url('bg/food.png');
+//
+//  #page-content {
+//    background-color: rgba(255,255,255,0.3);
+//    font-family: 'Open Sans', sans-serif;
+//    color: #222222;
+//    h1 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-size: 3.3em;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: #222222;
+//    }
+//    h2 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-size: 2.5em;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: darkred;
+//    }
+//    h3 {
+//      font-family: 'Oleo Script', sans-serif;
+//      font-weight: 700;
+//      font-style: bold;
+//      color: darkred;
+//    }
+//    p, li {
+//      font-size: 1.2em;
+//    }
+//  }
+//}

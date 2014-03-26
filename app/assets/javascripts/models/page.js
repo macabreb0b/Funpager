@@ -19,11 +19,9 @@ Singlepager.Models.Page = Backbone.Model.extend({
   },
 
   parse: function(response) {
-    console.log('parsing page')
     if(response.widgets) {
       this.widgets().set(response.widgets);
-      console.log('got some widgets with ya page')
-      console.log(response.widgets)
+
       delete response.widgets;
     }
     return response;

@@ -12,48 +12,48 @@
       <input type="hidden" name="widget[name]" value="<%= widget.get('name') %>">
 
       <% widget.fields().each(function(field, field_index) { %>
+        <div class='id'>ID: <%= field.id %></div> <!-- debugging -->
+        <div id='form-group' data-index="<%= field_index %>">
+          <input
+            type="hidden"
+            name="widget[fields_attributes][<%= field_index %>][label]"
+            value="<%= field.get('label') %>">
+          <input
+            type="hidden"
+            name="widget[fields_attributes][<%= field_index %>][placeholder]"
+            value="<%= field.get('placeholder') %>">
 
-          <div id='form-group' data-index="<%= field_index %>">
+          <% if(field.id) { %>
             <input
               type="hidden"
-              name="widget[fields_attributes][<%= field_index %>][label]"
-              value="<%= field.get('label') %>">
-            <input
-              type="hidden"
-              name="widget[fields_attributes][<%= field_index %>][placeholder]"
-              value="<%= field.get('placeholder') %>">
+              name="widget[fields_attributes][<%= field_index %>][id]"
+              value="<%= field.id %>">
+          <% } %>
 
-            <% if(field.id) { %>
+          <input type="hidden"
+            name="widget[fields_attributes][<%= field_index %>][content_type]"
+            value="<%= field.get('content_type') %>">
+
+          <% if(field.get('content_type') == 'textarea') { %>
+            <label>
+              <%= field.get('label') %>
+            </label>
+            <textarea
+              class="form-control"
+              name="widget[fields_attributes][<%= field_index %>][content]"><%= field.escape('content') %></textarea>
+          <% } else { %>
+            <label>
+              <%= field.get('label') %>
               <input
-                type="hidden"
-                name="widget[fields_attributes][<%= field_index %>][id]"
-                value="<%= field.id %>">
-            <% } %>
-
-            <input type="hidden"
-              name="widget[fields_attributes][<%= field_index %>][content_type]"
-              value="<%= field.get('content_type') %>">
-
-            <% if(field.get('content_type') == 'textarea') { %>
-              <label>
-                <%= field.get('label') %>
-              </label>
-              <textarea
                 class="form-control"
-                name="widget[fields_attributes][<%= field_index %>][content]"><%= field.escape('content') %></textarea>
-            <% } else { %>
-              <label>
-                <%= field.get('label') %>
-                <input
-                  class="form-control"
-                  placeholder="<%= field.get('placeholder') %>"
-                  type="<%= field.escape('content_type') %>"
-                  name="widget[fields_attributes][<%= field_index %>][content]"
-                  value="<%= field.escape('content') %>">
-              </label>
-            <% } %>
+                placeholder="<%= field.get('placeholder') %>"
+                type="<%= field.escape('content_type') %>"
+                name="widget[fields_attributes][<%= field_index %>][content]"
+                value="<%= field.escape('content') %>">
+            </label>
+          <% } %>
 
-          </div>
+        </div>
 
       <% }) %>
       <a href="#" class="add-service">+ Add Service</a>

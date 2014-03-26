@@ -5,9 +5,13 @@
         <div class="widget-fields-no-hover">
           <% widget.fields.sort.each_with_index do |field, idx| %>
             <% if field.content != '' %>
+              <!-- ignore field if no content -->
 
               <% if field.tag == 'a' %>
+                <!-- handle anchor tags -->
+
                 <% if widget.name == "Social" %>
+                  <!-- handle social media buttons -->
                   <% social_icon = field.label.downcase[0..-2] %>
                   <a class='social-link <%= social_icon %>'
                     href='<%= field.content %>'
@@ -16,21 +20,38 @@
                 <% else %>
 
                   <% if field.label == 'Email:' %>
+                    <!-- handle mailto links -->
                     <a href="mailto:<%= field.content %>">
                       <%= field.content %></a>
                   <% else %>
+                    <!-- handle all other links -->
                     <a href="<%= field.content %>">
                       <%= field.content %></a>
                   <% end %>
                 <% end %>
               <% else %>
 
-                <% if field.tag == 'li' && idx == 2 %><ul><% end %>
+                <% if field.tag == 'img' %>
+                  <!-- handle images -->
+                  <%= image_tag field.image.url(:inline) %>
+                  <p class='caption'><%= field.content %></p>
 
-                <<%= field.tag %>><%= field.content %></<%= field.tag %>>
+                <% else %>
 
-                <% if field.tag == 'li' && idx == (widget.fields.size - 1)%></ul><% end %>
+                  <% if field.tag == 'li' && idx == 2 %>
+                    <!-- put <ul> before <li> tag groups -->
+                    <ul>
+                  <% end %>
 
+                  <!-- this is the default action -->
+                  <<%= field.tag %>><%= field.content %></<%= field.tag %>>
+
+                  <% if field.tag == 'li' && idx == (widget.fields.size - 1)%>
+                    <!-- put </ul> after <li> tag groups -->
+                    </ul>
+                  <% end %>
+
+                <% end %>
               <% end %>
             <% end %>
           <% end %>

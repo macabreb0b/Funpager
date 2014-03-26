@@ -2,6 +2,8 @@
   <span class="click-to-edit">Click to edit</span>
 
   <% widget.fields().sort().each(function(field) { %>
+    <div class='id'>ID: <%= field.id %></div> <!-- debugging -->
+
     <% if(field.get('content') !== '') { %> <!-- ignore if no content -->
       <<%= field.escape('tag') %>><%= field.escape('content') %></<%= field.escape('tag')%>>
     <% } %>

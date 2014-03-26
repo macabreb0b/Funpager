@@ -34,9 +34,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   addWidget: function(widget) {
-    console.log('adding widget')
-    // console.log(widget.fields()
-    // debugger
     var widgetsShowView = new Singlepager.Views.WidgetsShow({
       model: widget
     });
@@ -57,8 +54,12 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   makeSortable: function() {
     $('.widgets').sortable({
       cursor: 'move',
+      start: function(event) {
+        // $('.widgets').off()
+      },
       stop: function(event, ui) {
         var $widget = ui.item;
+        // debugger
         $widget.trigger('move');
       }
     });
@@ -216,11 +217,11 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   getRank: function (prevWidget) {
     var prevId = prevWidget.data('id');
-    var prevRank = this.model.widgets().get(prevId).get('rank');
+    var prevRank = this.collection.get(prevId).get('rank');
     var nextId = prevWidget.next().data('id');
     var newRank;
     if(nextId) {
-      var nextRank = this.model.widgets().get(nextId).get('rank');
+      var nextRank = this.collection.get(nextId).get('rank');
       newRank = (prevRank + nextRank) / 2;
     } else {
       newRank = prevRank + 1;
@@ -245,13 +246,14 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
-
+    debugger
     widget.save({}, {
       wait: true,
-      success: function(model, response) {
-        view.model.widgets().add(widget);
+      success: function() {
+        view.collection.add(widget);
+        // debugger
         view.$('#newForm').remove();
-        view.renderSubviews();
+        // view.renderSubviews();
       }
     });
   },
@@ -267,10 +269,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     var reader = new FileReader();
     reader.onload = function(event) {
-      console.log(this.result)
-      // debugger
       $(input).parent().parent().find('.put-image-here').val(this.result)
-      // put this into the input
+      // put this into the hidden input
     }
 
     return reader.readAsDataURL(file)
