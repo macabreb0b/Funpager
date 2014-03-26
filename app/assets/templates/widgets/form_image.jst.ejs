@@ -1,5 +1,5 @@
 <li id="newForm">
-  <form class="form widget-form <%= newOrEdit %>" enctype="multipart/form-data">
+  <form class="form widget-form <%= newOrEdit %> image" enctype="multipart/form-data">
 
     <div class="form-header">
       <h4><span class="glyphicon glyphicon-picture"></span> <%= widget.get('name') %></h4>
@@ -54,7 +54,7 @@
                 type="text"
                 name="widget[fields_attributes][<%= field_index %>][content]"
                 value="<%= field.escape('content') %>"
-                placeholder="<%= field.escape('placeholder')%> ">
+                placeholder="<%= field.escape('placeholder')%>">
               <input class='put-image-here'
                 type='hidden'
                 name="widget[fields_attributes][<%= field_index %>][image]"

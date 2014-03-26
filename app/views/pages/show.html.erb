@@ -30,8 +30,9 @@
                   <% end %>
                 <% end %>
               <% else %>
-
+              <%= field.tag %>
                 <% if field.tag == 'img' %>
+                  <p>adfasdfasdffd</p>
                   <!-- handle images -->
                   <%= image_tag field.image.url(:inline) %>
                   <p class='caption'><%= field.content %></p>

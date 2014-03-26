@@ -31,6 +31,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     'submit .new': 'submit',
     'click .cancel': 'cancel',
     'click #workstation a': 'setTheme',
+    'change .image-input': 'handleFile'
   },
 
   addWidget: function(widget) {
@@ -249,7 +250,26 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     widget.save({}, {
       wait: true,
-      success: function(model, response) {
+      success: function() {
+        widget.unset("widget") // why does this come back with 'widget' on it?
+        view.collection.add(widget);
+        view.$('#newForm').remove();
+      }
+    });
+  },
+
+  submit: function(event) {
+    event.preventDefault();
+
+    var view = this;
+    // gliphy penguin gif here
+    this.$('#newForm').html("<div class='runner' id='_giphy_s73EQWBuDlcas'></div><script>var _giphy = _giphy || []; _giphy.push({id: 's73EQWBuDlcas',w: 500, h: 281});var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/embed.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);</script>");
+    var params = $(event.currentTarget).serializeJSON();
+    var widget = new Singlepager.Models.Widget(params);
+
+    widget.save({}, {
+      wait: true,
+      success: function() {
         widget.unset("widget") // why does this come back with 'widget' on it?
         view.collection.add(widget);
         view.$('#newForm').remove();
@@ -274,10 +294,10 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     return reader.readAsDataURL(file)
   },
-
-  listenToImageInput: function() {
-    var fileInput = $('.image-input')
-    fileInput.on('change', this.handleFile)
-  }
+  //
+  // listenToImageInput: function() {
+  //   var fileInput = $('.image-input')
+  //   fileInput.on('change', this.handleFile)
+  // }
 
 });
