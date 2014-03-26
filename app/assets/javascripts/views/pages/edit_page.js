@@ -26,6 +26,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     "click .add-text-widget": 'newTextWidget',
     "click .add-social-widget": 'newSocialWidget',
     "click .add-services-widget": 'newServicesWidget',
+    "click .add-button-widget": 'newButtonWidget',
     "click .add-image-widget": 'newImageWidget',
     "click .add-service": 'newService',
     'submit .new': 'submit',
@@ -162,6 +163,15 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     event.preventDefault();
 
     var widget = new Singlepager.Models.SocialWidget();
+    var $prevWidget = $(event.currentTarget).parent().parent();
+    var rank = this.getRank($prevWidget);
+    this.newWidget(widget, $prevWidget, rank);
+  },
+
+  newButtonWidget: function (event) {
+    event.preventDefault();
+
+    var widget = new Singlepager.Models.ButtonWidget();
     var $prevWidget = $(event.currentTarget).parent().parent();
     var rank = this.getRank($prevWidget);
     this.newWidget(widget, $prevWidget, rank);

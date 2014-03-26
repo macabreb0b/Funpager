@@ -24,6 +24,7 @@ class Field < ActiveRecord::Base
     'Text:' => 'p',
     'Description:' => 'p',
     'Url:' => 'a',
+    'URL:' => 'a',
     'Facebook:' => 'a',
     'Twitter:' => 'a',
     'LinkedIn:' => 'a',

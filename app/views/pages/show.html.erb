@@ -3,55 +3,69 @@
     <% @widgets.each do |widget| %>
       <li class="widget">
         <div class="widget-fields-no-hover">
-          <% widget.fields.sort.each_with_index do |field, idx| %>
-            <% if field.content != '' %>
-              <!-- ignore field if no content -->
 
-              <% if field.tag == 'a' %>
-                <!-- handle anchor tags -->
+          <% if widget.name == "Button" %>
+            <!-- handle button -->
+            <% title = widget.fields.sort.first.content %>
+            <% url = widget.fields.sort.last.content %>
+            <a href="<%= url %>" >
+              <button class='btn btn-lg btn-default'>
+                <%= title %>
+              </button>
+            </a>
 
-                <% if widget.name == "Social" %>
-                  <!-- handle social media buttons -->
-                  <% social_icon = field.label.downcase[0..-2] %>
-                  <a class='social-link <%= social_icon %>'
-                    href='<%= field.content %>'
-                    target="_blank"></a>
+          <% else %>
 
-                <% else %>
+            <% widget.fields.sort.each_with_index do |field, idx| %>
+              <% if field.content != '' %>
+                <!-- ignore field if no content -->
 
-                  <% if field.label == 'Email:' %>
-                    <!-- handle mailto links -->
-                    <a href="mailto:<%= field.content %>">
-                      <%= field.content %></a>
+                <% if field.tag == 'a' %>
+                  <!-- handle anchor tags -->
+
+                  <% if widget.name == "Social" %>
+                    <!-- handle social media buttons -->
+                    <% social_icon = field.label.downcase[0..-2] %>
+                    <a class='social-link <%= social_icon %>'
+                      href='<%= field.content %>'
+                      target="_blank"></a>
+
                   <% else %>
-                    <!-- handle all other links -->
-                    <a href="<%= field.content %>">
-                      <%= field.content %></a>
-                  <% end %>
-                <% end %>
-              <% else %>
-              <%= field.tag %>
-                <% if field.tag == 'img' %>
-                  <p>adfasdfasdffd</p>
-                  <!-- handle images -->
-                  <%= image_tag field.image.url(:inline) %>
-                  <p class='caption'><%= field.content %></p>
 
+                    <% if field.label == 'Email:' %>
+                      <!-- handle mailto links -->
+                      <a href="mailto:<%= field.content %>">
+                        <%= field.content %></a>
+                    <% else %>
+                      <!-- handle all other links -->
+                      <a href="<%= field.content %>">
+                        <%= field.content %></a>
+                    <% end %>
+                  <% end %>
                 <% else %>
 
-                  <% if field.tag == 'li' && idx == 2 %>
-                    <!-- put <ul> before <li> tag groups -->
-                    <ul>
+                  <% if field.tag == 'img' %>
+
+                    <!-- handle images -->
+                    <%= image_tag field.image.url(:inline) %>
+                    <p class='caption'><%= field.content %></p>
+
+                  <% else %>
+
+                    <% if field.tag == 'li' && idx == 2 %>
+                      <!-- put <ul> before <li> tag groups -->
+                      <ul>
+                    <% end %>
+
+                    <!-- this is the default action -->
+                    <<%= field.tag %>><%= field.content %></<%= field.tag %>>
+
+                    <% if field.tag == 'li' && idx == (widget.fields.size - 1)%>
+                      <!-- put </ul> after <li> tag groups -->
+                      </ul>
+                    <% end %>
+
                   <% end %>
-
-                  <!-- this is the default action -->
-                  <<%= field.tag %>><%= field.content %></<%= field.tag %>>
-
-                  <% if field.tag == 'li' && idx == (widget.fields.size - 1)%>
-                    <!-- put </ul> after <li> tag groups -->
-                    </ul>
-                  <% end %>
-
                 <% end %>
               <% end %>
             <% end %>

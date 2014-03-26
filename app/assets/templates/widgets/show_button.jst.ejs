@@ -1,12 +1,12 @@
 <div class='widget-fields'>
   <span class="click-to-edit">Click to edit</span>
+    <% var title %>
+    <% var url %>
+    <% widget.fields().sort().each(function(field) { %>
+      <% if(field.get('label') === 'Title:') { title = field.escape('content') } %>
+      <% if(field.get('label') === 'Url:') { url = field.escape('content') } %>
+    <% }) %>
 
-  <% widget.fields().sort().each(function(field) { %>
-    <% var title; var url; %>
-    <% if(field.get('label') === 'Title:') { title = <%= field.escape('content') %> }; %>
-    <% if(field.get('label') === 'Url:') { url = <%= field.escape('content') %> }; %>
-  <% }) %>
-
-  <a href='<%= url %>' class='btn btn-lg btn-default'><%= title %></a>
+  <a href='<%= url %>'><button class='btn btn-lg btn-default'><%= title %></button></a>
 
 </div>

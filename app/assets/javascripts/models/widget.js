@@ -142,6 +142,7 @@ Singlepager.Models.ButtonWidget = Singlepager.Models.Widget.extend({
       placeholder: "e.g. Make Payment"
     });
     var urlField = new Singlepager.Models.UrlField({
+      label: "URL:",
       placeholder: 'http://'
     });
 
