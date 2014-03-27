@@ -10,10 +10,8 @@ class PagesController < ApplicationController
 
   def create
     @page = Page.new_starting_page
-    check_permissions(@page)
-
     @page.user_id = current_user.id
-
+    check_logged_in
     if @page.save
       render :json => @page.to_json(include: :widgets)
     else

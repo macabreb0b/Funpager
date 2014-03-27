@@ -77,6 +77,8 @@ Singlepager.Views.PageDashboard = Backbone.View.extend({
 
   setTheme: function() {
     $('body').removeClass();
+    $('.navbar-inverse').show();
+    jQuery('#viewer').height('auto')
     window.document.title = 'Funpager';
   },
 

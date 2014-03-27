@@ -55,6 +55,7 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
     var newPage = new Singlepager.Models.Page();
     var that = this;
     newPage.save({}, {
+      wait: true,
       success: function(model) {
         that.collection.add(model);
 

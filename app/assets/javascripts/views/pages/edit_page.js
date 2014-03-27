@@ -20,7 +20,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     this.collection.each(this.addWidget.bind(this));
 
-
+    $('.navbar-inverse').hide();
   },
 
   events: {
@@ -90,11 +90,11 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   makeResizable: function() {
     var windowHeight = jQuery(window).height()
-    jQuery('#viewer').height(windowHeight - 50 - 100)
+    jQuery('#viewer').height(windowHeight - 100)
 
     jQuery(window).resize(function() {
       var windowHeight = jQuery(window).height()
-      jQuery('#viewer').height(windowHeight - 50 - 100)
+      jQuery('#viewer').height(windowHeight - 100)
     })
   },
 
