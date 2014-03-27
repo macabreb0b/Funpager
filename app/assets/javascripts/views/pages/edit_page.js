@@ -229,7 +229,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.$('#newWidget').html("<div class='runner' id='_giphy_s73EQWBuDlcas'></div><script>var _giphy = _giphy || []; _giphy.push({id: 's73EQWBuDlcas',w: 500, h: 281});var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/embed.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);</script>");
     var params = $(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
-    alert('in submit(new)')
+
     widget.save({}, {
       wait: true,
       success: function() {
@@ -244,7 +244,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   cancel: function(event) {
-    alert('clicked cancel (edit)')
+
     event.preventDefault();
     $(event.currentTarget).parents('li').remove();
     this.listenToJquery();

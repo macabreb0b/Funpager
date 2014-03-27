@@ -121,7 +121,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
 
   submit: function(event){
     event.preventDefault();
-    alert('in submit(edit)')
+
     var view = this;
     var params = $(event.currentTarget).serializeJSON();
 
@@ -134,7 +134,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   cancel: function(event) {
-    alert('clickede cancel (show)')
+
     event.preventDefault();
     this.stopEditing();
   }
