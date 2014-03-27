@@ -17,6 +17,7 @@ Singlepager.Views.PageDashboard = Backbone.View.extend({
     'click #domain': 'domain',
     'click #settings': 'settings',
     'submit form': 'editPageInfo',
+    'click .removeShow': 'removeShow',
     'click .remove': 'removePage'
   },
 
@@ -80,6 +81,13 @@ Singlepager.Views.PageDashboard = Backbone.View.extend({
     $('.navbar-inverse').show();
     jQuery('#viewer').height('auto')
     window.document.title = 'Funpager';
+  },
+
+  removeShow: function(event) {
+    event.preventDefault();
+    $(event.currentTarget).removeClass('removeShow')
+    $(event.currentTarget).addClass('remove')
+    $(event.currentTarget).addClass('btn-danger')
   },
 
   removePage: function(event) {

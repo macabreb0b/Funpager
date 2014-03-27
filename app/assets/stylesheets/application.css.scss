@@ -354,7 +354,7 @@ p.copyright {
   margin-left: 185px;
   padding: 25px 25px 85px;
 
-  border: thin solid blue;
+  border-left: thin solid lightgrey;
 }
 
 #dashboard-toolbar {
@@ -373,6 +373,21 @@ p.copyright {
     }
   }
 }
+
+.page-domain {
+  position: relative;
+  input {
+    padding-left: 170px;
+    color: black;
+  }
+  span {
+    color: darkgrey;
+    position: absolute;
+    left: 12px;
+    top: 32px;
+  }
+}
+
 
 .dashboard {
   height: 100%;

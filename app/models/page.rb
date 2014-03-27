@@ -33,7 +33,7 @@ class Page < ActiveRecord::Base
     'giftly',
     'crossword'
   ]
-  validates :user_id, :title, :handle, :company, :layout, :position, :theme, :presence => true
+  validates :user_id, :title, :handle, :company, :layout, :position, :theme, :hit_count, :presence => true
   validates :handle, :slug, :uniqueness => true, :length => { minimum: 4 }
   validates :position, :inclusion => { in: ['left', 'center', 'right'] }
   validates :layout, :inclusion => { in: ['one-column', 'sidebar-left', 'sidebar-right'] }
@@ -55,22 +55,23 @@ class Page < ActiveRecord::Base
   has_many :widgets, inverse_of: :page, dependent: :destroy
   accepts_nested_attributes_for :widgets # lets you add widget info in with user_params
 
-  def self.new_starting_page
-    page = Page.new({title: "My New Page"})
-    page.widgets << Widget.new_headline_widget
-
-    page.widgets << Widget.new_text_widget
-    text_widget = page.widgets.last
-    title = text_widget.fields.first
-    title.content = "About Us"
-
-    body = text_widget.fields.last
-    body.content = "Enter content that tells your visitors about your company and what you do. You can write about your history, your team, the areas you service, or anything else you'd like to share."
-
-    page.title = "My New Page"
-
-    return page
-  end
+  # this is only used for Rails testing
+  # def self.new_starting_page
+  #   page = Page.new({title: "My New Page"})
+  #   page.widgets << Widget.new_headline_widget
+  #
+  #   page.widgets << Widget.new_text_widget
+  #   text_widget = page.widgets.last
+  #   title = text_widget.fields.first
+  #   title.content = "About Us"
+  #
+  #   body = text_widget.fields.last
+  #   body.content = "Enter content that tells your visitors about your company and what you do. You can write about your history, your team, the areas you service, or anything else you'd like to share."
+  #
+  #   page.title = "My New Page"
+  #
+  #   return page
+  # end
 
   def generate_handle
     SecureRandom.urlsafe_base64(6)
@@ -87,5 +88,6 @@ class Page < ActiveRecord::Base
       self.company = 'My Company' if self.company.nil?
       self.handle = self.generate_handle if self.handle.nil?
       self.theme = THEMES.sample() if self.theme.nil?
+      self.hit_count = 0 if self.hit_count.nil?
     end
 end

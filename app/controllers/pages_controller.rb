@@ -22,12 +22,18 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.friendly.find(params[:id])
-    check_permissions(@page)
     @widgets = @page.widgets.sort_by(&:rank)
 
     respond_to do |format|
-      format.json { render json: @page.to_json(include: :widgets) }
-      format.html { render 'show' }
+      format.json do # only render JSON if it's your page
+        check_permissions(@page)
+        render json: @page.to_json(include: :widgets)
+      end
+
+      format.html do # render RUBY whenever
+        increment_page_count
+        render 'show'
+      end
     end
 
     rescue ActiveRecord::RecordNotFound
@@ -63,5 +69,13 @@ class PagesController < ApplicationController
       params.require(:page).permit(:title, :theme, :handle, :company,
         widgets_attributes: [:name, :rank,
         fields_attributes: [:id, :label, :content, :content_type, :image, :placeholder]])
+    end
+
+    def increment_page_count
+      unless current_user && @page.owner.id == current_user.id
+        @page.hit_count ||= 0
+        @page.hit_count += 1
+        @page.save
+      end
     end
 end
