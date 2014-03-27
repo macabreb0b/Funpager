@@ -218,7 +218,6 @@ textarea.form-control {
 
 .btn-add-widget {
   border-radius: 5px;
-//  height: 64px;
   min-width: 24%;
   display: inline-block;
   padding: 10px;
@@ -402,10 +401,21 @@ p.copyright {
   }
 }
 
-#newForm .runner {
-  max-width: 200px;
-  margin-right: auto;
-  margin-left: auto;
-  margin-top: 50px;
-  margin-bottom: 50px;
+#newWidget {
+  position: relative;
+  .wrapper {
+    height: 300px;
+    border: thick lightgrey dashed;
+    border-radius: 5px;
+    #canvasLoader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 64px;
+      height: 64px;
+      margin-left: -32px;
+      margin-top: -32px;
+    }
+  }
+
 }

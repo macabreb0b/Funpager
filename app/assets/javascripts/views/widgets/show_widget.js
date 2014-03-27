@@ -81,6 +81,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   destroy: function(event) {
     event.preventDefault();
     this.model.destroy();
+    $('.page-content').trigger('startListening')
   },
 
   moveWidget: function() {

@@ -19,6 +19,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'remove', this.removeWidget);
 
     this.collection.each(this.addWidget.bind(this));
+
+
   },
 
   events: {
@@ -26,6 +28,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     "mouseleave .widgets .widget-fields": 'hideEditable',
     "click .add-widget": 'showWidgetOptions',
     "click #newWidget .btn-add-widget": 'newWidget',
+    'click .add-service': 'newService',
     'submit .new': 'submit',
     'click .cancel': 'cancel',
     'click #workstation a': 'setTheme',
@@ -220,12 +223,26 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     return newRank;
   },
 
+  showLoading: function() {
+    jQuery('#newWidget').html('<div id="canvasloader-container" class="wrapper"></div>');
+
+    var cl = new CanvasLoader('canvasloader-container');
+		cl.setColor('#F2591D'); // default is '#000000'
+		cl.setShape('spiral'); // default is 'oval'
+		cl.setDiameter(64); // default is 40
+		cl.setDensity(25); // default is 40
+		cl.setRange(0.6); // default is 1.3
+		cl.setFPS(30); // default is 24
+		cl.show(); // Hidden by default
+  },
+
   submit: function(event) {
     event.preventDefault();
 
     var view = this;
-    // gliphy penguin gif here
-    // jQuery('#newWidget').html("<div class='runner' id='_giphy_s73EQWBuDlcas'></div><script>var _giphy = _giphy || []; _giphy.push({id: 's73EQWBuDlcas',w: 500, h: 281});var g = document.createElement('script'); g.type = 'text/javascript'; g.async = true;g.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'giphy.com/static/js/widgets/embed.js';var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(g, s);</script>");
+
+    this.showLoading();
+
     var params = jQuery(event.currentTarget).serializeJSON();
     var widget = new Singlepager.Models.Widget(params);
 
@@ -238,8 +255,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
         view.listenToJquery();
       }
     });
-    // this.listenToJquery();
-
   },
 
   cancel: function(event) {
