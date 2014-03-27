@@ -47,7 +47,10 @@ class Page < ActiveRecord::Base
     slug.blank? || handle_changed?
   end
 
-  belongs_to :user
+  belongs_to :owner,
+        foreign_key: :user_id,
+        primary_key: :id,
+        class_name: 'User'
 
   has_many :widgets, inverse_of: :page, dependent: :destroy
   accepts_nested_attributes_for :widgets # lets you add widget info in with user_params

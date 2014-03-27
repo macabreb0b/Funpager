@@ -17,6 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    check_permissions
+
     @user = User.find(params[:id])
     render 'show'
   end

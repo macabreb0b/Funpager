@@ -26,6 +26,8 @@ class Widget < ActiveRecord::Base
 
   belongs_to :page
 
+  has_one :owner, through: :page
+
   has_many :fields, inverse_of: :widget, dependent: :destroy
   accepts_nested_attributes_for :fields
 

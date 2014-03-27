@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
   def check_logged_in
     redirect_to splash_url unless logged_in?
   end
+
+  def check_permissions(thing)
+    redirect_to splash_url unless current_user && thing.owner.id == current_user.id
+  end
 end

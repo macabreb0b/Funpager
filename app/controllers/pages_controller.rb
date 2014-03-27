@@ -7,8 +7,10 @@ class PagesController < ApplicationController
   #   render 'new'
   # end
 
+
   def create
     @page = Page.new_starting_page
+    check_permissions(@page)
 
     @page.user_id = current_user.id
 
@@ -22,6 +24,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.friendly.find(params[:id])
+    check_permissions(@page)
     @widgets = @page.widgets.sort_by(&:rank)
 
     respond_to do |format|
@@ -29,12 +32,13 @@ class PagesController < ApplicationController
       format.html { render 'show' }
     end
 
-    rescue ActiveRecord::RecordNotFound # check for
+    rescue ActiveRecord::RecordNotFound
       redirect_to root_url
   end
 
   def update
     @page = Page.find(params[:id])
+    check_permissions(@page)
 
     if @page.update_attributes(page_params)
       render :json => @page.to_json(include: :widgets, :methods => :time_ago)
@@ -44,12 +48,14 @@ class PagesController < ApplicationController
   end
 
   def index
+    check_logged_in
     @pages = current_user.pages.sort_by(&:created_at)
     render json: @pages.to_json(include: :widgets, :methods => :time_ago)
   end
 
   def destroy
     page = Page.find(params[:id])
+    check_permissions(page)
     page.destroy
     render json: {}
   end

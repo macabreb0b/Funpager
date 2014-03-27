@@ -1,6 +1,8 @@
 class WidgetsController < ApplicationController
+
   def index # gets called by page/edit widgets/index.json.jbuilder
     @page = Page.find(params[:page_id])
+    check_permissions(@page)
     @widgets = @page.widgets
   end
 
@@ -18,9 +20,10 @@ class WidgetsController < ApplicationController
 
   def update
     @widget = Widget.find(params[:id])
+    check_permissions(@widget)
+
 
     if @widget.update_attributes(widget_params)
-
       render json: @widget.to_json(include: :fields)
     else
       render json: @widget.errors.full_messages, status: 422
@@ -29,6 +32,7 @@ class WidgetsController < ApplicationController
 
   def create
     @widget = Widget.new(widget_params)
+    check_permissions(@widget)
 
     if @widget.save
       render 'show'
@@ -39,6 +43,7 @@ class WidgetsController < ApplicationController
 
   def destroy
     widget = Widget.find(params[:id])
+    check_permissions(widget)
     widget.destroy
     render json: {}
   end
