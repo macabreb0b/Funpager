@@ -11,6 +11,10 @@ Singlepager.Collections.Pages = Backbone.Collection.extend({
 
   model: Singlepager.Models.Page,
 
+  comparator: function(page) {
+    return -page.id
+  },
+
 	getOrFetch: function(id) {
 		var model = this.get(id);
 		var pages = this;

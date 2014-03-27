@@ -35,11 +35,9 @@
     <div id="dashboard-content">
       <h3><span class="glyphicon glyphicon-dashboard"></span>&nbsp;Dashboard</h3>
 
-      <h3 class="page-title"><%= page.escape('title') %></h3>
-      <h4 class="page-company"><%= page.escape('company') %></h3>
-
-
-
+      <h3 class="page">Hit Count: <%= page.get('hit_count') %></h3>
+      <h4>Your page was created on <%= page.get('created_at').slice(0,10) %></h4>
+      <h4>Your page was last updated on <%= page.get('updated_at').slice(0,10) %></h4>
     </div>
   </div>
 </section>

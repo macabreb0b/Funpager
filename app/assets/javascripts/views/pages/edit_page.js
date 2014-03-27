@@ -19,7 +19,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     this.listenTo(this.collection, 'remove', this.removeWidget);
 
     this.collection.each(this.addWidget.bind(this));
-
     $('.navbar-inverse').hide();
   },
 

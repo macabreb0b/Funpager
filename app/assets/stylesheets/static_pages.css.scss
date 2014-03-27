@@ -4,12 +4,17 @@
 
 
 // navbar and splash navbar styles
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #ffffff;
+  color: #f47946;
+}
+
 .navbar-inverse {
   background-color: #f47946;
-  .navbar-nav > .open > a:focus {
-    background-color: #ffffff !important;
-    color: #f47946 !important;
-  }
+
   .container {
     padding-left: 0;
     padding-right: 0;
@@ -93,4 +98,19 @@
 
 .splash_auth_form {
   padding-top: 20px;
+}
+
+// footer styles
+.footer {
+  background-color: #f47946;
+  color: white;
+  font-size: 16px;
+  .container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }

@@ -23,6 +23,7 @@ Singlepager.Views.PageDashboard = Backbone.View.extend({
 
   initialize: function() {
     this.listenTo(this.model, 'sync', this.render)
+    this.setTheme()
   },
 
   domain: function(event) {
@@ -70,16 +71,22 @@ Singlepager.Views.PageDashboard = Backbone.View.extend({
     var renderedContent = this.template({
       page: this.model
     });
-    this.setTheme();
+
+    var footer = JST['pages/footer']()
+
     this.$el.html(renderedContent);
+    this.$el.append(footer)
+    this.setTheme();
+
     return this;
   },
 
 
   setTheme: function() {
     $('body').removeClass();
+    $('html').css('background-color', '#c75832');
     $('.navbar-inverse').show();
-    jQuery('#viewer').height('auto')
+    $('#viewer').css("height", "auto")
     window.document.title = 'Funpager';
   },
 

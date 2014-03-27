@@ -20,16 +20,19 @@ Singlepager.Views.PagesIndex = Backbone.View.extend({
     var renderedContent = this.template({
       pages: this.collection
     });
-
-    this.$el.html(renderedContent);
+    var footer = JST['pages/footer']()
     this.setTheme();
+    this.$el.html(renderedContent);
+    this.$el.append(footer)
+
     return this;
   },
 
   setTheme: function() {
     $('body').removeClass();
+    $('html').css('background-color', '#c75832');
     window.document.title = 'Funpager';
-    jQuery('#viewer').height('auto');
+    $('#viewer').css('height', 'auto')
     $('.navbar-inverse').show();
   }
 });

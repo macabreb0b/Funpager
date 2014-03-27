@@ -15,7 +15,8 @@
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700);
 // https://www.google.com/fonts#UsePlace:use/Collection:Oleo+Script:400,700|Gloria+Hallelujah|Candal|Cutive|Merriweather:400,900italic,300italic|Oswald|Alegreya:400italic,400|Open+Sans:400,700|Karla:400,700
-html, body {
+
+html {
   height: 100%;
 }
 
@@ -47,17 +48,7 @@ body {
   color: white !important;
 };
 
-.page-list {
-  border-top: 1px #cecece solid;
-  padding: 10px;
-  position: relative;
-}
 
-.page-list .page-buttons {
-  position: absolute;
-  right: 25px;
-  top: 25px;
-}
 
 #page-background {
   background-color: black;
@@ -377,7 +368,7 @@ p.copyright {
 .page-domain {
   position: relative;
   input {
-    padding-left: 170px;
+    padding-left: 144px;
     color: black;
   }
   span {
@@ -388,11 +379,34 @@ p.copyright {
   }
 }
 
-
 .dashboard {
   height: 100%;
-  .your-pages {
-    padding: 15px;
+  header.your-pages {
+    padding: 15px 25px;
+  }
+
+  .page-list {
+    border-top: 1px #cecece solid;
+    padding: 15px 25px;
+    position: relative;
+  }
+
+  .page-list .page-buttons {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+  }
+
+  .new-funpager {
+    margin: 10px 0;
+    padding: 30px;
+    background-color: #f5f5f5;
+    color: darkgrey;
+    * {
+      vertical-align: middle;
+      display: inline-block;
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -408,7 +422,7 @@ p.copyright {
     margin: 0;
     padding-left: 0;
     li {
-      padding-left: 15px;
+//      padding-left: 15px;
       p, p a {
         color: #888888;
       }

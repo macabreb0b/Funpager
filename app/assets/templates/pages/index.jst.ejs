@@ -5,13 +5,13 @@
   </header>
 
   <ul>
-    <% pages.each(function(page) { %>
+    <% pages.sort().each(function(page) { %>
       <li class="row page-list">
         <h3><a href="#/pages/<%= page.id %>"><%= page.get('title') %></a></h3>
         <p>
           <span class="glyphicon glyphicon-globe"></span>
           <a href="/<%= page.get('slug') %>" target="_blank">
-            www.funpager.com/<%= page.get('slug') %></a>
+            http://funpager.com/<%= page.get('slug') %></a>
           - Created <%= page.get('time_ago') %> ago
         </p>
 
@@ -35,6 +35,17 @@
         </div>
       </li>
     <% }) %>
+
+    <li class='row page-list'>
+      <div class="new-funpager">
+        <form action="#/pages/new" class="button_to" method="get">
+          <div>
+            <input class="btn btn-success btn-lg" type="submit" value="Create A Funpager">
+          </div>
+        </form>
+        <p>Get building!</p>
+      </div>
+    </li>
   </ul>
 
 </div>
