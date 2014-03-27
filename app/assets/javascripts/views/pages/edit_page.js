@@ -32,7 +32,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     'click #workstation a': 'setTheme',
     'change .image-input': 'handleFile',
     'startListening': 'listenToJquery',
-    'stopListening': 'stopListeningToJquery'
+    'stopListening': 'stopListeningToJquery',
+    'click .done': 'goToDashboard'
   },
 
   addWidget: function(widget) {
@@ -277,6 +278,14 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
       $(event.currentTarget).find('.add-widget-container').slideUp(100);
     });
     $('.widgets').sortable('enable')
+  },
+
+  goToDashboard: function(event) {
+    event.preventDefault();
+
+    Backbone.history.navigate("#/pages/" + this.model.id)
   }
+
+
 
 });

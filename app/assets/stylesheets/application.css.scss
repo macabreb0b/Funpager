@@ -295,6 +295,12 @@ p.copyright {
     padding-top: 20px;
   }
 
+  .themes {
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   a.carbon-theme {
     background: image-url('thumbs/carbon.png');
     background-size: cover;
