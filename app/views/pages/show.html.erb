@@ -78,7 +78,7 @@
                       <% end %>
 
                       <!-- this is the default action -->
-                      <<%= field.tag %>><%= field.content %></<%= field.tag %>>
+                      <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
 
                       <% if field.tag == 'li' && idx == (widget.fields.size - 1)%>
                         <!-- put </ul> after <li> tag groups -->
