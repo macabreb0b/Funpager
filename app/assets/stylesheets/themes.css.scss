@@ -308,32 +308,29 @@ body.crossword {
 
 body.water {
   background-color: aliceblue;
-  background: image-url('bg/static_water.pgg');
+  background: image-url('bg/static_water.jpg');
   background-size: cover;
 
   .page-content {
-    background-color: rgba(0,0,128,0.7);
+    background-color: rgba(40, 40, 100, 0.5);
     font-family: 'Open Sans', sans-serif;
-    color: #222222;
+    color: #ffffff;
     h1 {
-      font-family: 'Oleo Script', sans-serif;
-      font-size: 3.3em;
+      font-family: 'Oswald', 'Open Sans', sans-serif;
+      font-size: 3.8em;
       font-weight: 700;
       font-style: bold;
-      color: #222222;
     }
     h2 {
-      font-family: 'Oleo Script', sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-size: 2.5em;
       font-weight: 700;
       font-style: bold;
-      color: darkred;
     }
     h3 {
-      font-family: 'Oleo Script', sans-serif;
+      font-family: 'Oswald', sans-serif;
       font-weight: 700;
       font-style: bold;
-      color: darkred;
     }
     p, li {
       font-size: 1.2em;
