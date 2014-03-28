@@ -44,7 +44,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   showModal: function() {
-    if(this.modalShow) {
+    if(this.modalShow === true) {
       $('#getting-started-modal').modal('show');
     }
   },

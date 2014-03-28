@@ -32,7 +32,8 @@ class Page < ActiveRecord::Base
     'feathers',
     'food-party',
     'giftly',
-    'crossword'
+    'crossword',
+    'water'
   ]
   validates :user_id, :title, :handle, :company, :layout, :position, :theme, :hit_count, :presence => true
   validates :handle, :slug, :uniqueness => true, :length => { minimum: 4 }
