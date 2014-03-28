@@ -94,11 +94,158 @@
 }
 
 // splash / home page styles
-
 .splash_intro {
-  background-color: #f47946;
+  background-image: -webkit-gradient(
+  	linear,
+  	left top,
+  	left bottom,
+  	color-stop(0, #F59873),
+  	color-stop(0.3, #F47A46)
+  );
+  background-image: -o-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: -moz-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: -webkit-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: -ms-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: linear-gradient(to bottom, #F59873 0%, #F47A46 30%);
   color: white;
   text-align: center;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 600px;
+  div.preview {
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+      0 0 0 18px hsl(0, 0%, 0%),
+      0 0 0 20px hsl(0, 0%, 80%);
+  }
+
+}
+
+.bobbylong {
+  width: 500px;
+  position: absolute;
+  top: 40%;
+  right: 65%;
+  height: 600px;
+  background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/bobbylong_wide');
+  background-size: 100%;
+}
+.bobbylong-button { // this is mirroring the style for button placement
+  width: 500px;
+  position: absolute;
+  top: 0;
+  right: 65%;
+}
+
+.zachandmiri {
+  width: 500px;
+  position: absolute;
+  top: 40%;
+  left: 65%;
+  height: 600px;
+  background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/zachandmiri_wide');
+  background-size: 100%;
+}
+.zachandmiri-button {
+  width: 500px;
+  position: absolute;
+  top: 0;
+  left: 65%;
+}
+
+.twindonuts {
+  width: 600px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -300px;
+  height: 600px;
+  background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/twindonuts_wide');
+  background-size: 100%;
+}
+.twindonuts-button {
+  width: 600px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+}
+
+.splash_explore {
+  position: relative;
+  overflow: visible;
+  height: 200px;
+  background-image: -webkit-gradient(
+  	linear,
+  	left top,
+  	left bottom,
+  	color-stop(0, #F59873),
+  	color-stop(0.77, #F47A46)
+  );
+  background-image: -o-linear-gradient(bottom, #F59873 0%, #F47A46 77%);
+  background-image: -moz-linear-gradient(bottom, #F59873 0%, #F47A46 77%);
+  background-image: -webkit-linear-gradient(bottom, #F59873 0%, #F47A46 77%);
+  background-image: -ms-linear-gradient(bottom, #F59873 0%, #F47A46 77%);
+  background-image: linear-gradient(to bottom, #F59873 0%, #F47A46 77%);
+  border-top: thin orange solid;
+  z-index: 1;
+  a {
+    display: block;
+    position: absolute;
+    text-align: center;
+    font-weight: 300;
+    font-style: italic;
+    color: white;
+    vertical-align: middle !important;
+    white-space: normal;
+    background-color: #46CC67;
+    border-color: rgb(76, 174, 76);
+  }
+  a:hover {
+
+  }
+}
+
+.lets-rock {
+  height: 140px;
+  width: 140px;
+  border-radius: 70px;
+  left: 50%;
+  margin-left: -70px;
+  top: -50px;
+  font-size: 24px;
+  background-color: #428bca;
+  padding-top: 44px;
+}
+
+.lets-eat {
+  height: 160px;
+  width: 160px;
+  border-radius: 80px;
+  left: 50%;
+  margin-left: -80px;
+  top: -40px;
+  font-size: 30px;
+  padding-top: 50px;
+
+
+}
+
+.lets-tie-the-knot {
+  height: 140px;
+  width: 140px;
+  border-radius: 70px;
+  left: 50%;
+  margin-left: -70px;
+  top: -50px;
+  font-size: 24px;
+  padding-top: 30px;
+
+}
+.lets-tie-the-knot:hover {
+
 }
 
 .splash_auth {
