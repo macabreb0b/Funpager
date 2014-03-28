@@ -177,6 +177,7 @@
   overflow: visible;
 }
 
+// buttons for splash explore
 .splash_explore {
   position: relative;
   overflow: visible;
@@ -251,6 +252,31 @@
   font-size: 30px;
 }
 
+// splash examples
+.splash_examples {
+  height: 300px;
+  padding-top: 50px;
+  color: darkgrey;
+  text-align: center;
+
+  a {
+    vertical-align: middle;
+    display: inline-block;
+    height: 180px;
+    background: darkgrey;
+    width: 150px;
+    color: white;
+    padding: 60px 10px;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 15px;
+    border-radius: 5px;
+    border-top-right-radius: 20px;
+  }
+}
+
+
+// log in / sign up
 .splash_auth {
   background-color: #f47946;
   color: white;

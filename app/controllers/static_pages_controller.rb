@@ -3,11 +3,11 @@ class StaticPagesController < ApplicationController
 
   def root
     @user = current_user
-    # @pages = @user.pages
     render 'root'
   end
 
   def splash
+    @top_pages_by_hit_count = Page.where('hit_count > 0').order('hit_count').limit(10)
     render 'splash'
   end
 end

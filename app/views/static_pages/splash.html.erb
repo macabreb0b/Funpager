@@ -90,7 +90,10 @@
 
 <div class="row">
   <section class="splash_examples">
-
+    Or check out these popular pages:
+    <% @top_pages_by_hit_count.each do |page| %>
+      <a href="<%= page_url(page) %>" target="_blank"><%= page.title %></a>
+    <% end %>
   </section>
 </div>
 
