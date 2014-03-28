@@ -12,9 +12,15 @@
               type="hidden"
               name="authenticity_token"
               value="<%= form_authenticity_token %>">
-            <input type="hidden" name="user[username]" value="demo_user">
-            <input type="hidden" name="user[password]" value="demo">
-            <input type="submit" class="btn navbar-btn btn-success" value="Start Building">
+            <input
+              type="hidden"
+              name="user[username]"
+              value="demo_user">
+            <input
+              type="hidden"
+              name="user[password]"
+              value="demo">
+            <input type="submit" class="btn navbar-btn btn-primary" value="Start Building">
           </form>
         <li><%= button_to "Sign Up", new_user_url,
               class: 'btn navbar-btn btn-clear', method: :get %>

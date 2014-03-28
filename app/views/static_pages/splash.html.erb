@@ -7,13 +7,10 @@
       <div class="zachandmiri preview"></div>
       <div class="twindonuts preview"></div>
 
-      <h1 class="tagline splash-intro-h1" style="display: inline-block">Build a beautiful simple website for your<br>
-        <div class="splash-intro-etc" style="text-align: right">...small business<br>
-        ...wedding<br>
-        ...band<br>
-        ...etc!<br></div>
-      </h1>
-    </div>
+      <h1 class="tagline splash-intro-h1">Build a beautiful simple website <br>for your anything.</h1>
+
+      <h3 class='sub-tagline'>sign up to save and share (above) / take a test run (below)</h3>
+
 
   </section>
 </div>
@@ -21,14 +18,72 @@
 <div class="row">
   <section class="splash_explore">
     <div class="bobbylong-button">
-      <a href="#" class="lets-rock btn">Let's Rock</a>
+
+      <form action="<%= session_url %>" method="post">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+        <input
+          type="hidden"
+          name="user[username]"
+          value="demo_user">
+        <input
+          type="hidden"
+          name="user[password]"
+          value="demo">
+        <input
+          type="hidden"
+          name="demopage"
+          value="bobbylong">
+        <input type="submit" class="lets-rock btn" value="let's go">
+      </form>
     </div>
+
     <div class="twindonuts-button">
-      <a href="#" class="lets-eat btn">Let's Eat</a>
+      <form action="<%= session_url %>" method="post">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+        <input
+          type="hidden"
+          name="user[username]"
+          value="demo_user">
+        <input
+          type="hidden"
+          name="user[password]"
+          value="demo">
+        <input
+          type="hidden"
+          name="demopage"
+          value="twindonuts">
+        <input type="submit" class="lets-eat btn" value="let's go">
+      </form>
     </div>
+
     <div class="zachandmiri-button">
-      <a href="#" class="lets-tie-the-knot btn">Let's Tie the Knot</a>
+      <form action="<%= session_url %>" method="post">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+        <input
+          type="hidden"
+          name="user[username]"
+          value="demo_user">
+        <input
+          type="hidden"
+          name="user[password]"
+          value="demo">
+        <input
+          type="hidden"
+          name="demopage"
+          value="zachandmiri">
+        <input type="submit" class="lets-tie-the-knot btn" value="let's go">
+      </form>
     </div>
+
   </section>
 </div>
 

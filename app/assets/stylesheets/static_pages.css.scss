@@ -120,7 +120,9 @@
       0 0 0 18px hsl(0, 0%, 0%),
       0 0 0 20px hsl(0, 0%, 80%);
   }
+  h3 {
 
+  }
 }
 
 .bobbylong {
@@ -132,11 +134,12 @@
   background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/bobbylong_wide');
   background-size: 100%;
 }
-.bobbylong-button { // this is mirroring the style for button placement
+.bobbylong-button {
   width: 500px;
   position: absolute;
   top: 0;
   right: 65%;
+  overflow: visible;
 }
 
 .zachandmiri {
@@ -171,6 +174,7 @@
   top: 0;
   left: 50%;
   margin-left: -300px;
+  overflow: visible;
 }
 
 .splash_explore {
@@ -191,20 +195,28 @@
   background-image: linear-gradient(to bottom, #F59873 0%, #F47A46 77%);
   border-top: thin orange solid;
   z-index: 1;
-  a {
+  input {
     display: block;
     position: absolute;
     text-align: center;
     font-weight: 300;
-    font-style: italic;
+
     color: white;
-    vertical-align: middle !important;
+
     white-space: normal;
     background-color: #46CC67;
     border-color: rgb(76, 174, 76);
   }
-  a:hover {
-
+  input:hover {
+    color: white;
+    background-color: #34B353;
+  }
+  h1 {
+    color: white;
+    text-align: center;
+    font-family: 'Merriweather', sans-serif;
+    font-style: italic;
+    font-weight: 300;
   }
 }
 
@@ -215,9 +227,8 @@
   left: 50%;
   margin-left: -70px;
   top: -50px;
-  font-size: 24px;
+  font-size: 30px;
   background-color: #428bca;
-  padding-top: 44px;
 }
 
 .lets-eat {
@@ -227,10 +238,7 @@
   left: 50%;
   margin-left: -80px;
   top: -40px;
-  font-size: 30px;
-  padding-top: 50px;
-
-
+  font-size: 35px;
 }
 
 .lets-tie-the-knot {
@@ -240,12 +248,7 @@
   left: 50%;
   margin-left: -70px;
   top: -50px;
-  font-size: 24px;
-  padding-top: 30px;
-
-}
-.lets-tie-the-knot:hover {
-
+  font-size: 30px;
 }
 
 .splash_auth {
