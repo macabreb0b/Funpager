@@ -11,14 +11,15 @@ class SessionsController < ApplicationController
       login!(@user)
       if @user.username == 'demo_user'
         case params['demopage']
-        when 'twindonuts'
-          redirect_to '#pages/36/edit'
-        when 'zachandmiri'
-          redirect_to '#pages/35/edit'
-        when 'bobbylong'
-          redirect_to '#pages/34/edit'
-        else
-          redirect_to '#pages/new'
+          when 'twindonuts'
+            redirect_to '#pages/36/edit'
+          when 'zachandmiri'
+            redirect_to '#pages/35/edit'
+          when 'bobbylong'
+            redirect_to '#pages/34/edit'
+          else
+            redirect_to '#pages/new'
+        end
       else
         redirect_to root_url
       end
