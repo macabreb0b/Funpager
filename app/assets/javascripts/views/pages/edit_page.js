@@ -28,6 +28,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   events: {
     "mouseenter .widgets .widget-fields": 'showEditable',
     "mouseleave .widgets .widget-fields": 'hideEditable',
+    'mouseenter .copyright span': 'showTooltip',
+    'mouseleave .copyright span': 'hideTooltip',
     "click .add-widget": 'showWidgetOptions',
     "click #newWidget .btn-add-widget": 'newWidget',
     'click .add-service': 'newService',
@@ -38,7 +40,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     'startListening': 'listenToJquery',
     'stopListening': 'stopListeningToJquery',
     'click .done': 'goToDashboard',
-    'click .close-modal': 'dontShowModal'
+    'click .close-modal': 'dontShowModal',
   },
 
   showModal: function() {
@@ -49,6 +51,14 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   dontShowModal: function() {
     this.modalShow = false;
+  },
+
+  showTooltip: function() {
+    $('.show-tooltip').tooltip('show')
+  },
+
+  hideTooltip: function() {
+    $('.show-tooltip').tooltip('hide')
   },
 
   addWidget: function(widget) {
