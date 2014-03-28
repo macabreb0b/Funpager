@@ -20,6 +20,9 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
     this.collection.each(this.addWidget.bind(this));
     $('.navbar-inverse').hide();
+
+    this.modalShow = true
+
   },
 
   events: {
@@ -34,7 +37,18 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     'change .image-input': 'handleFile',
     'startListening': 'listenToJquery',
     'stopListening': 'stopListeningToJquery',
-    'click .done': 'goToDashboard'
+    'click .done': 'goToDashboard',
+    'click .close-modal': 'dontShowModal'
+  },
+
+  showModal: function() {
+    if(this.modalShow) {
+      $('#getting-started-modal').modal('show');
+    }
+  },
+
+  dontShowModal: function() {
+    this.modalShow = false;
   },
 
   addWidget: function(widget) {
@@ -89,11 +103,11 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
 
   makeResizable: function() {
     var windowHeight = jQuery(window).height()
-    jQuery('#viewer').height(windowHeight - 100)
+    jQuery('#viewer').height(windowHeight - 110)
 
     jQuery(window).resize(function() {
       var windowHeight = jQuery(window).height()
-      jQuery('#viewer').height(windowHeight - 100)
+      jQuery('#viewer').height(windowHeight - 110)
     })
   },
 
@@ -116,6 +130,8 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     var $workspace = jQuery('#workstation')
     $workspace.empty()
     $workspace.append(JST['pages/workstation']())
+
+    this.showModal()
 
     window.document.title = this.model.get('company');
   },

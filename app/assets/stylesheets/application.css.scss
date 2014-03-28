@@ -262,7 +262,7 @@ p.copyright {
 
 // start workstation styles
 #workstation {
-  min-height: 100px;
+  min-height: 110px;
   height: auto;
   position: absolute;
   bottom: 0px;
@@ -271,6 +271,8 @@ p.copyright {
   background: rgba(64, 64, 64, 0.6);
   padding: 10px;
   color: white;
+  border-top: 10px black solid;
+
   a {
     display: inline-block;
     vertical-align: middle;
@@ -324,6 +326,74 @@ p.copyright {
     background-size: cover;
   }
 }
+
+// start modal styles
+
+.modal * {
+  text-align: center;
+}
+
+h4.modal-title {
+  font-size: 24px;
+  color: darkslategrey;
+}
+.modal-body > div {
+  display: inline-block;
+  vertical-align: top;
+  width: 32%;
+  height: auto;
+  padding: 0;
+  h4 {
+    color: #F2591D;
+    font-size: 30px;
+  }
+  div.modal-box img {
+    max-width: 90%;
+    border-radius: 5px;
+    border: 1px solid #cecece;
+    margin-bottom: 10px;
+  }
+  p {
+    color: darkslategrey;
+    font-size: 12px !important;
+    font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+  }
+  div.modal-box {
+    margin-top: 20px;
+  }
+  div.modal-box.themes {
+    margin-top: 50px;
+  }
+}
+
+.addcontent {
+  background: image-url('modal/addcontent.png') no-repeat;
+  height: 80px;
+}
+
+.clicktoedit {
+  background: image-url('modal/clicktoedit.png') no-repeat;
+  height: 80px;
+}
+
+.pickatheme {
+  background: image-url('modal/pickatheme.png') no-repeat;
+  height: 80px;
+}
+
+.savepage {
+  background: image-url('modal/savepage.png') no-repeat;
+  height: 50px;
+
+}
+
+.pickahandle {
+  background: image-url('modal/pickahandle.png') no-repeat;
+  height: 100px;
+}
+
+
 
 // start dashboard styles
 .dashboard nav {
