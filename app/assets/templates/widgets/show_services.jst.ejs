@@ -4,7 +4,7 @@
   <% widget.fields().sort().each(function(field) { %>
 
     <% if(field.get('content') !== '') { %> <!-- ignore if no content -->
-      <<%= field.escape('tag') %>><%= field.escape('content') %></<%= field.escape('tag')%>>
+      <<%= field.escape('tag') %>><%= field.escape('content').replace(/\r\n/g,"<br><br>") %></<%= field.escape('tag')%>>
     <% } %>
   <% }) %>
 </div>

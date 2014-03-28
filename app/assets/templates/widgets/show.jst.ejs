@@ -11,7 +11,7 @@
           <<%= field.escape('tag')%> href='<%= field.escape('content') %>' target="_blank"><%= field.escape('content') %></<%= field.escape('tag')%>>
         <% } %>
       <% } else { %>
-        <<%= field.escape('tag')%>><%= field.escape('content') %></<%= field.escape('tag')%>>
+        <<%= field.escape('tag')%>><%= field.escape('content').replace(/\r\n/g,"<br><br>") %></<%= field.escape('tag')%>>
       <% } %>
     <% } %>
   <% }) %>

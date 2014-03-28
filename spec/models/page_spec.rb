@@ -14,6 +14,7 @@
 #  updated_at :datetime
 #  theme      :string(255)      not null
 #  slug       :string(255)
+#  hit_count  :integer
 #
 
 require 'spec_helper'
