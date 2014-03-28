@@ -12,12 +12,20 @@
   color: #f47946;
 }
 
+.navbar-inverse, .navbar-inverse * {
+  max-height: 46px;
+}
+
 .navbar-inverse {
   background-color: #f47946;
 
   .container {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .dropdown, .dropdown-menu {
+    max-height: 200px;
   }
 
   a, .navbar-nav > li > a {
@@ -34,7 +42,11 @@
 
  .navbar-brand {
     color: white;
-    font-weight: 700;
+    font-weight: 460;
+    font-size: 22px;
+    padding: 13px 15px;
+    width: 185px;
+    text-align: center;
   }
 
   .btn {

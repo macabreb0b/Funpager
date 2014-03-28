@@ -71,8 +71,8 @@ Singlepager.Routers.Pages = Backbone.Router.extend({
     this.collection.fetch({
       success: function(collection) {
         var page = collection.getOrFetch(id);
-        // var widgets = page.widgets();
-        // widgets.fetch();
+        var widgets = page.widgets();
+        widgets.fetch();
 
         var dashboardView = new Singlepager.Views.PageDashboard({
           model: page
