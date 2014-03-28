@@ -22,7 +22,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     $('.navbar-inverse').hide();
 
     this.modalShow = true
-
+    console.log('initializing')
   },
 
   events: {
@@ -40,17 +40,19 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     'startListening': 'listenToJquery',
     'stopListening': 'stopListeningToJquery',
     'click .done': 'goToDashboard',
-    'click .close-modal': 'dontShowModal',
   },
 
   showModal: function() {
+    console.log(this.modalShow)
     if(this.modalShow === true) {
-      $('#getting-started-modal').modal('show');
+      $('#getting-started-modal').modal('show')
     }
   },
 
   dontShowModal: function() {
-    this.modalShow = false;
+    window.setTimeout(function() {
+      $('#getting-started-modal').remove()
+    }, 300);
   },
 
   showTooltip: function() {
@@ -318,6 +320,7 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
       jQuery(event.currentTarget).find('.add-widget-container').slideUp(100);
     });
     jQuery('.widgets').sortable('enable')
+    $('.close-modal').on('click', this.dontShowModal)
   },
 
   goToDashboard: function(event) {
