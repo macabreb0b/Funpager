@@ -7,7 +7,7 @@ class StaticPagesController < ApplicationController
   end
 
   def splash
-    @top_pages_by_hit_count = Page.where('hit_count > 0').order('hit_count').limit(10)
+    @top_pages_by_hit_count = Page.where('hit_count > 0').order('hit_count').limit(10).reverse
     render 'splash'
   end
 end
