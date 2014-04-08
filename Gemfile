@@ -7,6 +7,7 @@ gem 'pg'
 
 gem 'sass-rails'
 gem 'bootstrap-sass'
+gem 'newrelic_rpm'
 
 gem 'uglifier'
 
@@ -30,7 +31,6 @@ group :development, :test do
   gem 'capybara'
   gem 'better_errors'
   gem 'binding_of_caller'
-#  gem 'debugger'
 end
 
 gem 'bcrypt-ruby', require: 'bcrypt'

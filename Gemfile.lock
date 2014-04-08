@@ -579,6 +579,7 @@ GEM
     minitest (5.10.3)
     multi_json (1.12.2)
     nenv (0.3.0)
+    newrelic_rpm (4.5.0.337)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -716,6 +717,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   jquery-ui-rails
+  newrelic_rpm
   paperclip
   pg
   pry-rails
