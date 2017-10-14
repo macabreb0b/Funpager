@@ -27,7 +27,9 @@ class PagesController < ApplicationController
     respond_to do |format|
       format.json do # only render JSON if it's your page
         check_permissions(@page)
-        render json: @page.to_json(include: :widgets)
+        render json: @page.to_json(include: {
+          :widgets => {:include => :fields},
+        })
       end
 
       format.html do # render RUBY whenever

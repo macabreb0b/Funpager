@@ -4,6 +4,8 @@ class WidgetsController < ApplicationController
     @page = Page.find(params[:page_id])
     check_permissions(@page)
     @widgets = @page.widgets
+
+    render json: @widgets.to_json(include: :fields)
   end
 
   # def new # for testing paperclip

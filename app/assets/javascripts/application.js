@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.sortable
+//= require jquery-ui/widgets/sortable
+//= require heartcode-canvasloader-min
 //= require serializeJSON
 //= require bootstrap
 //= require underscore

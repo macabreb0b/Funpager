@@ -17,7 +17,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   tagName: 'li',
 
   template: function() {
-    return this.open ? this.widgetFormTemplate.bind(this)() : this.widgetShowTemplate.bind(this)();
+    return this.isOpen ? this.widgetFormTemplate.bind(this)() : this.widgetShowTemplate.bind(this)();
   },
 
   widgetShowTemplate: function() {
@@ -56,7 +56,7 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   initialize: function(){
-    this.open = false;
+    this.isOpen = false;
     this.listenTo(this.model, "change", this.render);
   },
 
@@ -107,13 +107,13 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
   },
 
   beginEditing: function() {
-    this.open = true;
+    this.isOpen = true;
     this.render();
     $('.page-content').trigger('stopListening')
   },
 
   stopEditing: function() {
-    this.open = false;
+    this.isOpen = false;
 
     this.render();
     $('.page-content').trigger('startListening')
