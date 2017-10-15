@@ -5,9 +5,11 @@
 
     <% if(field.escape('tag') === 'img') { %>
       <!-- format picture -->
-      <img class="inline-image"
-        src='<%= field.get('inline_url') %>'>
-        <p class="caption"><%= field.escape('content') %></p>
+      <img 
+        class="inline-image"
+        src="<%= field.get('inline_url') %>"
+      >
+      <p class="caption"><%= field.escape('content') %></p>
     <% } else { %>
       <% if(field.get('content') !== '') { %> <!-- ignore if no content -->
         <<%= field.escape('tag')%>><%= field.escape('content') %></<%= field.escape('tag') %>>

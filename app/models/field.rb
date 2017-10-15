@@ -18,7 +18,8 @@
 #
 
 class Field < ActiveRecord::Base
-  TAGS = {'Company Name:' => 'h1',
+  TAGS = {
+    'Company Name:' => 'h1',
     'Tagline:' => 'h2',
     'Title:' => 'h3',
     'Text:' => 'p',

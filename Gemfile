@@ -32,14 +32,15 @@ group :development, :test do
   gem 'capybara'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'byebug'
 end
 
 gem 'bcrypt-ruby', require: 'bcrypt'
 
 gem 'annotate'
 gem 'pry-rails'
-gem "paperclip"
-gem "aws-sdk"
+gem "paperclip", '~> 4.0'
+gem "aws-sdk", '< 2.0'
 gem 'figaro'
 gem 'friendly_id'
 gem 'thin'

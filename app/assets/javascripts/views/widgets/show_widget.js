@@ -100,7 +100,6 @@ Singlepager.Views.WidgetsShow = Backbone.View.extend({
       newRank = (prevModel.get('rank') + nextModel.get('rank')) / 2;
     }
 
-    // console.log('old rank ' + this.model.get('rank') + ' new rank ' + newRank);
     this.model.set({ rank: newRank });
 
     this.model.save()

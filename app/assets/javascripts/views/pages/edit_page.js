@@ -22,7 +22,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
     $('.navbar-inverse').hide();
 
     this.modalShow = true
-    console.log('initializing')
   },
 
   events: {
@@ -43,7 +42,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
   },
 
   showModal: function() {
-    console.log(this.modalShow)
     if(this.modalShow === true) {
       $('#getting-started-modal').modal('show')
     }
