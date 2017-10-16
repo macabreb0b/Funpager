@@ -18,7 +18,7 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'jbuilder'
 gem 'backbone-on-rails'
 

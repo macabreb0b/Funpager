@@ -2,7 +2,7 @@ Singlepager::Application.routes.draw do
   root to: 'static_pages#root'
   get 'splash', to: 'static_pages#splash'
 
-  resources :pages, only: [:new, :index, :show, :create, :update, :destroy] do
+  resources :pages, only: [:new, :index, :show, :create, :update, :destroy, :edit] do
     resources :widgets, only: [:index, :show]
   end
 

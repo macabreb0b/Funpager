@@ -7,6 +7,10 @@ class PagesController < ApplicationController
   #   render 'new'
   # end
 
+    def edit
+        render 'edit'
+    end
+
 
   def create
     @page = Page.new_starting_page
