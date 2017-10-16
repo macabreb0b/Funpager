@@ -20,3 +20,6 @@
 
 # Ignore application configuration
 /config/application.yml
+/node_modules
+*bundle.js
+*bundle.js.map
