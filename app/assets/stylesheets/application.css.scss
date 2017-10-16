@@ -25,12 +25,11 @@ body {
 }
 
 #viewer {
-//  min-height: 100%;
   overflow-y: auto;
 }
 
 .row {
-  margin:0;
+  margin: 0;
 }
 
 ::selection {
@@ -61,8 +60,6 @@ body {
   width: 500px;
   margin: 20px auto;
   font-family: 'Open Sans', sans-serif;
-//  margin-left: auto;
-//  margin-right: auto;
   padding: 15px 20px;
 }
 
@@ -79,19 +76,29 @@ ul.widgets {
   visibility: visible !important;
 }
 
-.widget-fields, .widget-fields-no-hover {
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 0;
-  border-radius: 5px;
-  position: relative;
-  li {
-    list-style: disc inside;
-  }
-  .click-to-edit {
+.widget_fields, 
+.widget_fields-no-hover {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px;
+    position: relative;
+
+    li {
+        list-style: disc inside;
+    }
+}
+
+textarea.form-control {
+  width: 100%;
+  max-width: 100%;
+  min-height: 120px;
+}
+
+.click-to-edit,
+.widget_click-to-edit {
     text-align: center;
     position: absolute;
-    display: none;
     top: 50%;
     left: 50%;
     width: 100px;
@@ -103,17 +110,17 @@ ul.widgets {
     background-color: slategrey;
     color: white;
     border-radius: 5px;
-    opacity: 0.8;
-  }
+
+    opacity: 0;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    visibility: hidden;
 }
 
-textarea.form-control {
-  width: 100%;
-  max-width: 100%;
-  min-height: 120px;
-}
-
-.widget-fields-hover {
+.widget_fields:hover,
+.widget_fields-hover {
   color: #000;
   margin-bottom: 10px;
   padding: 9px;
@@ -126,6 +133,11 @@ textarea.form-control {
   h1, h2, h3, p, li {
     color: #000 !important;
   }
+}
+
+.widget_fields:hover .widget_click-to-edit {
+    opacity: 0.8;
+    visibility: visible;
 }
 
 .widget-form {
@@ -192,6 +204,28 @@ textarea.form-control {
 
 .container {
   max-width: 900px;
+}
+
+
+.widget_add-widget {
+    overflow: hidden;
+    text-align: center;
+    background: image-url('dash-bg.png') left center repeat-x;
+
+    max-height: 0;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.widget.hovered .widget_add-widget {
+    max-height: 100px;
+
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
 }
 
 .add-widget-container {
@@ -521,4 +555,235 @@ h4.modal-title {
     }
   }
 
+}
+
+
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// navbar and splash navbar styles
+
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > .open > a:hover,
+.navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: #ffffff;
+  color: #f47946;
+}
+
+.navbar-inverse, .navbar-inverse * {
+  max-height: 46px;
+}
+
+.navbar-inverse {
+  background-color: #f47946;
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .dropdown, .dropdown-menu {
+    max-height: 200px;
+  }
+
+  a, .navbar-nav > li > a {
+    color: white;
+    border-left: 1px solid #e65b37;
+    border-right: 1px solid #e65b37;
+  }
+
+  .dropdown-menu > li > a {
+    border: 0;
+  }
+
+
+
+ .navbar-brand {
+    color: white;
+    font-weight: 460;
+    font-size: 22px;
+    padding: 13px 15px;
+    width: 185px;
+    text-align: center;
+  }
+
+  .btn {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .btn-clear:hover {
+    background: white;
+    border: 1px #f47946 solid;
+    color: #f47946;
+  }
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: 0;
+}
+
+.btn-clear {
+  background: none;
+  border: 1px white solid;
+  color: white;
+}
+
+
+.navbar-splash {
+  background-color: white;
+  height: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  .navbar-brand {
+    color: #f47946;
+    font-weight: 700;
+    font-size: 2.8em;
+  }
+  .btn-clear {
+    border: 1px #f47946 solid;
+    color: #f47946;
+    margin-left: 10px;
+  }
+}
+
+.padded-flash-container { // this makes sure that the fixed navbar does not hide anything
+  margin-top: 100px;
+}
+
+// splash / home page styles
+.splash_intro {
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #F59873),
+    color-stop(0.3, #F47A46)
+  );
+  background-image: -o-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: -moz-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: -webkit-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: -ms-linear-gradient(bottom, #F59873 0%, #F47A46 30%);
+  background-image: linear-gradient(to bottom, #F59873 0%, #F47A46 30%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 600px;
+  div.preview {
+    border: 2px solid black;
+    border-radius: 5px;
+    box-shadow:
+      0 0 0 18px hsl(0, 0%, 0%),
+      0 0 0 20px hsl(0, 0%, 80%);
+  }
+  h3 {
+
+  }
+}
+
+.bobbylong {
+  width: 500px;
+  position: absolute;
+  top: 40%;
+  right: 65%;
+  height: 600px;
+  background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/bobbylong_wide');
+  background-size: 100%;
+}
+.bobbylong-button {
+  width: 500px;
+  position: absolute;
+  top: 0;
+  right: 65%;
+  overflow: visible;
+}
+
+.zachandmiri {
+  width: 500px;
+  position: absolute;
+  top: 40%;
+  left: 65%;
+  height: 600px;
+  background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/zachandmiri_wide');
+  background-size: 100%;
+}
+.zachandmiri-button {
+  width: 500px;
+  position: absolute;
+  top: 0;
+  left: 65%;
+}
+
+.twindonuts {
+  width: 600px;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -300px;
+  height: 600px;
+  background-image: url('https://s3-us-west-2.amazonaws.com/singlepager-prod/twindonuts_wide');
+  background-size: 100%;
+}
+.twindonuts-button {
+  width: 600px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  overflow: visible;
+}
+
+
+
+.lets-rock {
+  height: 140px;
+  width: 140px;
+  border-radius: 70px;
+  left: 50%;
+  margin-left: -70px;
+  top: -50px;
+  font-size: 30px;
+  background-color: #428bca;
+}
+
+.lets-eat {
+  height: 160px;
+  width: 160px;
+  border-radius: 80px;
+  left: 50%;
+  margin-left: -80px;
+  top: -40px;
+  font-size: 35px;
+}
+
+.lets-tie-the-knot {
+  height: 140px;
+  width: 140px;
+  border-radius: 70px;
+  left: 50%;
+  margin-left: -70px;
+  top: -50px;
+  font-size: 30px;
+}
+
+// footer styles
+.footer {
+  background-color: #f47946;
+  color: white;
+  font-size: 16px;
+  .container {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  a {
+    color: white;
+    text-decoration: none;
+  }
 }

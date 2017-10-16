@@ -14,7 +14,6 @@ const widgetsReducer = (state = {}, action) => {
             action.widgets.forEach(function(widget) {
                 widgetMap[widget.id] = widget;
             })
-            debugger
             return merge({}, state, widgetMap);
 
         case RECEIVE_WIDGET:

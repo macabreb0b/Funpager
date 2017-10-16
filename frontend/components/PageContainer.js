@@ -1,16 +1,18 @@
 import { connect } from 'react-redux';
 
 import { fetchPage } from '../actions/PageActions';
-import { selectPage } from '../reducers/selectors';
+import { selectPage, selectAllWidgets } from '../reducers/selectors';
 import Page from './Page';
 
 const mapStateToProps = (state, { pageId }) => {
     const pageIdInt = parseInt(pageId);
     const page = selectPage(state.entities, pageIdInt);
+    const widgets = selectAllWidgets(state.entities);
 
     return {
         pageId: pageIdInt,
-        page
+        page,
+        widgets
     };
 };
 
