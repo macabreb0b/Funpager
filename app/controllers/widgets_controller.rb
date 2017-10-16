@@ -1,7 +1,7 @@
 class WidgetsController < ApplicationController
 
     def index # gets called by page/edit widgets/index.json.jbuilder
-         @page = Page.find(params[:page_id])
+        @page = Page.find(params[:page_id])
         check_permissions(@page)
         @widgets = @page.widgets
 
