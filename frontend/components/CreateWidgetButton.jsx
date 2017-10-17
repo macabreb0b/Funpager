@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 export const WidgetTypes = {
     BUTTON: 'Button',
@@ -19,11 +19,33 @@ const WIDGET_TYPE_TO_ICON_CLASS = {
 }    
 
 
-export const CreateWidgetButton = ({ pageId, widgetType, rankAfter, createWidget}) => (
-    <a href="javascript:;"
-        className='btn btn-default btn-sm btn-add-widget'
-        onClick={ createWidget.bind(null, pageId, widgetType, rankAfter) }>
-        <span className={ WIDGET_TYPE_TO_ICON_CLASS[widgetType] }></span><br />
-        { WIDGET_TYPE_TO_BUTTON_TEXT[widgetType] }
-    </a>
-)
+export class CreateWidgetButton extends Component {
+    constructor(props) {
+        super(props)
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(event) {
+        event.preventDefault()
+
+        this.props.createWidget(
+            this.props.pageId, 
+            this.props.widgetType, 
+            this.props.rankAfter,
+        )
+        this.props.closeFormAfterCreate();
+    }
+
+    render() {
+        return (
+            <a href="javascript:;"
+                className='btn btn-default btn-sm btn-add-widget'
+                onClick={ this.handleClick }>
+                <span className={ WIDGET_TYPE_TO_ICON_CLASS[this.props.widgetType] }></span><br />
+                { WIDGET_TYPE_TO_BUTTON_TEXT[this.props.widgetType] }
+            </a>
+        )
+    }
+} 
+
+

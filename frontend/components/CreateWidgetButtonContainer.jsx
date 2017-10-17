@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 
 import { CreateWidgetButton } from './CreateWidgetButton';
-import { createWidget } from '../actions/WidgetActions';
+import { createWidget } from '../actions/widget_actions';
 import { currentPageId } from '../reducers/selectors';
 
-const mapStateToProps = (state, { widgetType, rankAfter }) => {
+const mapStateToProps = (state, { widgetType, rankAfter, closeForm }) => {
     return {
         pageId: currentPageId(state.entities),
         widgetType,
         rankAfter,
+        closeForm,
     };
 };
 

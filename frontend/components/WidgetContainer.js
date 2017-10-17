@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
-// import { selectPage, selectAllWidgets } from '../reducers/selectors';
 import Widget from './Widget';
+import { openWidgetForEditing } from '../actions/edit_page_ui_actions'
 
 const mapStateToProps = (state, { widget }) => {
     const fields = widget.fields.slice().sort(function(a, b) {
@@ -14,7 +14,7 @@ const mapStateToProps = (state, { widget }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    openWidget: widgetId => dispatch(showWidgetForm(widgetId))
+    startEditingWidget: widgetId => (dispatch(openWidgetForEditing(widgetId)))
 });
 
 

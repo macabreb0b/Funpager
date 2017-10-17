@@ -24,7 +24,6 @@ class WidgetsController < ApplicationController
         @widget = Widget.find(params[:id])
         check_permissions(@widget)
 
-
         if @widget.update_attributes(widget_update_params)
             render json: @widget.to_json(include: :fields)
         else
@@ -33,28 +32,34 @@ class WidgetsController < ApplicationController
     end
 
     def create
-        widget_params = params.require(:widget).permit(:rank_after, :name, :page_id)
-        rank = Page.find(
+        widget_params = params.require(:widget).permit(
+            :rank_after, 
+            :name, 
+            :page_id,
+        )
+
+        next_rank = Page.find(
             widget_params[:page_id]
-        ).get_next_widget_rank(
+        ).calculate_next_widget_rank(
             widget_params[:rank_after]
         )
 
+        # TODO - string cases are brittle => use enum
         @widget = case widget_params[:name]
         when 'Text'
             Widget.new_text_widget(
                 widget_params[:page_id], 
-                rank,
+                next_rank,
             )
         when 'Image'
             Widget.new_photo_widget(
                 widget_params[:page_id], 
-                rank,
+                next_rank,
             )
         when 'Button'
             Widget.new_link_widget(
                 widget_params[:page_id], 
-                rank,
+                next_rank,
             )
         else
             fail

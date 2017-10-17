@@ -13,6 +13,13 @@ class WidgetActions extends Component {
 
         this.handleClickAddContent = this.handleClickAddContent.bind(this);
         this.handleClickCancel = this.handleClickCancel.bind(this);
+        this.closeForm = this.closeForm.bind(this);
+    }
+    
+    closeForm() {
+        this.setState({
+            isOpen: false
+        });
     }
 
     handleClickAddContent(event) {
@@ -22,9 +29,7 @@ class WidgetActions extends Component {
     }
 
     handleClickCancel(event) {
-        this.setState({
-            isOpen: false,
-        })
+        this.closeForm();
     }
 
     render() {
@@ -44,7 +49,8 @@ class WidgetActions extends Component {
                 <CreateWidgetButtonContainer 
                     widgetType={widgetType} 
                     key={widgetType} 
-                    rankAfter={this.props.rankAfter}/>
+                    rankAfter={this.props.rankAfter} 
+                    closeFormAfterCreate={ this.closeForm }/>
             ))
             return (
                 <div id="newWidget">

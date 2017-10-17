@@ -1,12 +1,10 @@
 import { connect } from 'react-redux';
 
-import Field from './Field';
+import TextField from './TextField';
 
-const mapStateToProps = (state, { field, isOpen, index }) => {
+const mapStateToProps = (state, { field }) => {
     return {
-        field,
-        isOpen, 
-        index
+        field
     };
 };
 
@@ -15,4 +13,4 @@ const mapDispatchToProps = dispatch => ({})
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Field);
+)(TextField);

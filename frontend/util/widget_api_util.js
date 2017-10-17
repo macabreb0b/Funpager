@@ -18,3 +18,16 @@ export const createWidget = (pageId, type, rankAfter) => (
     }
   })
 );
+
+export const updateWidget = (widgetId, fields) => (
+  $.ajax({
+    method: 'PUT',
+    url: `/widgets/${widgetId}`,
+    data: {
+      widget: {
+        fields_attributes: fields,
+      }
+    }
+  })
+);
+

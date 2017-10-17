@@ -51,12 +51,12 @@ class Page < ActiveRecord::Base
         slug.blank? || handle_changed?
     end
 
-    def get_next_widget_rank(previous_widget_rank)
+    def calculate_next_widget_rank(previous_widget_rank)
         previous_widget_rank_float = Float(previous_widget_rank)
 
         sorted_ranks = self.widgets.map(&:rank).sort()
 
-        new_rank = sorted_ranks.last + 1  # put it in last position by default
+        new_rank = sorted_ranks.last + 1  # put it in last place by default
         sorted_ranks.each_with_index do |rank, idx| 
             rank_float = Float(rank)
             if rank_float > previous_widget_rank_float

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Workstation from './Workstation';
-import { updatePageTheme } from '../actions/PageActions';
+import { updatePageTheme } from '../actions/page_actions';
 
 const mapStateToProps = (state, { pageId }) => {
     return {

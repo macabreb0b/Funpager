@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/page_api_util'
 
-import { receiveWidgets } from './WidgetActions';
+import { receiveWidgets } from './widget_actions';
 
 export const RECEIVE_PAGE = 'RECEIVE_PAGE';
 

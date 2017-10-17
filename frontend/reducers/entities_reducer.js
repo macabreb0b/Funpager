@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import widgetsReducer from './WidgetsReducer';
-import pagesReducer from './PageReducer';
+import widgetsReducer from './widgets_reducer';
+import pagesReducer from './pages_reducer';
 
 export default combineReducers({
   widgets: widgetsReducer,

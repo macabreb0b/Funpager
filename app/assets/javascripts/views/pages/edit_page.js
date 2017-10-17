@@ -111,17 +111,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
         })
     },
 
-    setTheme: function(event) {
-        event.preventDefault();
-        var $theme = jQuery(event.currentTarget).data('theme')
-
-        this.model.save({ theme: $theme }, {
-            success: function(model, response) {
-                jQuery('body').removeClass()
-                jQuery('body').addClass(model.get('theme'));
-            }
-        })
-    },
 
     getTheme: function() {
         jQuery('body').removeClass()
@@ -134,18 +123,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
         this.showModal()
 
         window.document.title = this.model.get('company');
-    },
-
-    showWidgetOptions: function(event) {
-        event.preventDefault()
-
-        // hide all '.add-widget' and keep them hidden until 'cancel' or 'submit'
-        this.stopListeningToJquery()
-        var $prevWidget = jQuery(event.currentTarget).parent().parent();
-        var rank = this.getRank($prevWidget);
-        $prevWidget.after(JST['widgets/widget_options']({
-            rank: rank
-        }))
     },
 
     newWidget: function(event) {
@@ -166,23 +143,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
         $li.html(form)
     },
 
-    getWidgetType: function(type) {
-        switch(type) {
-        case 'button':
-            return new Singlepager.Models.ButtonWidget();
-        case 'social':
-            return new Singlepager.Models.SocialWidget();
-        case 'text':
-            return new Singlepager.Models.TextWidget();
-        case 'image':
-            return new Singlepager.Models.ImageWidget();
-        case 'services':
-            return new Singlepager.Models.ServicesWidget();
-        case 'contact':
-            return new Singlepager.Models.ContactWidget();
-        }
-    },
-
     getWidgetForm: function(type) {
         switch(type) {
         case 'image':
@@ -194,19 +154,6 @@ Singlepager.Views.EditPage = Backbone.CompositeView.extend({
         }
     },
 
-    newService: function(event) {
-        event.preventDefault();
-        var $prevField = jQuery(event.currentTarget).prev();
-        var prevIndex = $prevField.data('index');
-        var fieldIndex = prevIndex + 1;
-
-        var newField = new Singlepager.Models.ServiceField();
-        var serviceField = JST['widgets/add_service']({
-            field_index: fieldIndex,
-            field: newField
-        });
-        $prevField.after(serviceField);
-    },
 
     getRank: function (prevWidget) {
         var prevId = prevWidget.data('id');

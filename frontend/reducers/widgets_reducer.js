@@ -3,7 +3,7 @@ import merge from 'lodash/merge';
 import {
     RECEIVE_WIDGETS,
     RECEIVE_WIDGET
-} from '../actions/WidgetActions';
+} from '../actions/widget_actions';
 
 const widgetsReducer = (state = {}, action) => {
     Object.freeze(state);

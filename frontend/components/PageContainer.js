@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchPage } from '../actions/PageActions';
+import { fetchPage } from '../actions/page_actions';
 import { selectPage, selectAllWidgets } from '../reducers/selectors';
 import Page from './Page';
 
@@ -9,11 +9,13 @@ const mapStateToProps = (state, { pageId }) => {
     const page = selectPage(state.entities, pageIdInt);
 
     const widgets = selectAllWidgets(state.entities);
+    const openWidgetId = state.ui.edit_page_ui.openWidgetId;
 
     return {
         pageId: pageIdInt,
         page,
-        widgets
+        widgets,
+        openWidgetId,
     };
 };
 

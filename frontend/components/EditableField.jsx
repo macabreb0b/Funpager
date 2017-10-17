@@ -4,30 +4,53 @@ import React, { Component } from 'react';
 class EditableField extends Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            content: this.props.field.content
+        }
+
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
+
+    handleInputChange(event) {
+        this.setState({
+            content: event.target.value
+        }, () => { 
+            this.props.updateFieldContent(
+                this.props.field.id, 
+                this.state.content,
+            )
+        });
+    }
+
     render() {
         const { field } = this.props;
 
-        const fieldHasNoContent = !this.props.field.content;
-        if (fieldHasNoContent) return '';
-
-        const TagName = this.props.field.tag;
-        const isLinkType = TagName === 'a';
-
-        if (isLinkType) {
+        if (field.content_type === 'textarea')  {
             return (
-                <a 
-                    href={this.props.field.content}
-                    target="_blank">
-
-                    {this.props.field.content}
-                </a>
+                <div>
+                    <label>
+                        { field.label }
+                        <textarea
+                            onChange={ this.handleInputChange }
+                            className="form-control"
+                            value={ this.state.content } />
+                    </label>
+                </div>
             )
         } else {
             return (
-                <TagName>
-                    {field.content.replace(/\r\n/g, "<br><br>")}
-                </TagName>
+                <div>
+                    <label>
+                        { field.label }
+                        <input
+                            className="form-control"
+                            onChange={ this.handleInputChange }
+                            placeholder={ field.placeholder }
+                            type={ field.content_type }
+                            value={ this.state.content } />
+                    </label>
+                </div>
             )
         }
     }

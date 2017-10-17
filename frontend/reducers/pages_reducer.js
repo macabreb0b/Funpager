@@ -2,7 +2,7 @@ import merge from 'lodash/merge';
 
 import {
     RECEIVE_PAGE
-} from '../actions/PageActions';
+} from '../actions/page_actions';
 
 const pagesReducer = (state = {}, action) => {
     Object.freeze(state);
