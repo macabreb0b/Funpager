@@ -65,8 +65,6 @@ class Page < ActiveRecord::Base
                 break
             end
         end
-        
-        byebug
 
         return new_rank
     end

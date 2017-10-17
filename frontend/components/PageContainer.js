@@ -7,6 +7,7 @@ import Page from './Page';
 const mapStateToProps = (state, { pageId }) => {
     const pageIdInt = parseInt(pageId);
     const page = selectPage(state.entities, pageIdInt);
+
     const widgets = selectAllWidgets(state.entities);
 
     return {

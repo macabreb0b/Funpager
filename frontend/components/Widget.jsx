@@ -106,7 +106,6 @@ class Widget extends Component {
                     onMouseOver={ this.handleMouseOver }
                     onMouseLeave={ this.handleMouseLeave }
                     className={ classList.join(' ') }>
-
                     <div
                         className='widget_fields'
                         onClick={ this.handleClickEditWidget }>

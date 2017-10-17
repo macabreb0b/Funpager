@@ -8,8 +8,11 @@ export const currentPageId = ({ pages, widgets }) => {
 }
 
 export const selectAllWidgets = ({ widgets }) => (
-    Object.keys(widgets).map(key => widgets[key]).sort(function(a, b) {
-        a.rank - b.rank
+    Object.values(widgets).sort(function(a, b) {
+        if(a.rank < b.rank) return -1;
+        if(a.rank > b.rank) return 1;
+
+        return 0;
     })
 );
 
