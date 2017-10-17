@@ -1,7 +1,7 @@
 // all credit to http://lea.verou.me/css3patterns/#
 // and http://subtlepatterns.com/ for the cool patterns!
 
-body.carbon {
+.theme--carbon {
   background:
   radial-gradient(black 15%, transparent 16%) 0 0,
   radial-gradient(black 15%, transparent 16%) 8px 8px,
@@ -38,7 +38,7 @@ body.carbon {
   }
 }
 
-body.tablecloth {
+.theme--tablecloth {
   background-color:white;
   background-image: linear-gradient(90deg, rgba(200,0,0,.5) 50%, transparent 50%),
   linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
@@ -72,7 +72,7 @@ body.tablecloth {
   }
 }
 
-body.brushed-steel {
+.theme--brushed-steel {
   background-color: darkslategrey;
   background: image-url('bg/grey_wash_wall.png');
 
@@ -112,7 +112,7 @@ body.brushed-steel {
   }
 }
 
-body.paper-cup {
+.theme--paper-cup {
   background-color: white;
   background: image-url('bg/green_cup.png') top left repeat ;
 
@@ -151,7 +151,7 @@ body.paper-cup {
   }
 }
 
-body.skulls {
+.theme--skulls {
   background-color: seashell;
   background: image-url('bg/skulls.png');
 
@@ -191,7 +191,7 @@ body.skulls {
   }
 }
 
-body.feathers {
+.theme--feathers {
   background-color: white;
   background: image-url('bg/subtle_white_feathers.png');
 
@@ -231,7 +231,7 @@ body.feathers {
   }
 }
 
-body.stardust {
+.theme--stardust {
   background-color: darkslategrey;
   background: image-url('bg/stardust.png');
 
@@ -274,7 +274,7 @@ body.stardust {
   }
 }
 
-body.crossword {
+.theme--crossword {
   background-color: seashell;
   background: image-url('bg/crossword.png');
 
@@ -306,7 +306,7 @@ body.crossword {
   }
 }
 
-body.water {
+.theme--water {
   background-color: aliceblue;
   background: image-url('bg/static_water.jpg');
   background-size: cover;
@@ -338,7 +338,7 @@ body.water {
   }
 }
 
-//body.food-party {
+//.theme--food-party {
 //  background-color: seashell;
 //  background: image-url('bg/food.png');
 //

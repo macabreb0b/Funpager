@@ -21,21 +21,23 @@ class Page extends Component {
             )
         })
         return (
-            isLoading ? <p>Please wait ...</p> : <div className="page-content">
-                <h4>{ 'theme - ' + this.props.page.theme }</h4>
-                <ul className="widgets">
-                    { widgetContainers }                    
-                </ul>
-                <div className="page-content_footer">
-                    <p className="copyright">
-                        <span 
-                            title="Change your company name and page title in dashboard settings">
-                            &copy; 2017 { this.props.page.company }
-                        </span>
-                    </p>
-                </div>
+            isLoading ? <p>Please wait ...</p> : <div className={"edit-page-viewer theme--" + this.props.page.theme}>
 
-                <WorkstationContainer pageId={this.props.page.id} /> 
+                <div className="page-content">
+                    <ul className="widgets">
+                        { widgetContainers }                    
+                    </ul>
+                    <div className="page-content_footer">
+                        <p className="copyright">
+                            <span 
+                                title="Change your company name and page title in dashboard settings">
+                                &copy; 2017 { this.props.page.company }
+                            </span>
+                        </p>
+                    </div>
+
+                    <WorkstationContainer pageId={this.props.page.id} /> 
+                </div>
             </div>
         );
     }

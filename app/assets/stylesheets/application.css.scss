@@ -24,6 +24,16 @@ body {
     background: #f5f5f5;
 }
 
+.edit-page-viewer {
+    position: fixed;
+    height: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 110px;
+    overflow-y: auto;
+}
+
 #viewer {
     overflow-y: auto;
 }
@@ -161,7 +171,7 @@ textarea.form-control {
         text-shadow: none;
         font-size: 0.7em;
     }
-    
+
     .close:hover {
         opacity: 0.8;
         text-shadow: 0 1px 0 white;
