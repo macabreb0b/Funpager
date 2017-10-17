@@ -3,6 +3,7 @@ import { openWidgetForEditing } from '../actions/edit_page_ui_actions';
 
 export const RECEIVE_WIDGETS = 'RECEIVE_WIDGETS';
 export const RECEIVE_WIDGET = 'RECEIVE_WIDGET';
+export const REMOVE_WIDGET_FROM_LIST = 'REMOVE_WIDGET_FROM_LIST';
 
 export const receiveWidgets = widgets => ({
     type: RECEIVE_WIDGETS,
@@ -12,6 +13,11 @@ export const receiveWidgets = widgets => ({
 export const receiveWidget = widget => ({
     type: RECEIVE_WIDGET,
     widget
+})
+
+export const removeWidgetFromList = widgetId => ({
+    type: REMOVE_WIDGET_FROM_LIST,
+    widgetId
 })
 
 export const createWidget = (pageId, widgetType, rankAfter) => dispatch => (
@@ -29,4 +35,9 @@ export const updateWidget = (widgetId, fields) => dispatch => {
     ))
 }
 
-// export const destroyWidget = widget => dispatch => ({}) / TODO - destroy widget
+export const destroyWidget = widgetId => dispatch => (
+    APIUtil.destroyWidget(widgetId).then(() => (
+        dispatch(removeWidgetFromList(widgetId))
+    ))
+
+)

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import EditableWidget from './EditableWidget';
-import { updateWidget } from '../actions/widget_actions';
+import { updateWidget, destroyWidget } from '../actions/widget_actions';
 import { openWidgetForEditing } from '../actions/edit_page_ui_actions';
 
 const mapStateToProps = (state, { widget }) => {

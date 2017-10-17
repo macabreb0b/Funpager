@@ -2,7 +2,8 @@ import merge from 'lodash/merge';
 
 import {
     RECEIVE_WIDGETS,
-    RECEIVE_WIDGET
+    RECEIVE_WIDGET,
+    REMOVE_WIDGET_FROM_LIST
 } from '../actions/widget_actions';
 
 const widgetsReducer = (state = {}, action) => {
@@ -21,6 +22,12 @@ const widgetsReducer = (state = {}, action) => {
 
             return merge({}, state, { [widget.id]: widget });
 
+        case REMOVE_WIDGET_FROM_LIST:
+            const newState = merge({}, state)
+            delete newState[action.widgetId];
+
+            return newState;
+            
         default:
             return state;
     }
