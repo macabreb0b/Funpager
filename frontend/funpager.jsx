@@ -7,9 +7,9 @@ import configureStore from './store/store';
 import PageContainer from './components/PageContainer'
 
 
-const Root = ({ store }) => (
+const Root = ({ store, pageId }) => (
     <Provider store={store}>
-        <PageContainer pageId="3"/>
+        <PageContainer pageId={ pageId }/>
     </Provider>
 );
 
@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const store = configureStore();
 
     const root = document.getElementById('root');
+    const pageId = $(root).data('page-id');
 
-    ReactDOM.render(<Root store={store} />, root);
+    ReactDOM.render(<Root store={store} pageId={pageId} />, root);
 });

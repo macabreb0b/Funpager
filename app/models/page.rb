@@ -82,7 +82,7 @@ class Page < ActiveRecord::Base
         page = Page.new({ title: "My New Page" })
         page.widgets << Widget.new_headline_widget
 
-        page.widgets << Widget.new_text_widget_for_starting_page(rank: 2.0)
+        page.widgets << Widget.new_text_widget_for_starting_page(2.0)
 
         page.title = "My New Page"
 

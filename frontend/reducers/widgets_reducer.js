@@ -12,6 +12,7 @@ const widgetsReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_WIDGETS:
             const widgetMap = {};
+
             action.widgets.forEach(function(widget) {
                 widgetMap[widget.id] = widget;
             })

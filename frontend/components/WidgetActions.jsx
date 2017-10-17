@@ -8,23 +8,27 @@ class WidgetActions extends Component {
         super(props)
 
         this.state = {
-            isOpen: false,
+            showForm: false,
         }
 
         this.handleClickAddContent = this.handleClickAddContent.bind(this);
         this.handleClickCancel = this.handleClickCancel.bind(this);
         this.closeForm = this.closeForm.bind(this);
+        this.handleClickMoveUp = this.handleClickMoveUp.bind(this);
+        this.handleClickMoveToTop = this.handleClickMoveToTop.bind(this);
+        this.handleClickMoveDown = this.handleClickMoveDown.bind(this);
+        this.handleClickMoveToBottom = this.handleClickMoveToBottom.bind(this);
     }
     
     closeForm() {
         this.setState({
-            isOpen: false
+            showForm: false
         });
     }
 
     handleClickAddContent(event) {
         this.setState({
-            isOpen: true,
+            showForm: true,
         })
     }
 
@@ -32,15 +36,63 @@ class WidgetActions extends Component {
         this.closeForm();
     }
 
+    handleClickMoveUp(event) {
+        event.preventDefault();
+
+    }
+
+    handleClickMoveToTop(event) {
+        event.preventDefault();
+
+    }
+
+    handleClickMoveDown(event) {
+        event.preventDefault();
+
+    }
+
+    handleClickMoveToBottom(event) {
+        event.preventDefault();
+
+    }
+
     render() {
-        if (!this.state.isOpen) {
+        if (!this.state.showForm) {
             return (
                 <div className='widget_add-widget'>
                     <a 
                         href='javascript:;' 
                         onClick={this.handleClickAddContent}
                         className='btn btn-default btn-sm btn-add-content'>
-                        + Add Content
+                        ↪️ Add Content Below
+                    </a>
+                    -
+                    <a 
+                        href='javascript:;' 
+                        onClick={this.handleClickMoveToTop}
+                        className='btn btn-default btn-sm btn-add-content'>
+                        ⏫
+                    </a>
+                    -
+                    <a 
+                        href='javascript:;' 
+                        onClick={this.handleClickMoveUp}
+                        className='btn btn-default btn-sm btn-add-content'>
+                        🔼
+                    </a>
+                    -
+                    <a 
+                        href='javascript:;' 
+                        onClick={this.handleClickMoveDown}
+                        className='btn btn-default btn-sm btn-add-content'>
+                        🔽
+                    </a>
+                    -
+                    <a 
+                        href='javascript:;' 
+                        onClick={this.handleClickMoveToBottom}
+                        className='btn btn-default btn-sm btn-add-content'>
+                        ⏬
                     </a>
                 </div>
             );

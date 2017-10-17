@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   # end
 
     def edit
+        @page_id = params[:id]
         render 'edit'
     end
 
