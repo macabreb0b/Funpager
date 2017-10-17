@@ -66,28 +66,24 @@ class WidgetActions extends Component {
                         className='btn btn-default btn-sm btn-add-content'>
                         ↪️ Add Content Below
                     </a>
-                    -
-                    <a 
-                        href='javascript:;' 
-                        onClick={this.handleClickMoveToTop}
-                        className='btn btn-default btn-sm btn-add-content'>
-                        ⏫
-                    </a>
-                    -
                     <a 
                         href='javascript:;' 
                         onClick={this.handleClickMoveUp}
                         className='btn btn-default btn-sm btn-add-content'>
                         🔼
                     </a>
-                    -
                     <a 
                         href='javascript:;' 
                         onClick={this.handleClickMoveDown}
                         className='btn btn-default btn-sm btn-add-content'>
                         🔽
                     </a>
-                    -
+                    <a 
+                        href='javascript:;' 
+                        onClick={this.handleClickMoveToTop}
+                        className='btn btn-default btn-sm btn-add-content'>
+                        ⏫
+                    </a>
                     <a 
                         href='javascript:;' 
                         onClick={this.handleClickMoveToBottom}

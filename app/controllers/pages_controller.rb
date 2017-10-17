@@ -17,8 +17,9 @@ class PagesController < ApplicationController
     @page = Page.new_starting_page
     @page.user_id = current_user.id
     check_logged_in
+    
     if @page.save
-      render :json => @page.to_json(include: :widgets)
+      redirect_to :show, id: @page.id
     else
       flash[:errors] = @page.errors.full_messages
       render 'new'
