@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import TextFieldContainer from './TextFieldContainer'
 import WidgetActionsContainer from './WidgetActionsContainer'
+import PhotoFieldContainer from './PhotoFieldContainer'
 
 const NAME_TO_GLYPH_MAP = {
     'Text': 'glyphicon-font',
@@ -58,11 +59,21 @@ class Widget extends Component {
                 <a href={url} target="_blank">🔗 - {text}</a>
             )
         } else {
-            return this.props.fields.map((field, index) => (
-                <TextFieldContainer 
-                    key={field.id} 
-                    field={field} />   
-            ))
+            return this.props.fields.map((field) => {
+                if (field.tag === 'img') {
+                    return (
+                        <PhotoFieldContainer
+                            key={field.id}
+                            field={field} />
+                    )
+                } else {
+                    return(
+                        <TextFieldContainer 
+                            key={field.id} 
+                            field={field} />   
+                    )
+                }
+            })
         }
     }
 
