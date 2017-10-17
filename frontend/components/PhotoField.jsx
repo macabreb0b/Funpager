@@ -17,7 +17,6 @@ class PhotoField extends Component {
                 <p className="caption">{field.content}</p>
             </div>
         )
-       
     }
 }
 

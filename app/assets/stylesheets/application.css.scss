@@ -135,7 +135,7 @@ textarea.form-control {
     }
 }
 
-.widget_fields:hover .widget_click-to-edit {
+.widget.hovered .widget_fields:hover .widget_click-to-edit {
     opacity: 0.8;
     visibility: visible;
 }
@@ -154,16 +154,15 @@ textarea.form-control {
         color: black;
         font-style: normal;
     }
-    
-    .cancel {
-        font-size: 0.7em !important;
-    }
-    .cancel.close {
+
+    .close {
         color: white;
         opacity: 0.4;
         text-shadow: none;
+        font-size: 0.7em;
     }
-    .cancel.close:hover {
+    
+    .close:hover {
         opacity: 0.8;
         text-shadow: 0 1px 0 white;
     }

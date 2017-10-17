@@ -55,7 +55,7 @@ class WidgetActions extends Component {
             return (
                 <div id="newWidget">
                     <div className="widget-form">
-                        <div className="form-header">
+                        <div className="widget-form_header">
                             <h4>
                                 What would you like to add here?
                                 <a 
