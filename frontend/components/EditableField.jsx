@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class Field extends Component {
+class EditableField extends Component {
     constructor(props) {
         super(props)
     }
@@ -34,4 +34,4 @@ class Field extends Component {
 }
 
 
-export default Field;
+export default EditableField;

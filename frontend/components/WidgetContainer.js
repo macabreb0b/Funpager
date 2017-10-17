@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Widget from './Widget';
 
 const mapStateToProps = (state, { widget }) => {
-    const fields = widget.fields.sort(function(a, b) {
+    const fields = widget.fields.slice().sort(function(a, b) {
         return a.id - b.id;
     })
     return {

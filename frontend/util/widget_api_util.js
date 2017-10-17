@@ -5,33 +5,16 @@ export const fetchWidgets = pageId => (
   })
 );
 
-export const createWidget = data => (
+export const createWidget = (pageId, type, rankAfter) => (
   $.ajax({
     method: 'POST',
-    url: '',
-    data
+    url: `/widgets`,
+    data: {
+      widget: {
+        rank_after: rankAfter,
+        page_id: pageId,
+        name: type
+      }
+    }
   })
 );
-
-// export const fetchBench = id => (
-//   $.ajax({
-//     method: 'GET',
-//     url: `api/benches/${id}`
-//   })
-// );
-
-// export const createReview = data => (
-//   $.ajax({
-//     method: 'POST',
-//     url: 'api/reviews',
-//     data
-//   })
-// );
-
-// export const createBench = data => (
-//   $.ajax({
-//     method: 'POST',
-//     url: 'api/benches',
-//     data
-//   })
-// );

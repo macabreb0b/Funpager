@@ -10,12 +10,17 @@ export const receivePage = page => ({
     page
 })
 
-
 export const fetchPage = pageId => dispatch => (
     APIUtil.fetchPage(pageId).then(function(page) {
         const widgets = page.widgets // TODO - return widgets separately? non-nested?
         
         dispatch(receiveWidgets(widgets))
         return dispatch(receivePage(page))
+    })
+);
+
+export const updatePageTheme = (pageId, themeName) => dispatch => (
+    APIUtil.updatePageTheme(pageId, themeName).then(function(pageData) {
+        return dispatch(receivePage(pageData))
     })
 );

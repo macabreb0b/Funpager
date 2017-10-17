@@ -1,8 +1,7 @@
-import * as APIUtil from '../util/widget_api_util'
+import * as APIUtil from '../util/widget_api_util';
 
 export const RECEIVE_WIDGETS = 'RECEIVE_WIDGETS';
 export const RECEIVE_WIDGET = 'RECEIVE_WIDGET';
-
 
 export const receiveWidgets = widgets => ({
     type: RECEIVE_WIDGETS,
@@ -14,14 +13,8 @@ export const receiveWidget = widget => ({
     widget
 })
 
-export const createWidget = widget => dispatch => (
-    APIUtil.createWidget(widget).then(widget => (
+export const createWidget = (pageId, widgetType, rankAfter) => dispatch => (
+    APIUtil.createWidget(pageId, widgetType, rankAfter).done(widget => (
       dispatch(receiveWidget(widget))
     ))
 );
-
-// export const fetchWidgets = pageId => dispatch => (
-//     APIUtil.fetchWidgets(pageId).then(widgets => (
-//       dispatch(receiveWidgets(widgets))
-//     ))
-// );

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import Field from './Field';
+import EditableField from './EditableField';
 
 const mapStateToProps = (state, { field }) => {
     return {
@@ -13,4 +13,4 @@ const mapDispatchToProps = dispatch => ({})
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Field);
+)(EditableField);

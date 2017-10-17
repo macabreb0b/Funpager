@@ -119,7 +119,7 @@ textarea.form-control {
     visibility: hidden;
 }
 
-.widget_fields:hover,
+.widget.hovered .widget_fields:hover,
 .widget_fields-hover {
   color: #000;
   margin-bottom: 10px;
@@ -186,7 +186,6 @@ textarea.form-control {
   .form-fields {
     border-top: grey 1px solid;
     border-bottom: white thin solid;
-
   }
 
   .form-footer {
@@ -202,8 +201,12 @@ textarea.form-control {
   padding: 10px;
 }
 
-.container {
-  max-width: 900px;
+.u-page-width {
+    max-width: 900px;
+}
+
+.u-margin-0-auto {
+    margin: 0 auto;
 }
 
 
@@ -295,19 +298,20 @@ p.copyright {
 }
 
 // start workstation styles
-#workstation {
-  min-height: 110px;
-  height: auto;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 100%;
-  background: rgba(64, 64, 64, 0.6);
-  padding: 10px;
-  color: white;
-  border-top: 10px black solid;
+.workstation {
+    min-height: 110px;
+    height: auto;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    background: rgba(64, 64, 64, 0.6);
+    padding: 10px;
+    color: white;
+    border-top: 10px black solid;    
+}
 
-  a {
+.workstation_theme {
     display: inline-block;
     vertical-align: middle;
     height: 75px;
@@ -319,50 +323,36 @@ p.copyright {
     color: white;
     text-align: center;
     padding-top: 20px;
-  }
 
-  .themes {
-    display: inline;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    background-size: cover;
+}
 
-  a.carbon-theme {
+.workstation_theme--carbon {
     background: image-url('thumbs/carbon.png');
-    background-size: cover;
-  }
-  a.water-theme {
+}
+.workstation_theme--water {
     background: image-url('thumbs/water.png');
-    background-size: cover;
-  }
-  a.paper-cup-theme {
+}
+.workstation_theme--paper-cup {
     background: image-url('thumbs/paper-cup.png');
-    background-size: cover;
-  }
-  a.brushed-steel-theme {
+}
+.workstation_theme--brushed-steel {
     background: image-url('thumbs/brushed-steel.png');
-    background-size: cover;
-  }
-  a.feathers-theme {
+}
+.workstation_theme--feathers {
     background: image-url('thumbs/feathers.png');
-    background-size: cover;
-  }
-  a.stardust-theme {
+}
+.workstation_theme--stardust {
     background: image-url('thumbs/stardust.png');
-    background-size: cover;
-  }
-  a.skulls-theme {
+}
+.workstation_theme--skulls {
     background: image-url('thumbs/skulls.png');
-    background-size: cover;
-  }
-  a.tablecloth-theme {
+}
+.workstation_theme--tablecloth {
     background: image-url('thumbs/tablecloth.png');
-    background-size: cover;
-  }
-  a.crossword-theme {
+}
+.workstation_theme--crossword {
     background: image-url('thumbs/crossword.png');
-    background-size: cover;
-  }
 }
 
 // start modal styles
@@ -540,10 +530,12 @@ h4.modal-title {
 
 #newWidget {
   position: relative;
+
   .wrapper {
     height: 300px;
     border: thick lightgrey dashed;
     border-radius: 5px;
+
     #canvasLoader {
       position: absolute;
       top: 50%;

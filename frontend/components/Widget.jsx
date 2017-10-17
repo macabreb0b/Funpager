@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import FieldContainer from './FieldContainer'
+import WidgetActionsContainer from './WidgetActionsContainer'
 
 const NAME_TO_GLYPH_MAP = {
     'Text': 'glyphicon-font',
@@ -57,7 +58,11 @@ class Widget extends Component {
     renderFields() {
         if (this.state.isOpen) {   
             return this.props.fields.map((field, index) => (
-                <FieldContainer key={field.id} field={field} isOpen={true} index={index}/>   
+                <FieldContainer 
+                    key={field.id} 
+                    field={field} 
+                    isOpen={true} 
+                    index={index} />   
             ))
         } else {
             if (this.props.widget.name === 'Button') {
@@ -73,7 +78,11 @@ class Widget extends Component {
                 )
             } else {
                 return this.props.fields.map((field, index) => (
-                    <FieldContainer key={field.id} field={field} isOpen={false} index={index}/>   
+                    <FieldContainer 
+                        key={field.id} 
+                        field={field} 
+                        isOpen={false} 
+                        index={index} />   
                 ))
             }
         }
@@ -106,13 +115,7 @@ class Widget extends Component {
                         { renderedFields }
                     </div>
 
-                    <div className='widget_add-widget'>
-                        <a 
-                            href='javascript:;' 
-                            className='add-widget btn btn-default btn-sm btn-add-content'>
-                            + Add Content
-                        </a>
-                    </div>
+                    <WidgetActionsContainer rankAfter={widget.rank} />
                 </div>
             );
         } else {
