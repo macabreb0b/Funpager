@@ -18,19 +18,26 @@
                         <% url = widget.fields.sort.last.content %>
                         <a href="<%= url %>"" target="_blank">🔗 - <%= title %></a>
 
-                    <% else %>
+                    <% elsif widget.name == "Image" %>
+                        <% title_field = widget.fields.sort.first %>
+                        <% if title_field.content != '' %>
+                            <<%= title_field.tag %>><%= title_field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= title_field.tag %>>
+                        <% end %>
 
+                        <% image_field = widget.fields.sort.last %>
+                        <% caption_field = widget.fields.sort.second %>
+                        <% if image_field.image_file_name %>
+                            <img class="inline-image"
+                                src="<%= image_field.image.url(:inline) %>">
+                            <% if caption_field.content != '' %>
+                                <p class="caption"><%= caption_field.content %></p>
+                            <% end %>
+                        <% end %>
+
+                    <% else %>
                         <% widget.fields.sort.each_with_index do |field, idx| %>
-                            <% if field.tag == 'img' %>
-                                <% if field.image_file_name %>
-                                    <img class="inline-image"
-                                        src="<%= field.image.url(:inline) %>">
-                                    <p class="caption"><%= field.content %></p>
-                                <% end %>
-                            <% else %>
-                                <% if field.content != '' %>
-                                    <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
-                                <% end %>
+                            <% if field.content != '' %>
+                                <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
                             <% end %>
                         <% end %>
                     <% end %>
