@@ -61,13 +61,15 @@ class Widget extends Component {
                     return field.label === 'Description:';
                 });
                 return (
-                    <TextFieldContainer
-                        key={field.id}
-                        field={titleField} />
-                    <PhotoFieldContainer
-                        key={field.id}
-                        src={imageField.inline_url} 
-                        caption={captionField.content} />
+                    <div>
+                        <TextFieldContainer
+                            key={field.id}
+                            field={titleField} />
+                        <PhotoFieldContainer
+                            key={field.id}
+                            src={imageField.inline_url} 
+                            caption={captionField.content} />
+                    </div>
                 )
         } else {
             return this.props.fields.map((field) => {
