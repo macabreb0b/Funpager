@@ -22,7 +22,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "webpack": "^3.7.1"
+    "webpack": "^3.7.1",
+    "react-scripts": "1.0.7"
   },
   "devDependencies": {},
   "scripts": {
@@ -39,6 +40,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/drwrchrds/Funpager/issues"
+  },
+  "engines": {
+    "node": "6.11.1",
+    "npm": "5.4.2"
   },
   "homepage": "https://github.com/drwrchrds/Funpager#readme"
 }
