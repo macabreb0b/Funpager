@@ -30,6 +30,7 @@ export const createWidget = (pageId, widgetType, rankAfter) => dispatch => (
 export const updateWidget = (widgetId, fields) => dispatch => {
     dispatch(openWidgetForEditing(null));
     // dispatch(showLoading(widget.id)); TODO - show loading widget
+
     return APIUtil.updateWidget(widgetId, fields).done(widget => (
         dispatch(receiveWidget(widget))
     ))

@@ -1,12 +1,12 @@
 class WidgetsController < ApplicationController
 
-    def index # gets called by page/edit widgets/index.json.jbuilder
-        @page = Page.find(params[:page_id])
-        check_permissions(@page)
-        @widgets = @page.widgets
+    # def index # gets called by page/edit widgets/index.json.jbuilder
+    #     @page = Page.find(params[:page_id])
+    #     check_permissions(@page)
+    #     @widgets = @page.widgets
 
-        render json: @widgets.to_json(include: :fields)
-    end
+    #     render json: @widgets.to_json(include: :fields)
+    # end
 
     # def new # for testing paperclip
     #   @widget = Widget.new
@@ -25,7 +25,7 @@ class WidgetsController < ApplicationController
         check_permissions(@widget)
 
         if @widget.update_attributes(widget_update_params)
-            render json: @widget.to_json(include: :fields)
+            render 'show'
         else
             render json: @widget.errors.full_messages, status: 422
         end
@@ -37,7 +37,7 @@ class WidgetsController < ApplicationController
 
         @widget.adjust_rank(params[:destination])
         if @widget.save
-            render json: @widget.to_json(include: :fields)
+            render 'show'
         else
             render json: @widget.errors.full_messages, status: 422
         end
