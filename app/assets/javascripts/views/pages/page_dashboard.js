@@ -8,7 +8,7 @@
 
 Singlepager.Views.PageDashboard = Backbone.View.extend({
 
-  template: JST['pages/dashboard'],
+  // template: JST['pages/dashboard'],
 
   className: 'dashboard',
 
