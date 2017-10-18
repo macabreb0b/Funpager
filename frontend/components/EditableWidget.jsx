@@ -99,7 +99,7 @@ class EditableWidget extends Component {
 
                     <a 
                         href="javascript:;" 
-                        className='cancel'
+                        className='btn'
                         onClick={this.handleClickCancel}>
                         Cancel
                     </a>

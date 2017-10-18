@@ -16,66 +16,20 @@
                     <% if widget.name == "Button" %>
                         <% title = widget.fields.sort.first.content %>
                         <% url = widget.fields.sort.last.content %>
-                        <a href="<%= url %>" >
-                            <button class='btn btn-lg btn-default'>
-                                <%= title %>
-                            </button>
-                        </a>
+                        <a href="<%= url %>"" target="_blank">🔗 - <%= title %></a>
 
                     <% else %>
 
                         <% widget.fields.sort.each_with_index do |field, idx| %>
-
                             <% if field.tag == 'img' %>
-
                                 <% if field.image_file_name %>
                                     <img class="inline-image"
                                         src="<%= field.image.url(:inline) %>">
                                     <p class="caption"><%= field.content %></p>
                                 <% end %>
-
                             <% else %>
-
                                 <% if field.content != '' %>
-
-                                    <% if field.tag == 'a' %>
-
-                                        <% if widget.name == "Social" %>
-                                            <% social_icon = field.label.downcase[0..-2] %>
-                                            <a class='social-link <%= social_icon %>'
-                                                href='<%= field.content %>'
-                                                target="_blank"></a>
-
-                                        <% else %>
-
-                                            <% if field.label == 'Email:' %>
-                                                <a href="mailto:<%= field.content %>">
-                                                    <%= field.content %></a>
-                                            <% else %>
-                                                <a href="<%= field.content %>">
-                                                    <%= field.content %></a>
-                                            <% end %>
-                                        <% end %>
-                                    <% else %>
-
-                                        <% if field.tag == 'img' %>
-
-                                            <%= image_tag field.image.url(:inline) %>
-                                            <p class='caption'><%= field.content %></p>
-
-                                        <% else %>
-
-                                            <% if field.tag == 'li' && idx == 2 %>
-                                                <ul>
-                                            <% end %>
-
-                                            <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
-
-                                            <% if field.tag == 'li' && idx == (widget.fields.size - 1)%>
-                                                </ul>
-                                            <% end %>
-                                        <% end %>
-                                    <% end %>
+                                    <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
                                 <% end %>
                             <% end %>
                         <% end %>
