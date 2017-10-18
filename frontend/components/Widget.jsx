@@ -4,14 +4,6 @@ import TextFieldContainer from './TextFieldContainer'
 import WidgetActionsContainer from './WidgetActionsContainer'
 import PhotoFieldContainer from './PhotoFieldContainer'
 
-const NAME_TO_GLYPH_MAP = {
-    'Text': 'glyphicon-font',
-    'Headline': 'glyphicon-header',
-    'Contact': 'glyphicon-envelope',
-    'Social': 'glyphicon-comment',
-    'Button': 'glyphicon-unchecked',
-}
-
 class Widget extends Component {
     constructor(props) {
         super(props)
@@ -102,7 +94,7 @@ class Widget extends Component {
                     { renderedFields }
                 </div>
 
-                <WidgetActionsContainer rankAfter={widget.rank} />
+                <WidgetActionsContainer widgetId={widget.id} rank={widget.rank} />
             </div>
         );
     

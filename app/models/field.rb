@@ -70,25 +70,27 @@ class Field < ActiveRecord::Base
         })
     end
 
-    def self.new_title_field(content)
+    def self.new_title_field(placeholder)
         Field.new({ 
             label: "Title:", 
             content_type: "text", 
             tag: 'h3',
-            content: content
+            content: "",
+            placeholder: placeholder
         })
     end
 
-    def self.new_text_field(content)
+    def self.new_text_field(placeholder)
         Field.new({ 
             label: "Text:", 
             content_type: "textarea", 
             tag: 'p',
-            content: content
+            content: "",
+            placeholder: placeholder
         })
     end
 
-    def self.new_photo_field
+    def self.new_image_field
         Field.new({ 
             label: "Image:", 
             content_type: "file", 
@@ -97,51 +99,25 @@ class Field < ActiveRecord::Base
         })
     end
 
-    def self.new_url_field(content)
+    def self.new_url_field(placeholder)
         Field.new({ 
             label: "URL:", 
-            content_type: "text", 
+            content_type: "url", 
             tag: 'a',
-            content: content
+            content: "",
+            placeholder: placeholder
         })
     end
 
-    def self.new_description_field(content)
+    def self.new_description_field(placeholder)
         Field.new({ 
             label: "Description:", 
             content_type: "textarea", 
             tag: 'p',
-            content: content
+            content: "",
+            placeholder: placeholder
         })
     end
-    
-### These constructor functions don't get called, just for reference:
-    #
-    #
-    #
-    # def self.new_tel_field
-    #   Field.new({ label: "Phone:", content_type: 'tel', tag: 'p' })
-    # end
-    #
-    # def self.new_email_field
-    #   Field.new({ label: "Email:", content_type: 'email', tag: 'a' })
-    # end
-    #
-    # def self.new_street_field
-    #   Field.new({ label: "Address:", content_type: 'text', tag: 'p' })
-    # end
-    #
-    # def self.new_city_field
-    #   Field.new({ label: "City:", content_type: 'text', tag: 'p' })
-    # end
-    #
-    # def self.new_state_field
-    #   Field.new({ label: "State:", content_type: 'text', tag: 'p' })
-    # end
-    #
-    # def self.new_postal_code_field
-    #   Field.new({ label: "Postal Code:", content_type: 'text', tag: 'p' })
-    # end
 
     def set_tag
         self.tag ||= TAGS[self.label]

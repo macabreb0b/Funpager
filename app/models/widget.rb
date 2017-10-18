@@ -47,12 +47,13 @@ class Widget < ActiveRecord::Base
             name: "Text", 
             rank: rank,
         })
-        widget.fields << Field.new_title_field("About Us")
-        widget.fields << Field.new_text_field(
-            "Enter content that tells your visitors about your company and what you do. 
-            You can write about your history, your team, the areas you service, 
-            or anything else you'd like to share."
-        )
+        title_field = Field.new_title_field('e.g., About Us')
+        title_field.content = "About Us"
+        widget.fields << title_field
+
+        description_field = Field.new_text_field("Once upon a time...")
+        description_field.content = "Enter content that tells your visitors about your company and what you do. You can write about your history, your team, the areas you service, or anything else you'd like to share."
+        widget.fields << description_field
 
         return widget
     end
@@ -63,8 +64,8 @@ class Widget < ActiveRecord::Base
             name: "Text", 
             rank: rank,
         })
-        widget.fields << Field.new_title_field('Title')
-        widget.fields << Field.new_text_field('Description')
+        widget.fields << Field.new_title_field('e.g., About Us')
+        widget.fields << Field.new_text_field("Once upon a time...")
 
         return widget
     end
@@ -75,21 +76,21 @@ class Widget < ActiveRecord::Base
             name: 'Button', 
             rank: rank,
         })
-        widget.fields << Field.new_title_field('Link text')
-        widget.fields << Field.new_url_field('Link URL')
+        widget.fields << Field.new_title_field('e.g., Make Payment')
+        widget.fields << Field.new_url_field('http://')
 
         return widget
     end
 
-    def self.new_photo_widget(page_id, rank)
+    def self.new_image_widget(page_id, rank)
         widget = Widget.new({ 
             page_id: page_id, 
             name: 'Image', 
             rank: rank,
         })
-        widget.fields << Field.new_title_field('Title')
-        widget.fields << Field.new_description_field('Oh caption, my caption')
-        widget.fields << Field.new_photo_field
+        widget.fields << Field.new_title_field("e.g., My Newest Painting")
+        widget.fields << Field.new_description_field('Oh caption, my caption...')
+        widget.fields << Field.new_image_field
 
         return widget
     end
@@ -99,5 +100,44 @@ class Widget < ActiveRecord::Base
         last_rank = page.widgets.pluck('rank').sort!.last
         puts 'checking rank'
         self.rank ||= (last_rank + 1)
+    end
+
+    def adjust_rank(destination)
+        sorted_ranks = self.page.widgets.pluck(:rank).sort!
+
+        new_rank = case destination
+        when 'decrement'
+            current_rank_index = sorted_ranks.index(self.rank)
+            if current_rank_index - 2 < 0
+                # we're one-away from top (or at the top)
+                sorted_ranks.first - 1
+            else
+                (sorted_ranks[current_rank_index - 2] + sorted_ranks[current_rank_index - 1]) / 2
+            end
+        when 'increment'
+            current_rank_index = sorted_ranks.index(self.rank)
+
+            if current_rank_index + 2 >= sorted_ranks.length
+                sorted_ranks.last + 1
+            else
+                (sorted_ranks[current_rank_index + 1] + sorted_ranks[current_rank_index + 2]) / 2
+            end
+        when 'top'
+            if self.rank == sorted_ranks.first
+                self.rank
+            else
+                sorted_ranks.first - 1
+            end
+        when 'bottom'
+            if self.rank == sorted_ranks.last
+                self.rank
+            else
+                sorted_ranks.last + 1
+            end
+        end
+
+        puts "#{destination} #{self.rank} to #{new_rank}"
+        puts "all_ranks = #{sorted_ranks}"
+        self.rank = new_rank
     end
 end

@@ -31,6 +31,18 @@ class WidgetsController < ApplicationController
         end
     end
 
+    def adjust_rank
+        @widget = Widget.find(params[:id])
+        check_permissions(@widget)
+
+        @widget.adjust_rank(params[:destination])
+        if @widget.save
+            render json: @widget.to_json(include: :fields)
+        else
+            render json: @widget.errors.full_messages, status: 422
+        end
+    end
+
     def create
         widget_params = params.require(:widget).permit(
             :rank_after, 
@@ -52,7 +64,7 @@ class WidgetsController < ApplicationController
                 next_rank,
             )
         when 'Image'
-            Widget.new_photo_widget(
+            Widget.new_image_widget(
                 widget_params[:page_id], 
                 next_rank,
             )

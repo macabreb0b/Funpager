@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import { WidgetTypes } from './CreateWidgetButton';
 import CreateWidgetButtonContainer from './CreateWidgetButtonContainer';
 
+const RankDestinations = {
+    ONE_DOWN: 'increment',
+    ONE_UP: 'decrement',
+    SEND_TO_TOP: 'top',
+    SEND_TO_BOTTOM: 'bottom',
+}
+
 class WidgetActions extends Component {
     constructor(props) {
         super(props)
@@ -14,6 +21,7 @@ class WidgetActions extends Component {
         this.handleClickAddContent = this.handleClickAddContent.bind(this);
         this.handleClickCancel = this.handleClickCancel.bind(this);
         this.closeForm = this.closeForm.bind(this);
+
         this.handleClickMoveUp = this.handleClickMoveUp.bind(this);
         this.handleClickMoveToTop = this.handleClickMoveToTop.bind(this);
         this.handleClickMoveDown = this.handleClickMoveDown.bind(this);
@@ -39,21 +47,29 @@ class WidgetActions extends Component {
     handleClickMoveUp(event) {
         event.preventDefault();
 
+        this.props.adjustRank(RankDestinations.ONE_UP)
+        this.closeForm();
     }
 
     handleClickMoveToTop(event) {
         event.preventDefault();
 
+        this.props.adjustRank(RankDestinations.SEND_TO_TOP)
+        this.closeForm();
     }
 
     handleClickMoveDown(event) {
         event.preventDefault();
 
+        this.props.adjustRank(RankDestinations.ONE_DOWN)
+        this.closeForm();
     }
 
     handleClickMoveToBottom(event) {
         event.preventDefault();
 
+        this.props.adjustRank(RankDestinations.SEND_TO_BOTTOM)
+        this.closeForm();
     }
 
     render() {
@@ -97,7 +113,7 @@ class WidgetActions extends Component {
                 <CreateWidgetButtonContainer 
                     widgetType={widgetType} 
                     key={widgetType} 
-                    rankAfter={this.props.rankAfter} 
+                    rankAfter={this.props.rank} 
                     closeFormAfterCreate={ this.closeForm }/>
             ))
             return (

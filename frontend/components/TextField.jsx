@@ -11,8 +11,8 @@ class TextField extends Component {
         const TagName = field.tag;
 
         return (
-            <TagName>
-                {field.content.replace(/\r\n/g, "<br><br>")}
+            <TagName placeholder={field.placeholder}>
+                { field.content.replace(/\r\n/g, "<br><br>") }
             </TagName>
         )
        

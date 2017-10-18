@@ -7,6 +7,7 @@ Singlepager::Application.routes.draw do
   end
 
   resources :widgets, only: [:new, :create, :destroy, :update]
+  post 'widgets/:id/move', to: 'widgets#adjust_rank'
 
   resources :users, only: [:new, :create]
   resource :session, only: [:new, :create, :destroy]

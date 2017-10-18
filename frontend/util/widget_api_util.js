@@ -36,5 +36,14 @@ export const destroyWidget = (widgetId) => (
         method: 'DELETE',
         url: `/widgets/${widgetId}`
     })
+);
 
-)
+export const adjustRank = (widgetId, destination) => (
+    $.ajax({
+        method: 'POST',
+        url: `/widgets/${widgetId}/move`,
+        data: {
+            destination,
+        }
+    })
+);

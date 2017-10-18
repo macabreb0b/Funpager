@@ -34,6 +34,7 @@ class EditableField extends Component {
                         <textarea
                             onChange={ this.handleInputChange }
                             className="form-control"
+                            placeholder={ field.placeholder }
                             value={ this.state.content } />
                     </label>
                 </div>

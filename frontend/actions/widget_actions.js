@@ -33,11 +33,17 @@ export const updateWidget = (widgetId, fields) => dispatch => {
     return APIUtil.updateWidget(widgetId, fields).done(widget => (
         dispatch(receiveWidget(widget))
     ))
-}
+};
+
+export const adjustRank = (widgetId, destination) => dispatch => (
+    APIUtil.adjustRank(widgetId, destination).done(widget => (
+        dispatch(receiveWidget(widget))
+    ))
+);
 
 export const destroyWidget = widgetId => dispatch => (
     APIUtil.destroyWidget(widgetId).then(() => (
         dispatch(removeWidgetFromList(widgetId))
     ))
+);
 
-)
