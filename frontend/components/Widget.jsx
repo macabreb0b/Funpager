@@ -63,10 +63,8 @@ class Widget extends Component {
                 return (
                     <div>
                         <TextFieldContainer
-                            key={field.id}
                             field={titleField} />
                         <PhotoFieldContainer
-                            key={field.id}
                             src={imageField.inline_url} 
                             caption={captionField.content} />
                     </div>
