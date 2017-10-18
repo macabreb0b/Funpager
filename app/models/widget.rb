@@ -94,14 +94,7 @@ class Widget < ActiveRecord::Base
 
         return widget
     end
-
-    def check_rank
-        page = (self.page_id ? Page.find(self.page_id) : self.page)
-        last_rank = page.widgets.pluck('rank').sort!.last
-        puts 'checking rank'
-        self.rank ||= (last_rank + 1)
-    end
-
+    
     def adjust_rank(destination)
         sorted_ranks = self.page.widgets.pluck(:rank).sort!
 
