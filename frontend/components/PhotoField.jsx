@@ -3,18 +3,15 @@ import React, { Component } from 'react';
 
 class PhotoField extends Component {
     render() {
-        const { field } = this.props;
-
-        const fieldHasNoContent = !field.content;
-        if (fieldHasNoContent) return '';
+        const { src, caption } = this.props;
 
         return (
             <div>
                 <img 
                     className="inline-image"
-                    src={field.inline_url} />
+                    src={src} />
 
-                <p className="caption">{field.content}</p>
+                <p className="caption">{caption}</p>
             </div>
         )
     }

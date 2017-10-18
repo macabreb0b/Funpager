@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 
 import PhotoField from './PhotoField';
 
-const mapStateToProps = (state, { field }) => {
+const mapStateToProps = (state, { src, caption }) => {
     return {
-        field,
+        src,
+        caption,
     };
 };
 

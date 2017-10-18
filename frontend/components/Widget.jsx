@@ -50,21 +50,32 @@ class Widget extends Component {
             return (
                 <a href={url} target="_blank">🔗 - {text}</a>
             )
+        } else if (this.props.widget.name === 'Image') {
+                const titleField = this.props.fields.find(function(field) {
+                    return field.label === 'Title:';  // TODO - convert to enum
+                })
+                const imageField = this.props.fields.find(function(field) { 
+                    return field.label === 'Image:';  // TODO - convert to enum
+                });
+                const captionField = this.props.fields.find(function(field) {
+                    return field.label === 'Description:';
+                });
+                return (
+                    <TextFieldContainer
+                        key={field.id}
+                        field={titleField} />
+                    <PhotoFieldContainer
+                        key={field.id}
+                        src={imageField.inline_url} 
+                        caption={captionField.content} />
+                )
         } else {
             return this.props.fields.map((field) => {
-                if (field.tag === 'img') {
-                    return (
-                        <PhotoFieldContainer
-                            key={field.id}
-                            field={field} />
-                    )
-                } else {
-                    return(
-                        <TextFieldContainer 
-                            key={field.id} 
-                            field={field} />   
-                    )
-                }
+                return(
+                    <TextFieldContainer 
+                        key={field.id} 
+                        field={field} />   
+                )
             })
         }
     }
