@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
   def root
     @user = current_user
+    @pages = current_user.pages
     render 'root'
   end
 

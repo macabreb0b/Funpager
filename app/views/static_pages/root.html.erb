@@ -1,62 +1,121 @@
 <%= render 'static_pages/nav' %>
 
 <div id="getting-started-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">A few quick Funpager tips</h4>
-      </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">A few quick Funpager tips</h4>
+            </div>
 
-      <div class="modal-body">
-        <div>
-          <h4>Build</h4>
+            <div class="modal-body">
+                <div>
+                    <h4>Build</h4>
 
-          <div class="modal-box">
-            <img src="<%= image_url('modal/clicktoedit.png') %>">
-            <p>Click on the content you'd like to <b>edit</b><br>
-            or drag it to <b>reorder</b></p>
-          </div>
+                    <div class="modal-box">
+                        <img src="<%= image_url('modal/clicktoedit.png') %>">
+                        <p>Click on the content you'd like to <b>edit</b><br>
+                        or drag it to <b>reorder</b></p>
+                    </div>
 
-          <div class="modal-box">
-            <img src="<%= image_url('modal/addcontent.png') %>">
-            <p>Click <b>Add Content</b> to add something new</p>
-          </div>
+                    <div class="modal-box">
+                        <img src="<%= image_url('modal/addcontent.png') %>">
+                        <p>Click <b>Add Content</b> to add something new</p>
+                    </div>
 
+                </div>
+
+                <div>
+                    <h4>Customize</h4>
+
+                    <div class="modal-box themes">
+                        <img src="<%= image_url('modal/pickatheme.png') %>">
+                        <p>Pick from the <b>themes</b> below to make your site your own!</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4>Launch</h4>
+
+                    <div class="modal-box">
+                        <img src="<%= image_url('modal/savepage.png') %>">
+                        <p>Hit <b>Done</b> when you're finished editing</p>
+                    </div>
+
+                    <div class="modal-box">
+                        <img src="<%= image_url('modal/pickahandle.png') %>">
+                        <p>Customize your page's url in the dashboard under <b>domain</b></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lg btn-warning close-modal" data-dismiss="modal">
+                    Got it, let's build!
+                </button>
+            </div>
         </div>
-
-        <div>
-          <h4>Customize</h4>
-
-          <div class="modal-box themes">
-            <img src="<%= image_url('modal/pickatheme.png') %>">
-            <p>Pick from the <b>themes</b> below to make your site your own!</p>
-          </div>
-        </div>
-
-        <div>
-          <h4>Launch</h4>
-
-          <div class="modal-box">
-            <img src="<%= image_url('modal/savepage.png') %>">
-            <p>Hit <b>Done</b> when you're finished editing</p>
-          </div>
-
-          <div class="modal-box">
-            <img src="<%= image_url('modal/pickahandle.png') %>">
-            <p>Customize your page's url in the dashboard under <b>domain</b></p>
-          </div>
-        </div>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-lg btn-warning close-modal" data-dismiss="modal">
-          Got it, let's build!
-        </button>
-      </div>
     </div>
-  </div>
 </div>
 
 <div class="row" id="viewer">
+    <div class="dashboard">
+    <div class="container">
+        <header class="your-pages">
+            <h2><span class="glyphicon glyphicon-file"></span>&nbsp;Your Pages</h2>
+        </header>
 
+        <ul>
+            <% @pages.sort.each do |page| %>
+                <li class="row page-list">
+                    <h3><a href="/pages/<%= page.id %>"><%= page.title %></a></h3>
+                    <p>
+                        <span class="glyphicon glyphicon-globe"></span>
+                        <a href="/<%= page.slug %>" target="_blank">
+                            http://funpager.com/<%= page.slug %></a>
+                        - Created <%= page.time_ago %> ago
+                    </p>
+
+                    <div class="page-buttons">
+                        <a disabled class="btn btn-primary btn-sm"  href="/pages/<%= page.id %>">
+                            <span class="glyphicon glyphicon-dashboard"></span>
+                            &nbsp;Dashboard
+                        </a>
+
+                        <a class="btn btn-primary btn-sm" href="/pages/<%= page.id %>/edit">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            &nbsp;Edit Page
+                        </a>
+
+                        <a class="btn btn-primary btn-sm"
+                            target="_blank"
+                            href="/<%= page.slug %>">
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            &nbsp;View Page
+                        </a>
+                    </div>
+                </li>
+            <% end %>
+
+            <li class='row page-list'>
+                <div class="new-funpager">
+                    <form action="/pages" class="button_to" method="post">
+                        <input type="hidden"
+                            name="authenticity_token"
+                            value="<%= form_authenticity_token %>">
+                        <div>
+                            <input class="btn btn-success btn-lg" type="submit" value="Create A Funpager">
+                        </div>
+                    </form>
+                    <p>Get building!</p>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+    <div class="footer">
+        <div class="u-page-width">
+        &copy; 2017 Funpager - a site by Andrew Richards <a href="http://www.twitter.com/drwrchrds">@drwrchrds</a>
+        </div>
+    </div>
+</div>
 </div>

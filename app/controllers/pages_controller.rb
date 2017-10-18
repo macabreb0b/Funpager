@@ -1,17 +1,8 @@
 class PagesController < ApplicationController
-    # def new # for testing accepts_nested_attributes_for
-    #   @page = Page.new
-    #   @page.widgets << Widget.new_headline_widget
-    #   @page.widgets << Widget.new_text_widget
-    #
-    #   render 'new'
-    # end
-
-        def edit
-            @page_id = params[:id]
-            render 'edit'
-        end
-
+    def edit
+        @page_id = params[:id]
+        render 'edit'
+    end
 
     def create
         @page = Page.new_starting_page
@@ -19,7 +10,7 @@ class PagesController < ApplicationController
         check_logged_in
         
         if @page.save
-            redirect_to :show, id: @page.id
+            redirect_to "/pages/#{@page.id}/edit"
         else
             flash[:errors] = @page.errors.full_messages
             render 'new'
