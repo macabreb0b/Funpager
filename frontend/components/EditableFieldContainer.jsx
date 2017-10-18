@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 
 import EditableField from './EditableField';
 
-const mapStateToProps = (state, { field, updateFieldContent }) => {
+const mapStateToProps = (state, { field, updateField }) => {
     return {
         field,
-        updateFieldContent,
+        updateField,
     };
 };
 

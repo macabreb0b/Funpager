@@ -23,7 +23,7 @@ class EditableWidget extends Component {
         this.handleClickCancel = this.handleClickCancel.bind(this);
         this.handleClickDone = this.handleClickDone.bind(this);
         this.handleClickDestroy = this.handleClickDestroy.bind(this);
-        this.updateFieldContent = this.updateFieldContent.bind(this);
+        this.updateField = this.updateField.bind(this);
     }
 
     handleClickDone(event) {
@@ -42,12 +42,13 @@ class EditableWidget extends Component {
         this.props.cancelEditing();
     }
 
-    updateFieldContent(fieldId, fieldContent) {
+    updateField({id, content, image}) {
 
         const newState = merge({}, this.state.editedFields, {
-            [fieldId]: { 
-                id: fieldId,
-                content: fieldContent,
+            [id]: { 
+                id,
+                content,
+                image,
             }
         })
         this.setState({
@@ -60,7 +61,7 @@ class EditableWidget extends Component {
             <EditableFieldContainer 
                 key={field.id} 
                 field={field} 
-                updateFieldContent={ this.updateFieldContent } />   
+                updateField={ this.updateField } />   
         ))
     }
 

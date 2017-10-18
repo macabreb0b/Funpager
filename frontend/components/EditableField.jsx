@@ -6,21 +6,41 @@ class EditableField extends Component {
         super(props)
 
         this.state = {
-            content: this.props.field.content
+            content: this.props.field.content,
+            image: this.props.field.image
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
     handleInputChange(event) {
-        this.setState({
-            content: event.target.value
-        }, () => { 
-            this.props.updateFieldContent(
-                this.props.field.id, 
-                this.state.content,
-            )
-        });
+        if (this.props.field.content_type === 'file') {
+            const input = event.target
+            const file = input.files[0]
+
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                this.setState({
+                    image: reader.result
+                }, () => {
+                    this.props.updateField({
+                        id: this.props.field.id,
+                        image: this.state.image,
+                    })
+                })
+            }
+
+            reader.readAsDataURL(file)
+        } else {
+            this.setState({
+                content: event.target.value
+            }, () => { 
+                this.props.updateField({
+                    id: this.props.field.id, 
+                    content: this.state.content,
+                })
+            });
+        }
     }
 
     render() {
