@@ -7,7 +7,7 @@
   <ul>
     <% pages.sort().each(function(page) { %>
       <li class="row page-list">
-        <h3><a href="#/pages/<%= page.id %>"><%= page.get('title') %></a></h3>
+        <h3><a href="/pages/<%= page.id %>"><%= page.get('title') %></a></h3>
         <p>
           <span class="glyphicon glyphicon-globe"></span>
           <a href="/<%= page.get('slug') %>" target="_blank">
@@ -16,12 +16,12 @@
         </p>
 
         <div class="page-buttons">
-          <a class="btn btn-primary btn-sm"  href="#/pages/<%= page.id %>">
+          <a class="btn btn-primary btn-sm"  href="/pages/<%= page.id %>">
             <span class="glyphicon glyphicon-dashboard"></span>
             &nbsp;Dashboard
           </a>
 
-          <a class="btn btn-primary btn-sm" href="#/pages/<%= page.id %>/edit">
+          <a class="btn btn-primary btn-sm" href="/pages/<%= page.id %>/edit">
             <span class="glyphicon glyphicon-pencil"></span>
             &nbsp;Edit Page
           </a>
@@ -38,7 +38,7 @@
 
     <li class='row page-list'>
       <div class="new-funpager">
-        <form action="#/pages/new" class="button_to" method="get">
+        <form action="/pages" class="button_to" method="post">
           <div>
             <input class="btn btn-success btn-lg" type="submit" value="Create A Funpager">
           </div>

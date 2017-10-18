@@ -18,99 +18,108 @@
 #
 
 class Field < ActiveRecord::Base
-  TAGS = {
-    'Company Name:' => 'h1',
-    'Tagline:' => 'h2',
-    'Title:' => 'h3',
-    'Text:' => 'p',
-    'Description:' => 'p',
-    'Url:' => 'a',
-    'URL:' => 'a',
-    'Facebook:' => 'a',
-    'Twitter:' => 'a',
-    'LinkedIn:' => 'a',
-    'Tumblr:' => 'a',
-    'Service:' => 'li',
-    'Email:' => 'a',
-    'Phone:' => 'p',
-    'Address:' => 'p',
-    'Image:' => 'img',
-    'Street:' => 'p',
-    'City:' => 'p',
-    'Postal Code:' => 'p'
-  }
-
-  validates :label, :widget, :content_type, :tag, :presence => true
-  before_validation :set_tag
-  belongs_to :widget
-
-  has_attached_file :image,
-    :styles => {
-      :inline => "440x",
-      :big  => "600x600>"
+    TAGS = {
+        'Company Name:' => 'h1',
+        'Tagline:' => 'h2',
+        'Title:' => 'h3',
+        'Text:' => 'p',
+        'Description:' => 'p',
+        'Url:' => 'a',
+        'URL:' => 'a',
+        'Facebook:' => 'a', # deprecated
+        'Twitter:' => 'a', # deprecated
+        'LinkedIn:' => 'a', # deprecated
+        'Tumblr:' => 'a', # deprecated
+        'Service:' => 'li', # deprecated
+        'Email:' => 'a', # deprecated
+        'Phone:' => 'p', # deprecated
+        'Address:' => 'p', # deprecated
+        'Image:' => 'img',
+        'Street:' => 'p', # deprecated
+        'City:' => 'p', # deprecated
+        'Postal Code:' => 'p' # deprecated
     }
 
-  validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
+    validates :label, :widget, :content_type, :tag, :presence => true
+    before_validation :set_tag
+    belongs_to :widget
 
-  def self.new_company_name_field
-    Field.new({ label: "Company Name:", content_type: "text", content: "Your Company Name", tag: 'h1' })
-  end
+    has_attached_file :image,
+        :styles => {
+            :inline => "440x",
+            :big  => "600x600>"
+        }
 
-  def self.new_tagline_field
-    Field.new({ label: "Tagline:", content_type: "text", content: "Your Tagline Here", tag: 'h2' })
-  end
+    validates_attachment_content_type :image, :content_type => ["image/jpg", "image/jpeg", "image/png"]
 
-  def self.new_title_field
-    Field.new({ label: "Title:", content_type: "text", tag: 'h3' })
-  end
+    def self.new_company_name_field
+        Field.new({ 
+            label: "Company Name:", 
+            content_type: "text", 
+            tag: 'h1',
+            content: "Your Company Name"
+        })
+    end
 
-  def self.new_text_field
-    Field.new({ label: "Text:", content_type: "textarea", tag: 'p' })
-  end
+    def self.new_tagline_field
+        Field.new({ 
+            label: "Tagline:", 
+            content_type: "text", 
+            tag: 'h2',
+            content: "Your Tagline Here"
+        })
+    end
 
-  def self.new_photo_field
-    Field.new({ label: "Image:", content_type: "file", tag: 'img' })
-  end
+    def self.new_title_field(placeholder)
+        Field.new({ 
+            label: "Title:", 
+            content_type: "text", 
+            tag: 'h3',
+            content: "",
+            placeholder: placeholder
+        })
+    end
 
+    def self.new_text_field(placeholder)
+        Field.new({ 
+            label: "Text:", 
+            content_type: "textarea", 
+            tag: 'p',
+            content: "",
+            placeholder: placeholder
+        })
+    end
 
-### These constructor functions don't get called, just for reference:
-  # def self.new_description_field
-  #   Field.new({ label: "Description:", content_type: "textarea", tag: 'p' })
-  # end
-  #
-  # def self.new_url_field
-  #   Field.new({ label: "Url:", content_type: "text", tag: 'a' })
-  # end
-  #
-  # def self.new_image_field
-  #   Field.new({ label: "Image:", content_type: "file", tag: 'img' })
-  # end
-  #
-  # def self.new_tel_field
-  #   Field.new({ label: "Phone:", content_type: 'tel', tag: 'p' })
-  # end
-  #
-  # def self.new_email_field
-  #   Field.new({ label: "Email:", content_type: 'email', tag: 'a' })
-  # end
-  #
-  # def self.new_street_field
-  #   Field.new({ label: "Address:", content_type: 'text', tag: 'p' })
-  # end
-  #
-  # def self.new_city_field
-  #   Field.new({ label: "City:", content_type: 'text', tag: 'p' })
-  # end
-  #
-  # def self.new_state_field
-  #   Field.new({ label: "State:", content_type: 'text', tag: 'p' })
-  # end
-  #
-  # def self.new_postal_code_field
-  #   Field.new({ label: "Postal Code:", content_type: 'text', tag: 'p' })
-  # end
+    def self.new_image_field
+        Field.new({ 
+            label: "Image:", 
+            content_type: "file", 
+            tag: 'img',
+            content: ""
+        })
+    end
 
-  def set_tag
-    self.tag ||= TAGS[self.label]
-  end
+    def self.new_url_field(placeholder)
+        Field.new({ 
+            label: "URL:", 
+            content_type: "url", 
+            tag: 'a',
+            content: "",
+            placeholder: placeholder
+        })
+    end
+
+    def self.new_description_field(placeholder)
+        Field.new({ 
+            label: "Description:", 
+            content_type: "textarea", 
+            tag: 'p',
+            content: "",
+            placeholder: placeholder
+        })
+    end
+
+    def set_tag
+        self.tag ||= TAGS[self.label]
+    end
 end

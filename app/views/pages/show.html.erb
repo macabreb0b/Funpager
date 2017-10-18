@@ -1,99 +1,44 @@
+<body class="<%= @page.theme %>">
+
 <script type="text/javascript">
-  $(function() {
-    window.document.title = "<%= @page.company %>";
-    $('body').attr("class", "<%= @page.theme %>");
-  });
+    $(function() {
+        window.document.title = "<%= @page.company %>";
+        $('body').attr("class", "<%= 'theme--' + @page.theme %>");
+    });
 </script>
 
 <div class="page-content">
-  <ul class="widgets">
-    <% @widgets.each do |widget| %>
-      <li class="widget">
-        <div class="widget-fields-no-hover">
+    <ul class="widgets">
+        <% @widgets.each do |widget| %>
+            <li class="widget">
+                <div class="widget_fields">
 
-          <% if widget.name == "Button" %>
-            <!-- handle button -->
-            <% title = widget.fields.sort.first.content %>
-            <% url = widget.fields.sort.last.content %>
-            <a href="<%= url %>" >
-              <button class='btn btn-lg btn-default'>
-                <%= title %>
-              </button>
-            </a>
-
-          <% else %>
-
-            <% widget.fields.sort.each_with_index do |field, idx| %>
-
-              <% if field.tag == 'img' %>
-                <!-- handle image -->
-
-                <% if field.image_file_name %>
-                  <!-- don't show empty image -->
-                  <img class="inline-image"
-                    src="<%= field.image.url(:inline) %>">
-                  <p class="caption"><%= field.content %></p>
-                <% end %>
-
-              <% else %>
-
-                <% if field.content != '' %>
-                  <!-- ignore field if no content -->
-
-                  <% if field.tag == 'a' %>
-                    <!-- handle anchor tags -->
-
-                    <% if widget.name == "Social" %>
-                      <!-- handle social media buttons -->
-                      <% social_icon = field.label.downcase[0..-2] %>
-                      <a class='social-link <%= social_icon %>'
-                        href='<%= field.content %>'
-                        target="_blank"></a>
+                    <% if widget.name == "Button" %>
+                        <% title = widget.fields.sort.first.content %>
+                        <% url = widget.fields.sort.last.content %>
+                        <a href="<%= url %>"" target="_blank">🔗 - <%= title %></a>
 
                     <% else %>
 
-                      <% if field.label == 'Email:' %>
-                        <!-- handle mailto links -->
-                        <a href="mailto:<%= field.content %>">
-                          <%= field.content %></a>
-                      <% else %>
-                        <!-- handle all other links -->
-                        <a href="<%= field.content %>">
-                          <%= field.content %></a>
-                      <% end %>
+                        <% widget.fields.sort.each_with_index do |field, idx| %>
+                            <% if field.tag == 'img' %>
+                                <% if field.image_file_name %>
+                                    <img class="inline-image"
+                                        src="<%= field.image.url(:inline) %>">
+                                    <p class="caption"><%= field.content %></p>
+                                <% end %>
+                            <% else %>
+                                <% if field.content != '' %>
+                                    <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
+                                <% end %>
+                            <% end %>
+                        <% end %>
                     <% end %>
-                  <% else %>
-
-                    <% if field.tag == 'img' %>
-
-                      <!-- handle images -->
-                      <%= image_tag field.image.url(:inline) %>
-                      <p class='caption'><%= field.content %></p>
-
-                    <% else %>
-
-                      <% if field.tag == 'li' && idx == 2 %>
-                        <!-- put <ul> before <li> tag groups -->
-                        <ul>
-                      <% end %>
-
-                      <!-- this is the default action -->
-                      <<%= field.tag %>><%= field.content.gsub(/\r\n/, '<br><br>').html_safe %></<%= field.tag %>>
-
-                      <% if field.tag == 'li' && idx == (widget.fields.size - 1)%>
-                        <!-- put </ul> after <li> tag groups -->
-                        </ul>
-                      <% end %>
-                    <% end %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </div>
-      </li>
-    <% end %>
-  </ul>
-  <p class="copyright">&copy; 2014 <%= @page.company %></p>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+    <p class="copyright">&copy; 2017 <%= @page.company %></p>
 </div>
 
+</body>
