@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
           when 'bobbylong'
             redirect_to '/pages/34/edit'
           else
-            redirect_to '/pages'
+            redirect_to root_url
         end
       else
         redirect_to root_url
