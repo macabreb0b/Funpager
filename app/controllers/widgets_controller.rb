@@ -73,6 +73,11 @@ class WidgetsController < ApplicationController
                 widget_params[:page_id], 
                 next_rank,
             )
+        when 'Separator'
+            Widget.new_separator_widget(
+                widget_params[:page_id],
+                next_rank,
+            )
         else
             fail
         end

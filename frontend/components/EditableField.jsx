@@ -59,6 +59,29 @@ class EditableField extends Component {
                     </label>
                 </div>
             )
+        } else if (field.label === 'Alignment:') {
+            const radioInputs = ["left", "center"].map((alignment) => (
+                <div 
+                    key={alignment}
+                    className="fieldset fieldset--inline">
+
+                    <label>
+                        {alignment + ' '}
+                        <input
+                            type="radio"
+                            value={ alignment }
+                            checked={ this.state.content == alignment } 
+                            name="alignment"
+                            onChange={ this.handleInputChange } />
+                    </label>
+                </div>
+            ))
+            return (
+                <div>
+                    <div><label>Alignment:</label></div>
+                    { radioInputs }
+                </div>
+            )
         } else {
             return (
                 <div>

@@ -4,18 +4,21 @@ export const WidgetTypes = {
     BUTTON: 'Button',
     PHOTO: 'Image',
     TEXT: 'Text',
+    SEPARATOR: 'Separator',
 }
 
 const WIDGET_TYPE_TO_BUTTON_TEXT = {
     [WidgetTypes.BUTTON]: "Add Link",
     [WidgetTypes.PHOTO]: "Add Image",
     [WidgetTypes.TEXT]: "Add Text",
+    [WidgetTypes.SEPARATOR]: "Add Separator",
 }    
 
 const WIDGET_TYPE_TO_ICON_CLASS = {
     [WidgetTypes.BUTTON]: "glyphicon glyphicon-unchecked",
     [WidgetTypes.PHOTO]: "glyphicon glyphicon-picture",
     [WidgetTypes.TEXT]: "glyphicon glyphicon-font",
+    [WidgetTypes.SEPARATOR]: "glyphicon glyphicon-resize-horizontal",
 }    
 
 

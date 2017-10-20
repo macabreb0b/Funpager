@@ -17,7 +17,11 @@
 #  placeholder        :string(255)
 #
 
-class Field < ActiveRecord::Base
+# TODO(2017-10-19) - rename to feature
+# TODO(2017-10-19) - use enumerated type as source of truth instead of "label"
+# TODO(2017-10-19) - remove "tag" column and just let frontend display the feature how it wants
+
+class Field < ActiveRecord::Base 
     TAGS = {
         'Company Name:' => 'h1',
         'Tagline:' => 'h2',
@@ -116,6 +120,18 @@ class Field < ActiveRecord::Base
             tag: 'p',
             content: "",
             placeholder: placeholder
+        })
+    end
+
+    def self.new_alignment_field(default_alignment)
+        # TODO(2017-10-19)
+        # should this have "feature options" model and "default feature option"? or maybe just a list of options?
+        # .. could also just let frontend worry about it
+        Field.new({
+            label: "Alignment:",
+            content_type: "radio",
+            tag: 'N/A',
+            content: default_alignment,
         })
     end
 

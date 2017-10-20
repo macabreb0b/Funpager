@@ -33,7 +33,14 @@
                                 <p class="caption"><%= caption_field.content %></p>
                             <% end %>
                         <% end %>
-
+                    <% elsif widget.name == "Separator" %>
+                        <% title_field = widget.fields.sort.first %>
+                        <% alignment_field = widget.fields.sort.last %>
+                        <% if title_field.content == '' %>
+                            <h2 class="separator separator--full"></h2>
+                        <% else %>
+                            <h2 class="separator separator--<%= alignment_field.content %>"><%= title_field.content %></h2>
+                        <% end %>
                     <% else %>
                         <% widget.fields.sort.each_with_index do |field, idx| %>
                             <% if field.content != '' %>
