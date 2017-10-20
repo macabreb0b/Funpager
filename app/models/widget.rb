@@ -20,7 +20,8 @@ class Widget < ActiveRecord::Base
         'Hours', # deprecated
         'Social', # deprecated
         'Services', # deprecated
-        'Button'
+        'Button',
+        'Separator',
     ]
 
     validates :page, :name, :rank, :presence => true
@@ -94,7 +95,19 @@ class Widget < ActiveRecord::Base
 
         return widget
     end
-    
+
+    def self.new_separator_widget(page_id, rank)
+        widget = Widget.new({
+            page_id: page_id,
+            name: 'Separator',
+            rank: rank,
+        })
+        widget.fields << Field.new_title_field("e.g., Today's News")
+        widget.fields << Field.new_alignment_field('left')
+
+        return widget
+    end
+
     def adjust_rank(destination)
         sorted_ranks = self.page.widgets.pluck(:rank).sort!
 

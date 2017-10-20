@@ -51,24 +51,37 @@ class Widget extends Component {
                 <a href={url} target="_blank">🔗 - {text}</a>
             )
         } else if (this.props.widget.name === 'Image') {
-                const titleField = this.props.fields.find(function(field) {
-                    return field.label === 'Title:';  // TODO - convert to enum
-                })
-                const imageField = this.props.fields.find(function(field) { 
-                    return field.label === 'Image:';  // TODO - convert to enum
-                });
-                const captionField = this.props.fields.find(function(field) {
-                    return field.label === 'Description:';
-                });
-                return (
-                    <div>
-                        <TextFieldContainer
-                            field={titleField} />
-                        <PhotoFieldContainer
-                            src={imageField.inline_url} 
-                            caption={captionField.content} />
-                    </div>
-                )
+            const titleField = this.props.fields.find(function(field) {
+                return field.label === 'Title:';  // TODO - convert to enum
+            })
+            const imageField = this.props.fields.find(function(field) { 
+                return field.label === 'Image:';  // TODO - convert to enum
+            });
+            const captionField = this.props.fields.find(function(field) {
+                return field.label === 'Description:';
+            });
+            return (
+                <div>
+                    <TextFieldContainer
+                        field={titleField} />
+                    <PhotoFieldContainer
+                        src={imageField.inline_url} 
+                        caption={captionField.content} />
+                </div>
+            )
+        } else if (this.props.widget.name === 'Separator') {
+            const alignment = this.props.fields.find((field) => (
+                field.label === 'Alignment:'
+            )).content;
+            const title = this.props.fields.find((field) => (
+                field.label === 'Title:'
+            )).content;
+
+            return (
+                <h2 className={ "separator separator--" + alignment }>
+                    { title }
+                </h2>
+            )
         } else {
             return this.props.fields.map((field) => {
                 return(

@@ -58,6 +58,41 @@ body {
 };
 
 
+.separator {
+    overflow: hidden;
+    font-size: 1.2em;
+}
+.separator:before,
+.separator:after {
+    background-color: #888;
+    content: "";
+    display: inline-block;
+    height: 1px;
+    position: relative;
+    vertical-align: middle;
+}
+
+.separator.separator--left:after {
+    width: 100%;
+    margin-right: -50%;
+    left: 0.5em;
+}
+
+.separator.separator--center {
+    text-align:center;
+}
+
+.separator.separator--center:before {
+    width: 50%;
+    right: 0.5em;
+    margin-left: -50%;
+}
+.separator.separator--center:after {
+    width: 50%;
+    left: 0.5em;
+    margin-right: -50%;
+}
+
 
 #page-background {
     background-color: black;
@@ -206,6 +241,12 @@ textarea.form-control {
         float: left;
     }
 }
+
+.fieldset--inline {
+    display: inline-block;
+    margin-right: 12px;
+}
+
 
 .widget-form > div {
     padding: 10px;
