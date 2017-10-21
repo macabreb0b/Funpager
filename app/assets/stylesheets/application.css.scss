@@ -152,8 +152,6 @@ textarea.form-control {
     padding: 3px 0;
     margin-left: -50px;
     margin-top: -13px;
-    font-family: arial, sans-serif;
-    font-size: 0.9em;
     background-color: slategrey;
     color: white;
     border-radius: 5px;
@@ -166,14 +164,14 @@ textarea.form-control {
     visibility: hidden;
 }
 
-.widget.hovered .widget_fields:hover,
-.widget_fields-hover {
+.widget.hovered .widget_fields:hover {
     color: #000;
     margin-bottom: 10px;
     padding: 9px;
     border: thin solid lightgrey;
     background-color: SeaShell;
     cursor: pointer;
+
     a {
         pointer-events: none;
     }
@@ -190,14 +188,10 @@ textarea.form-control {
 .widget-form {
     background-color: lightgrey;
     border-radius: 5px;
-    font-family: 'Arial', sans-serif;
-    font-size: 1em;
     color: black;
     margin: 10px 0;
 
-    label {
-        font-family: 'Arial', sans-serif;
-        font-size: 0.8em;
+    .widget-form_label {
         color: black;
         font-style: normal;
     }
@@ -206,7 +200,6 @@ textarea.form-control {
         color: white;
         opacity: 0.4;
         text-shadow: none;
-        font-size: 0.7em;
     }
 
     .close:hover {
@@ -216,19 +209,12 @@ textarea.form-control {
 }
 
 .widget-form_header {
-    font-family: 'Arial', sans-serif;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
     background-color: dimgrey;
     border-bottom: white thin solid;
 
-    h4 {
-        font-size: 0.8em;
-        line-height: 0.8em;
-        margin-top: 0;
-        margin-bottom: 0;
-        color: white;
-    }
+    color: white;
 }
 
 .widget-form_fields {
@@ -256,6 +242,10 @@ textarea.form-control {
 
 .u-page-width {
     max-width: 900px;
+}
+
+.u-display-block {
+    display: block !important;
 }
 
 .u-margin-0-auto {
@@ -379,7 +369,6 @@ textarea.form-control {
 }
 
 h4.modal-title {
-    font-size: 24px;
     color: darkslategrey;
 }
 .modal-body > div {
@@ -390,7 +379,6 @@ h4.modal-title {
     padding: 0;
     h4 {
         color: #F2591D;
-        font-size: 30px;
     }
     div.modal-box img {
         max-width: 90%;

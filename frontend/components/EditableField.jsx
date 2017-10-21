@@ -49,7 +49,7 @@ class EditableField extends Component {
         if (field.content_type === 'textarea')  {
             return (
                 <div>
-                    <label>
+                    <label className='u-display-block'>
                         { field.label }
                         <textarea
                             onChange={ this.handleInputChange }
@@ -85,7 +85,7 @@ class EditableField extends Component {
         } else {
             return (
                 <div>
-                    <label>
+                    <label className='u-display-block'>
                         { field.label }
                         <input
                             className="form-control"
