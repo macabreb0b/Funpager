@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import WidgetContainer from './WidgetContainer'
 import EditableWidgetContainer from './EditableWidgetContainer'
 import WorkstationContainer from './WorkstationContainer'
-
+import LoadingWidgetContainer from './LoadingWidgetContainer'
 
 class Page extends Component {
     componentWillMount() {
@@ -16,6 +16,11 @@ class Page extends Component {
             if (this.props.openWidgetId && this.props.openWidgetId == widget.id) {
                 return (<EditableWidgetContainer key={widget.id} widget={widget} />)
             }
+
+            if (this.props.loadingWidgetId && this.props.loadingWidgetId == widget.id) {
+                return (<LoadingWidgetContainer key={widget.id} widget={widget} />)
+            }
+
             return (
                 <WidgetContainer key={widget.id} widget={widget} />
             )

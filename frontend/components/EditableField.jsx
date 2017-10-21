@@ -49,7 +49,7 @@ class EditableField extends Component {
         if (field.content_type === 'textarea')  {
             return (
                 <div>
-                    <label className='u-display-block'>
+                    <label className='u-display-block u-font-weight-normal'>
                         { field.label }
                         <textarea
                             onChange={ this.handleInputChange }
@@ -65,7 +65,7 @@ class EditableField extends Component {
                     key={alignment}
                     className="fieldset fieldset--inline">
 
-                    <label>
+                    <label className='u-font-weight-normal'>
                         {alignment + ' '}
                         <input
                             type="radio"
@@ -78,14 +78,14 @@ class EditableField extends Component {
             ))
             return (
                 <div>
-                    <div><label>Alignment:</label></div>
+                    <div><label className='u-font-weight-normal'>Alignment:</label></div>
                     { radioInputs }
                 </div>
             )
         } else {
             return (
                 <div>
-                    <label className='u-display-block'>
+                    <label className='u-display-block u-font-weight-normal'>
                         { field.label }
                         <input
                             className="form-control"

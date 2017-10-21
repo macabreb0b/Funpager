@@ -34,6 +34,10 @@ body {
     overflow-y: auto;
 }
 
+.u-font-weight-normal {
+    font-weight: normal !important;
+}
+
 #viewer {
     overflow-y: auto;
 }
@@ -60,7 +64,7 @@ body {
 
 .separator {
     overflow: hidden;
-    font-size: 1.2em;
+    font-size: 1.5em !important;
 }
 .separator:before,
 .separator:after {
@@ -127,8 +131,7 @@ body {
     visibility: visible !important;
 }
 
-.widget_fields, 
-.widget_fields-no-hover {
+.widget_fields {
     margin-bottom: 10px;
     padding: 10px;
     border: 0;
@@ -533,25 +536,21 @@ h4.modal-title {
     }
 }
 
-#newWidget {
+.loading-wrapper {
     position: relative;
+    min-height: 60px;
+    border: thick lightgrey dashed;
+    border-radius: 5px;
 
-    .wrapper {
-        height: 300px;
-        border: thick lightgrey dashed;
-        border-radius: 5px;
-
-        #canvasLoader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 64px;
-            height: 64px;
-            margin-left: -32px;
-            margin-top: -32px;
-        }
+    #canvasLoader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 60px;
+        height: 60px;
+        margin-left: -30px;
+        margin-top: -30px;
     }
-
 }
 
 

@@ -20,22 +20,6 @@ Singlepager.Views.EditPage = Backbone.View.extend({
         }, 300);
     },
 
-
-    makeSortable: function() {
-        jQuery('.widgets').sortable({
-            cursor: 'move',
-            start: function(event) {
-                $('.add-widget-container').slideUp(5);
-            },
-            stop: function(event, ui) {
-                var $widget = ui.item;
-                $widget.trigger('move');
-            }
-        });
-    },
-
-
-
     showLoading: function() {
         jQuery('#newWidget').html('<div id="canvasloader-container" class="wrapper"></div>');
 

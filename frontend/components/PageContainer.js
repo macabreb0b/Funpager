@@ -10,12 +10,14 @@ const mapStateToProps = (state, { pageId }) => {
 
     const widgets = selectAllWidgets(state.entities);
     const openWidgetId = state.ui.edit_page_ui.openWidgetId;
-
+    const loadingWidgetId = state.ui.edit_page_ui.loadingWidgetId;
+    
     return {
         pageId: pageIdInt,
         page,
         widgets,
         openWidgetId,
+        loadingWidgetId,
     };
 };
 

@@ -1,5 +1,9 @@
 import * as APIUtil from '../util/widget_api_util';
-import { openWidgetForEditing } from '../actions/edit_page_ui_actions';
+import { 
+    openWidgetForEditing, 
+    showLoadingForWidget,
+    hideLoading
+} from '../actions/edit_page_ui_actions';
 
 export const RECEIVE_WIDGETS = 'RECEIVE_WIDGETS';
 export const RECEIVE_WIDGET = 'RECEIVE_WIDGET';
@@ -29,11 +33,12 @@ export const createWidget = (pageId, widgetType, rankAfter) => dispatch => (
 
 export const updateWidget = (widgetId, fields) => dispatch => {
     dispatch(openWidgetForEditing(null));
-    // dispatch(showLoading(widget.id)); TODO - show loading widget
+    dispatch(showLoadingForWidget(widgetId));
 
-    return APIUtil.updateWidget(widgetId, fields).done(widget => (
-        dispatch(receiveWidget(widget))
-    ))
+    return APIUtil.updateWidget(widgetId, fields).done(widget => {
+        dispatch(hideLoading())
+        return dispatch(receiveWidget(widget))
+    })
 };
 
 export const adjustRank = (widgetId, destination) => dispatch => (
