@@ -108,7 +108,13 @@ body {
     padding: 15px 20px;
 }
 
-ul.widgets {
+@media (max-width: 600px) {
+  .page-content {
+    width: 100vw;
+  }
+}
+
+.widgets {
     list-style: none;
     padding: 0;
 }
@@ -128,10 +134,6 @@ ul.widgets {
     border: 0;
     border-radius: 5px;
     position: relative;
-
-    li {
-        list-style: disc inside;
-    }
 }
 
 textarea.form-control {
