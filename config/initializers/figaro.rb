@@ -1,0 +1,1 @@
+Figaro.require_keys('AWS_REGION', 'AWS_KEY', 'AWS_SECRET', 'AWS_BUCKET_DEV')
